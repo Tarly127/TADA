@@ -1,0 +1,11 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------< org.example:ApproximateConsensusToolkitMaven >------------
+[INFO] Building ApproximateConsensusToolkitMaven 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- exec-maven-plugin:1.4.0:java (default-cli) @ ApproximateConsensusToolkitMaven ---
+FCA clock synch
+Time at start: 3289.083212125s
+Server listening at /127.0.0.1:12348
+4/4

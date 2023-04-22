@@ -1,0 +1,4 @@
+Id;StartingWallTime;Texec;expectedH;realH;timedOutRounds;neededMessages;processedMessages;initialV;endingV
+0;2023-04-14T20:53:15.366307000;115.633042;14;14;0;39;42;0.0;0.0
+1;2023-04-14T20:53:15.579948000;46.226;14;14;0;39;42;0.0;0.0
+2;2023-04-14T20:53:15.731290000;34.824292;14;14;0;39;42;0.0;0.0

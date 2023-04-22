@@ -1,0 +1,13 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------< org.example:ApproximateConsensusToolkitMaven >------------
+[INFO] Building ApproximateConsensusToolkitMaven 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- exec-maven-plugin:1.4.0:java (default-cli) @ ApproximateConsensusToolkitMaven ---
+AsyncDLPSW86 (FullyByzantine) 5050
+Server listening at /127.0.0.1:12349
+5/6
+6/6
+Non leader finished
+- (Non Leader) Finished logging.

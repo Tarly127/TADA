@@ -1,0 +1,4 @@
+Id;Texec;expectedH;realH;timedOutRounds;neededMessages;processedMessages;initialV;endingV
+0;3130526.296666;10;10;0;36;40;0.0;0.0
+1;3131298.498291;10;10;0;36;40;0.0;0.0
+2;3132275.244375;10;10;0;36;40;0.0;0.0
