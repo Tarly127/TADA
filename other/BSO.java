@@ -1,9 +1,9 @@
 package test.consensus;
 
-import primitives.Processor;
+import core.Processor;
 import test.other.TestConsts;
 import utils.consensus.exception.MinimumProcessesNotReachedException;
-import utils.measurements.Stopwatch;
+import utils.prof.Stopwatch;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

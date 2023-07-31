@@ -1,12 +1,12 @@
 package test.other;
 
-import primitives.AsynchAtomicApproximateDouble;
-import primitives.AtomicApproximateDouble;
-import primitives.AtomicInexactDouble;
-import primitives.Processor;
+import core.AsyncAtomicApproximateDouble;
+import core.AtomicApproximateDouble;
+import core.AtomicInexactDouble;
+import core.Processor;
 import utils.consensus.exception.MinimumProcessesNotReachedException;
 import utils.consensus.types.faultDescriptors.FaultClass;
-import utils.measurements.Stopwatch;
+import utils.prof.Stopwatch;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -141,13 +141,13 @@ public class FaultyTests
 
         int maxFaultyProcs = args.length >= 3 ? (Integer.parseInt(args[2]) - 1) / 5 : 0;
 
-        AsynchAtomicApproximateDouble temperature = byzantine(args[0], args[1], args[2], maxFaultyProcs) ?
-                                                    processor.newAsynchAtomicApproximateDouble(
+        AsyncAtomicApproximateDouble temperature = byzantine(args[0], args[1], args[2], maxFaultyProcs) ?
+                                                   processor.newAsynchAtomicApproximateDouble(
                                                       "Temperature",
                                                       TestConsts.EPSILON,
                                                       r.nextDouble(),
                                                       faultClass) :
-                                                    processor.newAsynchAtomicApproximateDouble(
+                                                   processor.newAsynchAtomicApproximateDouble(
                                                       "Temperature",
                                                       TestConsts.EPSILON,
                                                       r.nextDouble());

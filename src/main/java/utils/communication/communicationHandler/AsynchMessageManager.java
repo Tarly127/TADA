@@ -1,16 +1,17 @@
 package utils.communication.communicationHandler;
 
-import AtomicInterface.communication.address.AddressInterface;
-import AtomicInterface.communication.communicationHandler.CommunicationManager;
-import AtomicInterface.communication.groupConstitution.ProcessInterface;
-import AtomicInterface.communication.groupConstitution.MessageQueue;
-import AtomicInterface.communication.groupConstitution.Subscription;
-import utils.communication.communicationHandler.MessageQueue.SimpleMessageQueue;
+import Interface.communication.address.AddressInterface;
+import Interface.communication.communicationHandler.CommunicationManager;
+import Interface.communication.groupConstitution.OtherNodeInterface;
+import Interface.communication.communicationHandler.MessageQueue;
+import Interface.communication.communicationHandler.Subscription;
+import utils.communication.communicationHandler.MessageQueue.IncomingMessageQueue;
 import utils.consensus.ids.InstanceID;
 import org.javatuples.Triplet;
 import utils.communication.groupConstitution.GroupConstitution;
 import utils.communication.message.ExpectedMessageSize;
 
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.CompletionHandler;
 import java.util.*;
@@ -21,18 +22,19 @@ public class AsynchMessageManager implements CommunicationManager
 {
     private static final int BUFFER_CAPACITY = ExpectedMessageSize.KRYO_SMALL_MESSAGE_SIZE_WITH_HEADER;
 
+
     private final GroupConstitution                     groupConstitution;
     private final MessageQueue                          msgQueue;
     private final AtomicInteger                         regID;
 
     private final static class ProcessAttachment
     {
-        public final ProcessInterface otherProcess;
+        public final OtherNodeInterface otherProcess;
         public final ByteBuffer buffer;
         public final AddressInterface    otherProcessAddress;
         public long startTime;
 
-        ProcessAttachment(ProcessInterface otherProcess, AddressInterface otherProcessAddress)
+        ProcessAttachment(OtherNodeInterface otherProcess, AddressInterface otherProcessAddress)
         {
             this.otherProcess        = otherProcess;
             this.otherProcessAddress = otherProcessAddress;
@@ -47,9 +49,9 @@ public class AsynchMessageManager implements CommunicationManager
         @Override
         public void completed(Integer result, ProcessAttachment attachment)
         {
-            if (result != null && result > 0)
+            try
             {
-                try
+                if (result != null && result > 0)
                 {
                     // always flip the buffer!
                     attachment.buffer.flip();
@@ -66,25 +68,19 @@ public class AsynchMessageManager implements CommunicationManager
                     attachment.buffer.clear();
 
                     // continue read loop, if the connection still supports reading
-                    if(attachment.otherProcess.isReadable())
+                    if (attachment.otherProcess.isReadable())
                         attachment.otherProcess.safeRead(attachment.buffer, attachment, this);
                 }
-                catch (Throwable e)
-                {
-                    e.printStackTrace();
-                }
+                else
+                    remove(attachment);
             }
-            else
-                if(attachment.otherProcess.isReadable())
-                    attachment.otherProcess.safeRead(attachment.buffer, attachment, this);
+            catch (Throwable ignored) {}
         }
 
         @Override
         public void failed(Throwable exc, ProcessAttachment attachment)
         {
             // we will eventually wind up here if a connection is reset! handle accordingly
-
-
             if(attachment.otherProcess.isReadable())
                 // Continue the read loop for this connection, if it remained open
                 attachment.otherProcess.safeRead(attachment.buffer, attachment, this);
@@ -99,12 +95,12 @@ public class AsynchMessageManager implements CommunicationManager
     public AsynchMessageManager(GroupConstitution groupCon)
     {
         this.groupConstitution         = groupCon;
-        this.msgQueue                  = new SimpleMessageQueue();
+        this.msgQueue                  = new IncomingMessageQueue();
         this.regID                     = new AtomicInteger(0);
-        AtomicInteger ignoreTimeout = new AtomicInteger(0);
+        AtomicInteger ignoreTimeout    = new AtomicInteger(0);
     }
 
-    private void setUpListener(AddressInterface addr, ProcessInterface process)
+    private void setUpListener(AddressInterface addr, OtherNodeInterface process)
     {
         if(process.isOther())
         {
@@ -117,12 +113,12 @@ public class AsynchMessageManager implements CommunicationManager
     // get a new registration, if none of the given types have already been registered
     public Subscription getRegistration(Collection<Byte> acceptableTypes)
     {
-        return msgQueue.getRegistration(acceptableTypes, regID.getAndIncrement());
+        return msgQueue.getSubscription(acceptableTypes, regID.getAndIncrement());
     }
 
     public Subscription getRegistration(Collection<Byte> acceptableTypes, InstanceID instanceID)
     {
-        return msgQueue.getRegistration(acceptableTypes, instanceID, regID.getAndIncrement());
+        return msgQueue.getSubscription(acceptableTypes, instanceID, regID.getAndIncrement());
     }
 
     // starts listening for messages in the communication group
@@ -133,13 +129,13 @@ public class AsynchMessageManager implements CommunicationManager
 
     // returns the oldest message in queue with any of the given types
     // waits if there are no messages in queue
-    public Triplet<AddressInterface, byte[], Byte> dequeue(Subscription acceptableTypesSubscription)
+    public Triplet<AddressInterface, byte[], Byte> getNextMessage(Subscription acceptableTypesSubscription)
     {
         return this.msgQueue.dequeue(acceptableTypesSubscription);
     }
 
     // registers a new member in the group if the given address is not yet registered, and sets up his listener
-    public void addToGroup(AddressInterface address, ProcessInterface process)
+    public void addToGroup(AddressInterface address, OtherNodeInterface process)
     {
         // add process to group
         if(!this.groupConstitution.containsKey(address))
@@ -167,5 +163,21 @@ public class AsynchMessageManager implements CommunicationManager
     public GroupConstitution getGroupConstitution()
     {
         return this.groupConstitution;
+    }
+
+    // add more types to the subscription
+    public boolean addTypesToRegistration(Collection<Byte> newTypes, Subscription subscription)
+    {
+        return this.msgQueue.addTypesToRegistration(newTypes, subscription);
+    }
+
+    // remove process from group
+    private void remove(ProcessAttachment attachment) throws IOException
+    {
+        if(this.groupConstitution.containsKey(attachment.otherProcessAddress))
+        {
+            attachment.otherProcess.close();
+            this.groupConstitution.remove(attachment.otherProcessAddress);
+        }
     }
 }

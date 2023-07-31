@@ -1,11 +1,11 @@
 package test.consensus;
 
-import AtomicInterface.consensus.ApproximateConsensusHandler;
-import primitives.Processor;
+import Interface.consensus.utils.ApproximateConsensusHandler;
+import core.Processor;
 import test.other.TestAux;
 import test.other.TestConsts;
 import utils.consensus.exception.MinimumProcessesNotReachedException;
-import utils.measurements.Stopwatch;
+import utils.prof.Stopwatch;
 
 import java.io.IOException;
 import java.time.LocalDateTime;

@@ -1,10 +1,8 @@
 package test.other;
 
-import primitives.Processor;
+import core.Processor;
 
 import java.io.IOException;
-
-import static test.other.TestAux.timeout;
 
 public class GeneralTests
 {

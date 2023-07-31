@@ -1,6 +1,6 @@
 package utils.consensus.ids;
 
-import AtomicInterface.communication.address.AddressInterface;
+import Interface.communication.address.AddressInterface;
 
 import java.io.Serializable;
 import java.util.Objects;

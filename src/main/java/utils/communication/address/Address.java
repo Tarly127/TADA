@@ -1,6 +1,6 @@
 package utils.communication.address;
 
-import AtomicInterface.communication.address.AddressInterface;
+import Interface.communication.address.AddressInterface;
 
 import java.io.*;
 import java.util.Objects;

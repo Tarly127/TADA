@@ -1,6 +1,6 @@
 package utils.communication.communicationHandler.MessageQueue;
 
-import AtomicInterface.communication.address.AddressInterface;
+import Interface.communication.address.AddressInterface;
 import org.javatuples.Triplet;
 import utils.communication.message.ExpectedMessageSize;
 

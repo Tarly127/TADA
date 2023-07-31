@@ -87,14 +87,14 @@ loadScripts(document, 'script');</script>
 <h1 title="Class ProcessStatus" class="title">Class ProcessStatus</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance"><a href="Process.html" title="class in utils.communication.groupConstitution">utils.communication.groupConstitution.Process</a>
-<div class="inheritance">utils.communication.groupConstitution.ProcessStatus</div>
+<div class="inheritance"><a href="Process.html" title="class in utils.communication.groupConstitution">utils.communication.groupConstitution.OtherNode</a>
+<div class="inheritance">utils.communication.groupConstitution.OtherNodeStatus</div>
 </div>
 </div>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html" title="interface in AtomicInterface.communication.groupConstitution">ProcessInterface</a></code>, <code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/io/Closeable.html" title="class or interface in java.io" class="external-link">Closeable</a></code>, <code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/AutoCloseable.html" title="class or interface in java.lang" class="external-link">AutoCloseable</a></code>, <code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/nio/channels/AsynchronousChannel.html" title="class or interface in java.nio.channels" class="external-link">AsynchronousChannel</a></code>, <code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/nio/channels/Channel.html" title="class or interface in java.nio.channels" class="external-link">Channel</a></code></dd>
+<dd><code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html" title="interface in Interface.communication.groupConstitution">ProcessInterface</a></code>, <code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/io/Closeable.html" title="class or interface in java.io" class="external-link">Closeable</a></code>, <code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/AutoCloseable.html" title="class or interface in java.lang" class="external-link">AutoCloseable</a></code>, <code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/nio/channels/AsynchronousChannel.html" title="class or interface in java.nio.channels" class="external-link">AsynchronousChannel</a></code>, <code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/nio/channels/Channel.html" title="class or interface in java.nio.channels" class="external-link">Channel</a></code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">ProcessStatus</span>
@@ -110,9 +110,9 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(utils.communication.groupConstitution.Process)" class="member-name-link">ProcessStatus</a><wbr>(<a href="Process.html" title="class in utils.communication.groupConstitution">Process</a>&nbsp;process)</code></div>
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(utils.communication.groupConstitution.OtherNode)" class="member-name-link">ProcessStatus</a><wbr>(<a href="Process.html" title="class in utils.communication.groupConstitution">Process</a>&nbsp;process)</code></div>
 <div class="col-last even-row-color">&nbsp;</div>
-<div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(utils.communication.groupConstitution.ProcessStatus)" class="member-name-link">ProcessStatus</a><wbr>(<a href="ProcessStatus.html" title="class in utils.communication.groupConstitution">ProcessStatus</a>&nbsp;processStatus)</code></div>
+<div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(utils.communication.groupConstitution.OtherNodeStatus)" class="member-name-link">ProcessStatus</a><wbr>(<a href="ProcessStatus.html" title="class in utils.communication.groupConstitution">ProcessStatus</a>&nbsp;processStatus)</code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
 </div>
 </section>
@@ -173,7 +173,7 @@ loadScripts(document, 'script');</script>
 </div>
 </div>
 <div class="inherited-list">
-<h3 id="methods-inherited-from-class-utils.communication.groupConstitution.Process">Methods inherited from class&nbsp;utils.communication.groupConstitution.<a href="Process.html" title="class in utils.communication.groupConstitution">Process</a></h3>
+<h3 id="methods-inherited-from-class-utils.communication.groupConstitution.OtherNode">Methods inherited from class&nbsp;utils.communication.groupConstitution.<a href="Process.html" title="class in utils.communication.groupConstitution">Process</a></h3>
 <code><a href="Process.html#close()">close</a>, <a href="Process.html#connect(java.net.SocketAddress,A,java.nio.channels.CompletionHandler)">connect</a>, <a href="Process.html#getRemoteAddress()">getRemoteAddress</a>, <a href="Process.html#isFaulty()">isFaulty</a>, <a href="Process.html#isOpen()">isOpen</a>, <a href="Process.html#isReadable()">isReadable</a>, <a href="Process.html#isWriteable()">isWriteable</a>, <a href="Process.html#markAsFaulty()">markAsFaulty</a>, <a href="Process.html#markAsFaulty(boolean)">markAsFaulty</a>, <a href="Process.html#safeWrite(java.nio.ByteBuffer)">safeWrite</a>, <a href="Process.html#shallowClone()">shallowClone</a></code></div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-java.lang.Object">Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></h3>
@@ -190,13 +190,13 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(utils.communication.groupConstitution.Process)">
+<section class="detail" id="&lt;init&gt;(utils.communication.groupConstitution.OtherNode)">
 <h3>ProcessStatus</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">ProcessStatus</span><wbr><span class="parameters">(<a href="Process.html" title="class in utils.communication.groupConstitution">Process</a>&nbsp;process)</span></div>
 </section>
 </li>
 <li>
-<section class="detail" id="&lt;init&gt;(utils.communication.groupConstitution.ProcessStatus)">
+<section class="detail" id="&lt;init&gt;(utils.communication.groupConstitution.OtherNodeStatus)">
 <h3>ProcessStatus</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">ProcessStatus</span><wbr><span class="parameters">(<a href="ProcessStatus.html" title="class in utils.communication.groupConstitution">ProcessStatus</a>&nbsp;processStatus)</span></div>
 </section>
@@ -243,11 +243,11 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="isOther()">
 <h3>isOther</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isOther</span>()</div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#isOther()">ProcessInterface</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#isOther()">ProcessInterface</a></code></span></div>
 <div class="block">Whether this GroupMember represents another process or ourselves.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#isOther()">isOther</a></code>&nbsp;in interface&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html" title="interface in AtomicInterface.communication.groupConstitution">ProcessInterface</a></code></dd>
+<dd><code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#isOther()">isOther</a></code>&nbsp;in interface&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html" title="interface in Interface.communication.groupConstitution">ProcessInterface</a></code></dd>
 <dt>Overrides:</dt>
 <dd><code><a href="Process.html#isOther()">isOther</a></code>&nbsp;in class&nbsp;<code><a href="Process.html" title="class in utils.communication.groupConstitution">Process</a></code></dd>
 <dt>Returns:</dt>
@@ -274,12 +274,12 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="type-parameters">&lt;T&gt;</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">safeWrite</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/nio/ByteBuffer.html" title="class or interface in java.nio" class="external-link">ByteBuffer</a>&nbsp;bf,
  T&nbsp;attachment,
  <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/nio/channels/CompletionHandler.html" title="class or interface in java.nio.channels" class="external-link">CompletionHandler</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr>? super T&gt;&nbsp;handler)</span></div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#safeWrite(java.nio.ByteBuffer,A,java.nio.channels.CompletionHandler)">ProcessInterface</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#safeWrite(java.nio.ByteBuffer,A,java.nio.channels.CompletionHandler)">ProcessInterface</a></code></span></div>
 <div class="block">Asynchronous thread-safe write method. Guarantees no WritePendingException occurs. Does nothing in the case
  that isOther is false.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#safeWrite(java.nio.ByteBuffer,A,java.nio.channels.CompletionHandler)">safeWrite</a></code>&nbsp;in interface&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html" title="interface in AtomicInterface.communication.groupConstitution">ProcessInterface</a></code></dd>
+<dd><code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#safeWrite(java.nio.ByteBuffer,A,java.nio.channels.CompletionHandler)">safeWrite</a></code>&nbsp;in interface&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html" title="interface in Interface.communication.groupConstitution">ProcessInterface</a></code></dd>
 <dt>Overrides:</dt>
 <dd><code><a href="Process.html#safeWrite(java.nio.ByteBuffer,A,java.nio.channels.CompletionHandler)">safeWrite</a></code>&nbsp;in class&nbsp;<code><a href="Process.html" title="class in utils.communication.groupConstitution">Process</a></code></dd>
 <dt>Type Parameters:</dt>
@@ -297,11 +297,11 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="type-parameters">&lt;T&gt;</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">safeRead</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/nio/ByteBuffer.html" title="class or interface in java.nio" class="external-link">ByteBuffer</a>&nbsp;bf,
  T&nbsp;attachment,
  <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/nio/channels/CompletionHandler.html" title="class or interface in java.nio.channels" class="external-link">CompletionHandler</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr>? super T&gt;&nbsp;handler)</span></div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#safeRead(java.nio.ByteBuffer,A,java.nio.channels.CompletionHandler)">ProcessInterface</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#safeRead(java.nio.ByteBuffer,A,java.nio.channels.CompletionHandler)">ProcessInterface</a></code></span></div>
 <div class="block">Asynchronous thread-safe read method. Does nothing in the case that isOther is false.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#safeRead(java.nio.ByteBuffer,A,java.nio.channels.CompletionHandler)">safeRead</a></code>&nbsp;in interface&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html" title="interface in AtomicInterface.communication.groupConstitution">ProcessInterface</a></code></dd>
+<dd><code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#safeRead(java.nio.ByteBuffer,A,java.nio.channels.CompletionHandler)">safeRead</a></code>&nbsp;in interface&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html" title="interface in Interface.communication.groupConstitution">ProcessInterface</a></code></dd>
 <dt>Overrides:</dt>
 <dd><code><a href="Process.html#safeRead(java.nio.ByteBuffer,A,java.nio.channels.CompletionHandler)">safeRead</a></code>&nbsp;in class&nbsp;<code><a href="Process.html" title="class in utils.communication.groupConstitution">Process</a></code></dd>
 <dt>Type Parameters:</dt>

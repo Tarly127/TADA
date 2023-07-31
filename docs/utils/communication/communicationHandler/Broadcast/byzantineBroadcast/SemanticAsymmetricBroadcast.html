@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="dc.created" content="2023-04-14">
-<meta name="description" content="declaration: package: utils.communication.communicationHandler.Broadcast.byzantineBroadcast, class: SemanticAsymmetricBroadcast">
+<meta name="description" content="declaration: package: utils.communication.communicationHandler.Broadcast.faulty, class: SemanticAsymmetricBroadcast">
 <meta name="generator" content="javadoc/ClassWriterImpl">
 <link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
 <link rel="stylesheet" type="text/css" href="../../../../../script-dir/jquery-ui.min.css" title="Style">
@@ -83,21 +83,21 @@ loadScripts(document, 'script');</script>
 <main role="main">
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">utils.communication.communicationHandler.Broadcast.byzantineBroadcast</a></div>
+<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">utils.communication.communicationHandler.Broadcast.faulty</a></div>
 <h1 title="Class SemanticAsymmetricBroadcast" class="title">Class SemanticAsymmetricBroadcast</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance">utils.communication.communicationHandler.Broadcast.byzantineBroadcast.SemanticAsymmetricBroadcast</div>
+<div class="inheritance">utils.communication.communicationHandler.Broadcast.faulty.SemanticAsymmetricBroadcast</div>
 </div>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="../../../../../AtomicInterface/communication/communicationHandler/Broadcast.html" title="interface in AtomicInterface.communication.communicationHandler">Broadcast</a></code></dd>
+<dd><code><a href="../../../../../Interface/communication/communicationHandler/Broadcast.html" title="interface in Interface.communication.communicationHandler">Broadcast</a></code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">SemanticAsymmetricBroadcast</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
-implements <a href="../../../../../AtomicInterface/communication/communicationHandler/Broadcast.html" title="interface in AtomicInterface.communication.communicationHandler">Broadcast</a></span></div>
+implements <a href="../../../../../Interface/communication/communicationHandler/Broadcast.html" title="interface in Interface.communication.communicationHandler">Broadcast</a></span></div>
 <div class="block">For fault tolerance testing
  Simulates a broadcast</div>
 </section>
@@ -129,7 +129,7 @@ implements <a href="../../../../../AtomicInterface/communication/communicationHa
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#broadcast(byte%5B%5D,java.util.Map)" class="member-name-link">broadcast</a><wbr>(byte[]&nbsp;msgPayload,
- <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;? extends <a href="../../../../../AtomicInterface/communication/address/AddressInterface.html" title="interface in AtomicInterface.communication.address">AddressInterface</a>,<wbr>? extends <a href="../../../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html" title="interface in AtomicInterface.communication.groupConstitution">ProcessInterface</a>&gt;&nbsp;groupCon)</code></div>
+ <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;? extends <a href="../../../../../Interface/communication/address/AddressInterface.html" title="interface in Interface.communication.address">AddressInterface</a>,<wbr>? extends <a href="../../../../../Interface/communication/groupConstitution/ProcessInterface.html" title="interface in Interface.communication.groupConstitution">ProcessInterface</a>&gt;&nbsp;groupCon)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Send the message encoded in payload to every Process in groupConstitution asynchronously.</div>
 </div>
@@ -168,13 +168,13 @@ implements <a href="../../../../../AtomicInterface/communication/communicationHa
 <section class="detail" id="broadcast(byte[],java.util.Map)">
 <h3>broadcast</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</span>&nbsp;<span class="element-name">broadcast</span><wbr><span class="parameters">(byte[]&nbsp;msgPayload,
- <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;? extends <a href="../../../../../AtomicInterface/communication/address/AddressInterface.html" title="interface in AtomicInterface.communication.address">AddressInterface</a>,<wbr>? extends <a href="../../../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html" title="interface in AtomicInterface.communication.groupConstitution">ProcessInterface</a>&gt;&nbsp;groupCon)</span></div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../../../AtomicInterface/communication/communicationHandler/Broadcast.html#broadcast(byte%5B%5D,java.util.Map)">Broadcast</a></code></span></div>
+ <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;? extends <a href="../../../../../Interface/communication/address/AddressInterface.html" title="interface in Interface.communication.address">AddressInterface</a>,<wbr>? extends <a href="../../../../../Interface/communication/groupConstitution/ProcessInterface.html" title="interface in Interface.communication.groupConstitution">ProcessInterface</a>&gt;&nbsp;groupCon)</span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../../../Interface/communication/communicationHandler/Broadcast.html#broadcast(byte%5B%5D,java.util.Map)">Broadcast</a></code></span></div>
 <div class="block">Send the message encoded in payload to every Process in groupConstitution asynchronously. Completes when every
  write operation for each process connection completes.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../../../../AtomicInterface/communication/communicationHandler/Broadcast.html#broadcast(byte%5B%5D,java.util.Map)">broadcast</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../AtomicInterface/communication/communicationHandler/Broadcast.html" title="interface in AtomicInterface.communication.communicationHandler">Broadcast</a></code></dd>
+<dd><code><a href="../../../../../Interface/communication/communicationHandler/Broadcast.html#broadcast(byte%5B%5D,java.util.Map)">broadcast</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../Interface/communication/communicationHandler/Broadcast.html" title="interface in Interface.communication.communicationHandler">Broadcast</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>msgPayload</code> - Encoded message</dd>
 <dd><code>groupCon</code> - Group constituion, each process and their address</dd>

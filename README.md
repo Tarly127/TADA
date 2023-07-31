@@ -1,1 +1,3 @@
-# A Toolkit for Approximate Distributed Agreement
+# ApproximateConsensusToolkit
+
+From previous repository in https://github.com/Tarly127/ApproximateConsensusLibrary

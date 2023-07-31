@@ -1,7 +1,7 @@
 package utils.communication.message;
 
-import AtomicInterface.communication.Message;
-import AtomicInterface.communication.address.AddressInterface;
+import Interface.communication.Message;
+import Interface.communication.address.AddressInterface;
 import utils.consensus.ids.RequestID;
 
 import java.io.*;
@@ -86,21 +86,12 @@ public class ApproximationMessage implements Serializable, Message
 
     public String toString()
     {
-        StringBuilder sb = new StringBuilder();
 
-        sb.append("Value: ").append(v).append(";\n");
-        sb.append("Round: ").append(round).append(";\n");
-        sb.append("Type: ");
-        switch (type)
-        {
-            case MessageType.SYNCH_APPROXIMATION, MessageType.ASYNCH_APPROXIMATION -> sb.append("Approximation;\n");
-            case MessageType.SYNCH_INITIALIZATION, MessageType.ASYNCH_INITIALIZATION -> sb.append("Initialization;\n");
-            case MessageType.SYNCH_HALTED, MessageType.ASYNCH_HALTED -> sb.append("Halted;\n");
-            case MessageType.ASYNCH_NEW -> sb.append("New;\n");
-            case MessageType.UNDEFINED -> sb.append("Undefined;\n");
-            default -> sb.append("Unknown;\n");
-        }
-        return sb.toString();
+        String sb = "Value: " + v + ";\n" +
+                "Round: " + round + ";\n" +
+                "Type: " +
+                MessageType.typeString(this.type) + ";\n";
+        return sb;
     }
 
 

@@ -1,7 +1,7 @@
 package utils.communication.communicationHandler.MessageQueue;
 
-import AtomicInterface.communication.groupConstitution.MessageQueue;
-import AtomicInterface.communication.groupConstitution.Subscription;
+import Interface.communication.groupConstitution.MessageQueue;
+import Interface.communication.groupConstitution.Subscription;
 import utils.communication.message.ExpectedMessageSize;
 import utils.consensus.ids.InstanceID;
 import org.javatuples.Triplet;

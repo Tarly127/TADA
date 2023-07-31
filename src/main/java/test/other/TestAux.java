@@ -1,6 +1,6 @@
 package test.other;
 
-import utils.measurements.ConsensusMetrics;
+import utils.prof.ConsensusMetrics;
 
 import java.io.*;
 import java.time.LocalDateTime;

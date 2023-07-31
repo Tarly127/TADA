@@ -1,7 +1,7 @@
 package utils.communication.message;
 
-import AtomicInterface.communication.Message;
-import AtomicInterface.communication.address.AddressInterface;
+import Interface.communication.Message;
+import Interface.communication.address.AddressInterface;
 
 import java.io.Serializable;
 
@@ -9,32 +9,32 @@ public class IntegrationMessage implements Serializable, Message
 {
     public final Byte type;
     public final int groupSize;
-    public final AddressInterface senderAddress;
+    public final AddressInterface address;
 
     public IntegrationMessage(AddressInterface myAddress, Byte type)
     {
-        this.senderAddress = myAddress;
+        this.address = myAddress;
         this.type          = type;
         this.groupSize     = -1;
     }
 
     public IntegrationMessage(int groupSize, Byte type)
     {
-        this.senderAddress = null;
+        this.address = null;
         this.type          = type;
         this.groupSize     = groupSize;
     }
 
     public IntegrationMessage(Byte type)
     {
-        this.senderAddress = null;
+        this.address = null;
         this.type          = type;
         this.groupSize     = -1;
     }
 
     public IntegrationMessage()
     {
-        this.senderAddress = null;
+        this.address = null;
         this.groupSize     = -1;
         this.type          = MessageType.UNDEFINED;
     }
@@ -47,7 +47,7 @@ public class IntegrationMessage implements Serializable, Message
     @Override
     public AddressInterface getSender()
     {
-        return this.senderAddress;
+        return this.address;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class IntegrationMessage implements Serializable, Message
         return "IntegrationMessage{" +
                 "type=" + type +
                 ", groupSize=" + groupSize +
-                ", senderAddress=" + senderAddress +
+                ", senderAddress=" + address +
                 '}';
     }
 }
