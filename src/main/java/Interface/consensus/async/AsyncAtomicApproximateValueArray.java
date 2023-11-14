@@ -4,6 +4,7 @@ import Interface.consensus.utils.ApproximatePrimitive;
 
 import java.util.concurrent.Future;
 
+
 /**
  * Interface for numerical fixed-size array atomically updated through approximate consensus algorithms. Contained
  * values

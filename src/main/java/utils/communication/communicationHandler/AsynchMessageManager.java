@@ -18,12 +18,10 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 // Assumes that received processes are already connected
-public class AsynchMessageManager implements CommunicationManager
+public class AsynchMessageManager extends CommunicationManager
 {
     private static final int BUFFER_CAPACITY = ExpectedMessageSize.KRYO_SMALL_MESSAGE_SIZE_WITH_HEADER;
 
-
-    private final GroupConstitution                     groupConstitution;
     private final MessageQueue                          msgQueue;
     private final AtomicInteger                         regID;
 
@@ -94,7 +92,7 @@ public class AsynchMessageManager implements CommunicationManager
 
     public AsynchMessageManager(GroupConstitution groupCon)
     {
-        this.groupConstitution         = groupCon;
+        super(groupCon);
         this.msgQueue                  = new IncomingMessageQueue();
         this.regID                     = new AtomicInteger(0);
         AtomicInteger ignoreTimeout    = new AtomicInteger(0);
