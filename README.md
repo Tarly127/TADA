@@ -42,4 +42,4 @@ The output of each test consists of a CSV file for each process, identified by t
 
 To experiment with the toolkit, by integrating it into other Java projects, one must simply add the JAR file provided in the main project directory, named _ApproximateConsensusToolkit-1.0.jar_, to the dependencies of said Java project, or as an external library. Questions related to the functionality described in the paper may be answered by visiting the documentation found in the `docs` directory. To get a firmer understanding of how one may start using the toolkit, we suggest starting by looking at the test classes implemented in the package `src/main/java/test/consensus`.
 
-Documentation for the main Java classes that compose this project can be found in [](https://tarly127.github.io/TADA/).
+Documentation for the main Java classes that compose this project can be found in the respective [Github Documentation Page](https://tarly127.github.io/TADA/).
