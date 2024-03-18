@@ -142,12 +142,12 @@ public class FaultyTests
         int maxFaultyProcs = args.length >= 3 ? (Integer.parseInt(args[2]) - 1) / 5 : 0;
 
         AsynchAtomicApproximateDouble temperature = byzantine(args[0], args[1], args[2], maxFaultyProcs) ?
-                                                    processor.newAsynchAtomicApproximateDouble(
+                                                    processor.newAsyncAtomicApproximateDouble(
                                                       "Temperature",
                                                       TestConsts.EPSILON,
                                                       r.nextDouble(),
                                                       faultClass) :
-                                                    processor.newAsynchAtomicApproximateDouble(
+                                                    processor.newAsyncAtomicApproximateDouble(
                                                       "Temperature",
                                                       TestConsts.EPSILON,
                                                       r.nextDouble());

@@ -35,7 +35,7 @@ public class AsyncDLPSW86
                               new Processor(args[0], args[1], Integer.parseInt(args[2])) :
                               new Processor(args[0], args[1]);
 
-        var temperature = processor.newAsynchAtomicApproximateDouble(
+        var temperature = processor.newAsyncAtomicApproximateDouble(
                 "Temperature",
                 TestConsts.EPSILON,
                 r.nextDouble());

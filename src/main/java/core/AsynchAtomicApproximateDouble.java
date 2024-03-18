@@ -136,7 +136,12 @@ public final class AsynchAtomicApproximateDouble
 
         // perform consensus and return when finished (with future)
         return this.consensusPossible.get() ?
-               requestConsensus().thenApply(this.consensusV::setDouble).thenApply(null) :
+               requestConsensus()
+                       .thenApply((result) ->
+                       {
+                           this.consensusV.setDouble(result);
+                           return null;
+                       }) :
                CompletableFuture.completedFuture(null);
     }
 

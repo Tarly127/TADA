@@ -1,5 +1,6 @@
 utils/consensus/exception/VoteNotCastException.class
 utils/communication/communicationHandler/MessageQueue/SimpleMessageQueue.class
+test/BasicTest$1.class
 Interface/consensus/synch/AtomicApproximateValueArray.class
 utils/communication/communicationHandler/AsynchMessageManager$1.class
 test/faulty/fullyByzantine/AsyncDLPSW86.class
@@ -9,6 +10,7 @@ core/Processor$3.class
 core/AtomicApproximatePrimitiveCore$ProcessAttachment.class
 utils/consensus/ids/RequestID.class
 utils/io/Input.class
+test/BasicTest.class
 Interface/consensus/async/AsyncAtomicApproximateValueArray.class
 utils/communication/groupConstitution/Process$1.class
 core/AtomicApproximateDoubleTemplate.class

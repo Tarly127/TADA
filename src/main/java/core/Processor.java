@@ -914,10 +914,10 @@ public class Processor
         return new AtomicApproximateDoubleTemplate<>(this.msgManager, name, epsilon, timeout, unit, handler);
     }
 
-    public <T> AsynchAtomicApproximateDoubleTemplate<T> newAsynchAtomicApproximateDouble(String name,
-                                                                                         double epsilon,
-                                                                                         double v,
-                                                                                         ApproximateConsensusHandler<T> handler)
+    public <T> AsynchAtomicApproximateDoubleTemplate<T> newAsyncAtomicApproximateDouble(String name,
+                                                                                        double epsilon,
+                                                                                        double v,
+                                                                                        ApproximateConsensusHandler<T> handler)
     {
         this.consensusLock.lock();
 
@@ -960,7 +960,7 @@ public class Processor
         return new AtomicApproximateDouble(this.msgManager, name, epsilon, timeout, unit);
     }
 
-    public AsynchAtomicApproximateDouble newAsynchAtomicApproximateDouble(String name, double epsilon, double v)
+    public AsynchAtomicApproximateDouble newAsyncAtomicApproximateDouble(String name, double epsilon, double v)
     {
         this.consensusLock.lock();
 
@@ -979,6 +979,27 @@ public class Processor
         }
 
         return new AsynchAtomicApproximateDouble(this.msgManager, name, epsilon, v);
+    }
+
+    public AsynchAtomicApproximateDouble newAsyncAtomicApproximateDouble(String name, double epsilon)
+    {
+        this.consensusLock.lock();
+
+        try
+        {
+            if (!asyncConsensus)
+                this.asyncReady.await();
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+        finally
+        {
+            this.consensusLock.unlock();
+        }
+
+        return new AsynchAtomicApproximateDouble(this.msgManager, name, epsilon);
     }
 
     public AtomicInexactDouble newAtomicInexactDouble(String name, double epsilon, double v,
@@ -1025,8 +1046,8 @@ public class Processor
         return new AtomicApproximateDouble(this.msgManager, name, epsilon, v, timeout, unit, faultClass);
     }
 
-    public AsynchAtomicApproximateDouble newAsynchAtomicApproximateDouble(String name, double epsilon, double v,
-                                                                          FaultClass faultClass)
+    public AsynchAtomicApproximateDouble newAsyncAtomicApproximateDouble(String name, double epsilon, double v,
+                                                                         FaultClass faultClass)
     {
         this.consensusLock.lock();
 
