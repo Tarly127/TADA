@@ -1,7 +1,7 @@
 package utils.communication.message;
 
-import AtomicInterface.communication.Message;
-import AtomicInterface.communication.address.AddressInterface;
+import Interface.communication.Message;
+import Interface.communication.address.AddressInterface;
 import utils.consensus.ids.RequestID;
 
 import java.io.*;

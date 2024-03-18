@@ -1,10 +1,10 @@
 package utils.communication.communicationHandler;
 
-import AtomicInterface.communication.address.AddressInterface;
-import AtomicInterface.communication.communicationHandler.CommunicationManager;
-import AtomicInterface.communication.groupConstitution.ProcessInterface;
-import AtomicInterface.communication.groupConstitution.MessageQueue;
-import AtomicInterface.communication.groupConstitution.Subscription;
+import Interface.communication.address.AddressInterface;
+import Interface.communication.communicationHandler.CommunicationManager;
+import Interface.communication.groupConstitution.OtherNodeInterface;
+import Interface.communication.communicationHandler.MessageQueue;
+import Interface.communication.communicationHandler.Subscription;
 import utils.communication.communicationHandler.MessageQueue.SimpleMessageQueue;
 import utils.consensus.ids.InstanceID;
 import org.javatuples.Triplet;
@@ -27,12 +27,12 @@ public class AsynchMessageManager implements CommunicationManager
 
     private final static class ProcessAttachment
     {
-        public final ProcessInterface otherProcess;
+        public final OtherNodeInterface otherProcess;
         public final ByteBuffer buffer;
         public final AddressInterface    otherProcessAddress;
         public long startTime;
 
-        ProcessAttachment(ProcessInterface otherProcess, AddressInterface otherProcessAddress)
+        ProcessAttachment(OtherNodeInterface otherProcess, AddressInterface otherProcessAddress)
         {
             this.otherProcess        = otherProcess;
             this.otherProcessAddress = otherProcessAddress;
@@ -104,7 +104,7 @@ public class AsynchMessageManager implements CommunicationManager
         AtomicInteger ignoreTimeout = new AtomicInteger(0);
     }
 
-    private void setUpListener(AddressInterface addr, ProcessInterface process)
+    private void setUpListener(AddressInterface addr, OtherNodeInterface process)
     {
         if(process.isOther())
         {
@@ -139,7 +139,7 @@ public class AsynchMessageManager implements CommunicationManager
     }
 
     // registers a new member in the group if the given address is not yet registered, and sets up his listener
-    public void addToGroup(AddressInterface address, ProcessInterface process)
+    public void addToGroup(AddressInterface address, OtherNodeInterface process)
     {
         // add process to group
         if(!this.groupConstitution.containsKey(address))

@@ -1,8 +1,8 @@
 package utils.communication.communicationHandler.Broadcast.byzantineBroadcast;
 
-import AtomicInterface.communication.address.AddressInterface;
-import AtomicInterface.communication.communicationHandler.Broadcast;
-import AtomicInterface.communication.groupConstitution.ProcessInterface;
+import Interface.communication.address.AddressInterface;
+import Interface.communication.communicationHandler.Broadcast;
+import Interface.communication.groupConstitution.OtherNodeInterface;
 
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -11,7 +11,7 @@ import java.util.concurrent.CompletableFuture;
 public class OmissiveSymmetricBroadcast implements Broadcast
 {
     public CompletableFuture<Void> broadcast(byte[] msgPayload,
-                                             Map<? extends AddressInterface, ? extends ProcessInterface> groupCon)
+                                             Map<? extends AddressInterface, ? extends OtherNodeInterface> groupCon)
     {
         return CompletableFuture.completedFuture(null);
     }

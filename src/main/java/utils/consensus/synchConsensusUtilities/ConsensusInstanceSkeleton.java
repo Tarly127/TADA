@@ -1,10 +1,10 @@
 package utils.consensus.synchConsensusUtilities;
 
-import AtomicInterface.communication.address.AddressInterface;
-import AtomicInterface.communication.communicationHandler.Broadcast;
-import AtomicInterface.communication.groupConstitution.ProcessInterface;
-import AtomicInterface.consensus.ApproximateConsensusHandler;
-import AtomicInterface.consensus.ConsensusInstance;
+import Interface.communication.address.AddressInterface;
+import Interface.communication.communicationHandler.Broadcast;
+import Interface.communication.groupConstitution.OtherNodeInterface;
+import Interface.consensus.utils.ApproximateConsensusHandler;
+import Interface.consensus.utils.ConsensusInstance;
 import utils.communication.communicationHandler.Broadcast.AsynchBroadcast;
 import utils.communication.groupConstitution.GroupConstitution;
 import utils.communication.groupConstitution.ProcessStatus;
@@ -12,12 +12,12 @@ import utils.communication.message.ApproximationMessage;
 import utils.communication.message.MessageType;
 import utils.communication.serializer.MessageSerializer;
 import utils.consensus.ids.InstanceID;
-import utils.measurements.ConsensusMetrics;
+import utils.prof.ConsensusMetrics;
 import org.javatuples.Pair;
 import utils.consensus.snapshot.ConsensusState;
 import utils.consensus.ids.RequestID;
-import utils.measurements.MessageLogger;
-import utils.measurements.Stopwatch;
+import utils.prof.MessageLogger;
+import utils.prof.Stopwatch;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -38,13 +38,10 @@ public final class ConsensusInstanceSkeleton<ConsensusAttachment>
     public      Double startingV;
     public      Double endingV;
     public final RequestID reqID;
-    public final InstanceID instanceID;
-
     // metrics
     public final ConsensusMetrics metrics;
     public final MessageLogger    logger;
     // Instance variables
-    private final MessageSerializer<ApproximationMessage> serializer;
     private final Long     timeout;
     private final TimeUnit unit;
     private final Double   defaultValue;
@@ -60,18 +57,16 @@ public final class ConsensusInstanceSkeleton<ConsensusAttachment>
 
     public ConsensusInstanceSkeleton()
     {
-        super(1, 0, 0.0, null, new AsynchBroadcast());
+        super(1, 0, 0.0, null, new AsynchBroadcast(),  new MessageSerializer<>(ApproximationMessage.class), null);
 
         this.multisetLock = new ReentrantLock(true);
         this.multisetPerRound = new HashMap<>();
         this.multisetFuturePerRound = new HashMap<>();
         this.startingV = 0.0;
         this.reqID = null;
-        this.instanceID = null;
         this.metrics = null;
         this.logger = null;
 
-        this.serializer   = new MessageSerializer<>(ApproximationMessage.class);
         this.timeout      = Long.MAX_VALUE;
         this.unit         = TimeUnit.DAYS;
         this.defaultValue = 0.0;
@@ -94,10 +89,9 @@ public final class ConsensusInstanceSkeleton<ConsensusAttachment>
                                      ApproximateConsensusHandler<ConsensusAttachment> handler,
                                      final ConsensusAttachment attachment)
     {
-        super(n, t, epsilon, groupState, broadcast);
+        super(n, t, epsilon, groupState, broadcast,  new MessageSerializer<>(ApproximationMessage.class), instanceID);
 
         this.reqID      = reqID;
-        this.instanceID = instanceID;
         this.startingV  = startingV;
         this.endingV    = null;
         this.logger     = null;
@@ -107,7 +101,6 @@ public final class ConsensusInstanceSkeleton<ConsensusAttachment>
         this.multisetPerRound       = new HashMap<>();
         this.multisetFuturePerRound = new HashMap<>();
 
-        this.serializer   = new MessageSerializer<>(ApproximationMessage.class);
         this.timeout      = timeout;
         this.unit         = unit;
         this.defaultValue = defaultValue;
@@ -118,7 +111,6 @@ public final class ConsensusInstanceSkeleton<ConsensusAttachment>
 
     public  <T extends ConsensusState> ConsensusInstanceSkeleton(T snapshot,
                                                                  RequestID reqID,
-                                                                 InstanceID instanceID,
                                                                  Double startingV,
                                                                  Long timeout,
                                                                  TimeUnit unit,
@@ -130,7 +122,6 @@ public final class ConsensusInstanceSkeleton<ConsensusAttachment>
         super(snapshot);
 
         this.reqID      = reqID;
-        this.instanceID = instanceID;
         this.startingV  = startingV;
         this.endingV    = null;
         this.logger     = logger;
@@ -140,7 +131,6 @@ public final class ConsensusInstanceSkeleton<ConsensusAttachment>
         this.multisetPerRound       = new HashMap<>();
         this.multisetFuturePerRound = new HashMap<>();
 
-        this.serializer   = new MessageSerializer<>(ApproximationMessage.class);
         this.timeout      = timeout;
         this.unit         = unit;
         this.defaultValue = defaultValue;
@@ -573,11 +563,7 @@ public final class ConsensusInstanceSkeleton<ConsensusAttachment>
         final long startTime           = Stopwatch.time();
         final LocalDateTime wallTime   = LocalDateTime.now();
 
-        return this.broadcast
-                .broadcast(this.serializer.encodeWithHeader(
-                                new ApproximationMessage(v, round, type, requestID), type, this.instanceID),
-                        this.groupState
-                )
+        return Broadcast(new ApproximationMessage(v, round, type, requestID))
                 .thenApply(nothing ->
                 {
                     if(logger != null)
@@ -667,7 +653,7 @@ public final class ConsensusInstanceSkeleton<ConsensusAttachment>
                 .count() <= t;
     }
 
-    public Map<? extends AddressInterface, ? extends ProcessInterface> getGroupState()
+    public Map<? extends AddressInterface, ? extends OtherNodeInterface> getGroupState()
     {
         return this.groupState;
     }

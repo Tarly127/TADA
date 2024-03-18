@@ -1,12 +1,12 @@
 package test.other;
 
-import primitives.AsynchAtomicApproximateDouble;
-import primitives.AtomicApproximateDouble;
-import primitives.AtomicInexactDouble;
-import primitives.Processor;
+import core.AsynchAtomicApproximateDouble;
+import core.AtomicApproximateDouble;
+import core.AtomicInexactDouble;
+import core.Processor;
 import utils.consensus.exception.MinimumProcessesNotReachedException;
 import utils.consensus.types.faultDescriptors.FaultClass;
-import utils.measurements.Stopwatch;
+import utils.prof.Stopwatch;
 
 import java.io.IOException;
 import java.time.LocalDateTime;

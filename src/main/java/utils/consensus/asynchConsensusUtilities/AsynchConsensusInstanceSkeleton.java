@@ -1,10 +1,10 @@
 package utils.consensus.asynchConsensusUtilities;
 
-import AtomicInterface.communication.address.AddressInterface;
-import AtomicInterface.communication.communicationHandler.Broadcast;
-import AtomicInterface.communication.groupConstitution.ProcessInterface;
-import AtomicInterface.consensus.ApproximateConsensusHandler;
-import AtomicInterface.consensus.ConsensusInstance;
+import Interface.communication.address.AddressInterface;
+import Interface.communication.communicationHandler.Broadcast;
+import Interface.communication.groupConstitution.OtherNodeInterface;
+import Interface.consensus.utils.ApproximateConsensusHandler;
+import Interface.consensus.utils.ConsensusInstance;
 import utils.communication.address.Address;
 import utils.communication.communicationHandler.Broadcast.AsynchBroadcast;
 import utils.communication.groupConstitution.GroupConstitution;
@@ -13,13 +13,13 @@ import utils.communication.message.ApproximationMessage;
 import utils.communication.message.MessageType;
 import utils.communication.serializer.MessageSerializer;
 import utils.consensus.ids.InstanceID;
-import utils.measurements.ConsensusMetrics;
+import utils.prof.ConsensusMetrics;
 import org.javatuples.Pair;
-import utils.math.Functions;
+import utils.math.ApproximationFunctions;
 import utils.consensus.snapshot.ConsensusState;
 import utils.consensus.ids.RequestID;
-import utils.measurements.MessageLogger;
-import utils.measurements.Stopwatch;
+import utils.prof.MessageLogger;
+import utils.prof.Stopwatch;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -38,13 +38,10 @@ public final class AsynchConsensusInstanceSkeleton<ConsensusAttachment>
     public      Double endingV;
     // ids
     public final RequestID reqID;
-    public final InstanceID instanceID;
     // metrics
     public final ConsensusMetrics metrics;
     public final MessageLogger    logger;
     // Instance variables
-    private final MessageSerializer<ApproximationMessage> serializer;
-
     public final ApproximateConsensusHandler<ConsensusAttachment> handler;
     public final ConsensusAttachment                              attachment;
 
@@ -53,7 +50,7 @@ public final class AsynchConsensusInstanceSkeleton<ConsensusAttachment>
         @Override
         public int rounds(ConsensusState cs, double[] V0, ConsensusAttachment ca)
         {
-            return Math.max(0, Functions.AsyncH(V0, cs.epsilon, cs.n, cs.t));
+            return Math.max(0, ApproximationFunctions.AsyncH(V0, cs.epsilon, cs.n, cs.t));
         }
 
         @Override
@@ -66,9 +63,9 @@ public final class AsynchConsensusInstanceSkeleton<ConsensusAttachment>
         public double approximationRound(ConsensusState cs, double[] V, double v, int round, ConsensusAttachment ca)
         {
             if(round == 0)
-                return Functions.mean(Functions.reduce(V, 2 * cs.t));
+                return ApproximationFunctions.mean(ApproximationFunctions.reduce(V, 2 * cs.t));
             else
-                return Functions.f(V, 2 * cs.t, cs.t);
+                return ApproximationFunctions.f(V, 2 * cs.t, cs.t);
         }
 
         @Override
@@ -85,19 +82,15 @@ public final class AsynchConsensusInstanceSkeleton<ConsensusAttachment>
 
     public AsynchConsensusInstanceSkeleton()
     {
-        super(1, 0, 0.0, null, new AsynchBroadcast());
+        super(1, 0, 0.0, null, new AsynchBroadcast(), new MessageSerializer<>(ApproximationMessage.class), null);
 
         this.multisetLock = new ReentrantLock(true);
         this.multisetPerRound = new HashMap<>();
         this.multisetFuturePerRound = new HashMap<>();
         this.startingV = 0.0;
         this.reqID = null;
-        this.instanceID = null;
         this.metrics = null;
         this.logger = null;
-
-
-        this.serializer    = new MessageSerializer<>(ApproximationMessage.class);
 
         this.handler = defaultHandler;
         this.attachment = null;
@@ -112,10 +105,9 @@ public final class AsynchConsensusInstanceSkeleton<ConsensusAttachment>
                                  GroupConstitution groupState,
                                  Broadcast broadcast)
     {
-        super(n, t, epsilon, groupState, broadcast);
+        super(n, t, epsilon, groupState, broadcast, new MessageSerializer<>(ApproximationMessage.class), instanceID);
 
         this.reqID      = reqID;
-        this.instanceID = instanceID;
         this.startingV  = startingV;
         this.endingV    = null;
         this.logger     = null;
@@ -125,15 +117,12 @@ public final class AsynchConsensusInstanceSkeleton<ConsensusAttachment>
         this.multisetPerRound       = new HashMap<>();
         this.multisetFuturePerRound = new HashMap<>();
 
-        this.serializer = new MessageSerializer<>(ApproximationMessage.class);
-
         this.handler    = this.defaultHandler;
         this.attachment = null;
     }
 
     public <T extends ConsensusState> AsynchConsensusInstanceSkeleton(T snapshot,
                                                                       RequestID reqID,
-                                                                      InstanceID instanceID,
                                                                       Double startingV,
                                                                       MessageLogger logger,
                                                                       ApproximateConsensusHandler<ConsensusAttachment> consensusHandler,
@@ -142,7 +131,6 @@ public final class AsynchConsensusInstanceSkeleton<ConsensusAttachment>
         super(snapshot);
 
         this.reqID      = reqID;
-        this.instanceID = instanceID;
         this.startingV  = startingV;
         this.endingV    = null;
         this.logger     = logger;
@@ -151,8 +139,6 @@ public final class AsynchConsensusInstanceSkeleton<ConsensusAttachment>
         this.multisetLock           = new ReentrantLock(true);
         this.multisetPerRound       = new HashMap<>();
         this.multisetFuturePerRound = new HashMap<>();
-
-        this.serializer = new MessageSerializer<>(ApproximationMessage.class);
 
         this.handler    = consensusHandler;
         this.attachment = attachment;
@@ -164,7 +150,6 @@ public final class AsynchConsensusInstanceSkeleton<ConsensusAttachment>
         super(other);
 
         this.reqID      = other.reqID;
-        this.instanceID = other.instanceID;
         this.startingV  = other.startingV;
         this.endingV    = other.endingV;
         this.logger     = other.logger;
@@ -173,8 +158,6 @@ public final class AsynchConsensusInstanceSkeleton<ConsensusAttachment>
         this.multisetLock           = other.multisetLock;
         this.multisetPerRound       = other.multisetPerRound;
         this.multisetFuturePerRound = other.multisetFuturePerRound;
-
-        this.serializer = new MessageSerializer<>(ApproximationMessage.class);
 
         this.handler    = other.handler;
         this.attachment = other.attachment;
@@ -571,8 +554,7 @@ public final class AsynchConsensusInstanceSkeleton<ConsensusAttachment>
         final long startTime           = Stopwatch.time();
         final LocalDateTime wallTime   = LocalDateTime.now();
 
-        return this.broadcast
-                .broadcast(this.serializer.encodeWithHeader(msg, type, this.instanceID), this.groupState)
+        return super.Broadcast(msg)
                 .thenApply(nothing ->
                 {
                     if(logger != null)
@@ -615,7 +597,7 @@ public final class AsynchConsensusInstanceSkeleton<ConsensusAttachment>
                 .count() <= t;
     }
 
-    public Map<? extends AddressInterface, ? extends ProcessInterface> getGroupState()
+    public Map<? extends AddressInterface, ? extends OtherNodeInterface> getGroupState()
     {
         return this.groupState;
     }

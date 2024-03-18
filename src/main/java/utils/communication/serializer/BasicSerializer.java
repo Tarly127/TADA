@@ -1,6 +1,6 @@
 package utils.communication.serializer;
 
-import AtomicInterface.communication.address.AddressInterface;
+import Interface.communication.address.AddressInterface;
 import com.esotericsoftware.kryo.kryo5.Kryo;
 import com.esotericsoftware.kryo.kryo5.io.Input;
 import com.esotericsoftware.kryo.kryo5.io.Output;

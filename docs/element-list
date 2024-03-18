@@ -1,11 +1,11 @@
-AtomicInterface.communication
-AtomicInterface.communication.address
-AtomicInterface.communication.communicationHandler
-AtomicInterface.communication.groupConstitution
-AtomicInterface.consensus
-AtomicInterface.consensus.async
-AtomicInterface.consensus.synch
-primitives
+Interface.communication
+Interface.communication.address
+Interface.communication.communicationHandler
+Interface.communication.groupConstitution
+Interface.consensus
+Interface.consensus.async
+Interface.consensus.synch
+core
 test.consensus
 test.faulty.fullyByzantine
 test.faulty.omissiveAsymmetric
@@ -33,4 +33,4 @@ utils.consensus.types.faultDescriptors
 utils.io
 utils.math
 utils.math.atomicExtensions
-utils.measurements
+utils.prof

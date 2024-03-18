@@ -1,8 +1,8 @@
 package utils.communication.communicationHandler.MessageQueue;
 
-import AtomicInterface.communication.address.AddressInterface;
-import AtomicInterface.communication.groupConstitution.MessageQueue;
-import AtomicInterface.communication.groupConstitution.Subscription;
+import Interface.communication.address.AddressInterface;
+import Interface.communication.communicationHandler.MessageQueue;
+import Interface.communication.communicationHandler.Subscription;
 import utils.consensus.ids.InstanceID;
 import org.javatuples.Triplet;
 

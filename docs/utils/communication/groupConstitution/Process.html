@@ -92,7 +92,7 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html" title="interface in AtomicInterface.communication.groupConstitution">ProcessInterface</a></code>, <code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/io/Closeable.html" title="class or interface in java.io" class="external-link">Closeable</a></code>, <code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/AutoCloseable.html" title="class or interface in java.lang" class="external-link">AutoCloseable</a></code>, <code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/nio/channels/AsynchronousChannel.html" title="class or interface in java.nio.channels" class="external-link">AsynchronousChannel</a></code>, <code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/nio/channels/Channel.html" title="class or interface in java.nio.channels" class="external-link">Channel</a></code></dd>
+<dd><code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html" title="interface in Interface.communication.groupConstitution">ProcessInterface</a></code>, <code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/io/Closeable.html" title="class or interface in java.io" class="external-link">Closeable</a></code>, <code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/AutoCloseable.html" title="class or interface in java.lang" class="external-link">AutoCloseable</a></code>, <code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/nio/channels/AsynchronousChannel.html" title="class or interface in java.nio.channels" class="external-link">AsynchronousChannel</a></code>, <code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/nio/channels/Channel.html" title="class or interface in java.nio.channels" class="external-link">Channel</a></code></dd>
 </dl>
 <dl class="notes">
 <dt>Direct Known Subclasses:</dt>
@@ -101,7 +101,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Process</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
-implements <a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html" title="interface in AtomicInterface.communication.groupConstitution">ProcessInterface</a></span></div>
+implements <a href="../../../Interface/communication/groupConstitution/ProcessInterface.html" title="interface in Interface.communication.groupConstitution">ProcessInterface</a></span></div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -248,11 +248,11 @@ implements <a href="../../../AtomicInterface/communication/groupConstitution/Pro
 <section class="detail" id="isOther()">
 <h3>isOther</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isOther</span>()</div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#isOther()">ProcessInterface</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#isOther()">ProcessInterface</a></code></span></div>
 <div class="block">Whether this GroupMember represents another process or ourselves.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#isOther()">isOther</a></code>&nbsp;in interface&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html" title="interface in AtomicInterface.communication.groupConstitution">ProcessInterface</a></code></dd>
+<dd><code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#isOther()">isOther</a></code>&nbsp;in interface&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html" title="interface in Interface.communication.groupConstitution">ProcessInterface</a></code></dd>
 <dt>Returns:</dt>
 <dd>True if it is not the calling process, false otherwise</dd>
 </dl>
@@ -262,11 +262,11 @@ implements <a href="../../../AtomicInterface/communication/groupConstitution/Pro
 <section class="detail" id="isFaulty()">
 <h3>isFaulty</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isFaulty</span>()</div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#isFaulty()">ProcessInterface</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#isFaulty()">ProcessInterface</a></code></span></div>
 <div class="block">Whether this GroupMember is known/suspected faulty or not.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#isFaulty()">isFaulty</a></code>&nbsp;in interface&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html" title="interface in AtomicInterface.communication.groupConstitution">ProcessInterface</a></code></dd>
+<dd><code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#isFaulty()">isFaulty</a></code>&nbsp;in interface&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html" title="interface in Interface.communication.groupConstitution">ProcessInterface</a></code></dd>
 <dt>Returns:</dt>
 <dd>True if at least suspected faulty, false otherwise</dd>
 </dl>
@@ -276,11 +276,11 @@ implements <a href="../../../AtomicInterface/communication/groupConstitution/Pro
 <section class="detail" id="markAsFaulty()">
 <h3>markAsFaulty</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">markAsFaulty</span>()</div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#markAsFaulty()">ProcessInterface</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#markAsFaulty()">ProcessInterface</a></code></span></div>
 <div class="block">Mark a process as being faulty</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#markAsFaulty()">markAsFaulty</a></code>&nbsp;in interface&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html" title="interface in AtomicInterface.communication.groupConstitution">ProcessInterface</a></code></dd>
+<dd><code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#markAsFaulty()">markAsFaulty</a></code>&nbsp;in interface&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html" title="interface in Interface.communication.groupConstitution">ProcessInterface</a></code></dd>
 </dl>
 </section>
 </li>
@@ -288,11 +288,11 @@ implements <a href="../../../AtomicInterface/communication/groupConstitution/Pro
 <section class="detail" id="markAsFaulty(boolean)">
 <h3>markAsFaulty</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">markAsFaulty</span><wbr><span class="parameters">(boolean&nbsp;isFaulty)</span></div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#markAsFaulty(boolean)">ProcessInterface</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#markAsFaulty(boolean)">ProcessInterface</a></code></span></div>
 <div class="block">Change a process's faultiness.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#markAsFaulty(boolean)">markAsFaulty</a></code>&nbsp;in interface&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html" title="interface in AtomicInterface.communication.groupConstitution">ProcessInterface</a></code></dd>
+<dd><code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#markAsFaulty(boolean)">markAsFaulty</a></code>&nbsp;in interface&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html" title="interface in Interface.communication.groupConstitution">ProcessInterface</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>isFaulty</code> - Whether the process is faulty or not.</dd>
 </dl>
@@ -304,11 +304,11 @@ implements <a href="../../../AtomicInterface/communication/groupConstitution/Pro
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="type-parameters">&lt;A&gt;</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">connect</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/net/SocketAddress.html" title="class or interface in java.net" class="external-link">SocketAddress</a>&nbsp;remote,
  A&nbsp;attachment,
  <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/nio/channels/CompletionHandler.html" title="class or interface in java.nio.channels" class="external-link">CompletionHandler</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>,<wbr>? super A&gt;&nbsp;handler)</span></div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#connect(java.net.SocketAddress,A,java.nio.channels.CompletionHandler)">ProcessInterface</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#connect(java.net.SocketAddress,A,java.nio.channels.CompletionHandler)">ProcessInterface</a></code></span></div>
 <div class="block">Asynchronous connect.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#connect(java.net.SocketAddress,A,java.nio.channels.CompletionHandler)">connect</a></code>&nbsp;in interface&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html" title="interface in AtomicInterface.communication.groupConstitution">ProcessInterface</a></code></dd>
+<dd><code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#connect(java.net.SocketAddress,A,java.nio.channels.CompletionHandler)">connect</a></code>&nbsp;in interface&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html" title="interface in Interface.communication.groupConstitution">ProcessInterface</a></code></dd>
 <dt>Type Parameters:</dt>
 <dd><code>A</code> - Type of attachment</dd>
 <dt>Parameters:</dt>
@@ -324,12 +324,12 @@ implements <a href="../../../AtomicInterface/communication/groupConstitution/Pro
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="type-parameters">&lt;A&gt;</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">safeWrite</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/nio/ByteBuffer.html" title="class or interface in java.nio" class="external-link">ByteBuffer</a>&nbsp;bf,
  A&nbsp;attachment,
  <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/nio/channels/CompletionHandler.html" title="class or interface in java.nio.channels" class="external-link">CompletionHandler</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr>? super A&gt;&nbsp;handler)</span></div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#safeWrite(java.nio.ByteBuffer,A,java.nio.channels.CompletionHandler)">ProcessInterface</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#safeWrite(java.nio.ByteBuffer,A,java.nio.channels.CompletionHandler)">ProcessInterface</a></code></span></div>
 <div class="block">Asynchronous thread-safe write method. Guarantees no WritePendingException occurs. Does nothing in the case
  that isOther is false.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#safeWrite(java.nio.ByteBuffer,A,java.nio.channels.CompletionHandler)">safeWrite</a></code>&nbsp;in interface&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html" title="interface in AtomicInterface.communication.groupConstitution">ProcessInterface</a></code></dd>
+<dd><code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#safeWrite(java.nio.ByteBuffer,A,java.nio.channels.CompletionHandler)">safeWrite</a></code>&nbsp;in interface&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html" title="interface in Interface.communication.groupConstitution">ProcessInterface</a></code></dd>
 <dt>Type Parameters:</dt>
 <dd><code>A</code> - Type of attachment</dd>
 <dt>Parameters:</dt>
@@ -343,12 +343,12 @@ implements <a href="../../../AtomicInterface/communication/groupConstitution/Pro
 <section class="detail" id="safeWrite(java.nio.ByteBuffer)">
 <h3>safeWrite</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">safeWrite</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/nio/ByteBuffer.html" title="class or interface in java.nio" class="external-link">ByteBuffer</a>&nbsp;bf)</span></div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#safeWrite(java.nio.ByteBuffer)">ProcessInterface</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#safeWrite(java.nio.ByteBuffer)">ProcessInterface</a></code></span></div>
 <div class="block">Blocking thread-safe write method. Guarantees no WritePendingException occurs. Does nothing in the case
  that isOther is false.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#safeWrite(java.nio.ByteBuffer)">safeWrite</a></code>&nbsp;in interface&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html" title="interface in AtomicInterface.communication.groupConstitution">ProcessInterface</a></code></dd>
+<dd><code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#safeWrite(java.nio.ByteBuffer)">safeWrite</a></code>&nbsp;in interface&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html" title="interface in Interface.communication.groupConstitution">ProcessInterface</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>bf</code> - The buffer from which bytes are to be transferred</dd>
 </dl>
@@ -360,11 +360,11 @@ implements <a href="../../../AtomicInterface/communication/groupConstitution/Pro
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="type-parameters">&lt;A&gt;</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">safeRead</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/nio/ByteBuffer.html" title="class or interface in java.nio" class="external-link">ByteBuffer</a>&nbsp;bf,
  A&nbsp;attachment,
  <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/nio/channels/CompletionHandler.html" title="class or interface in java.nio.channels" class="external-link">CompletionHandler</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr>? super A&gt;&nbsp;handler)</span></div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#safeRead(java.nio.ByteBuffer,A,java.nio.channels.CompletionHandler)">ProcessInterface</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#safeRead(java.nio.ByteBuffer,A,java.nio.channels.CompletionHandler)">ProcessInterface</a></code></span></div>
 <div class="block">Asynchronous thread-safe read method. Does nothing in the case that isOther is false.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#safeRead(java.nio.ByteBuffer,A,java.nio.channels.CompletionHandler)">safeRead</a></code>&nbsp;in interface&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html" title="interface in AtomicInterface.communication.groupConstitution">ProcessInterface</a></code></dd>
+<dd><code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#safeRead(java.nio.ByteBuffer,A,java.nio.channels.CompletionHandler)">safeRead</a></code>&nbsp;in interface&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html" title="interface in Interface.communication.groupConstitution">ProcessInterface</a></code></dd>
 <dt>Type Parameters:</dt>
 <dd><code>A</code> - Type of attachment</dd>
 <dt>Parameters:</dt>
@@ -407,11 +407,11 @@ implements <a href="../../../AtomicInterface/communication/groupConstitution/Pro
 <section class="detail" id="isReadable()">
 <h3>isReadable</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isReadable</span>()</div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#isReadable()">ProcessInterface</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#isReadable()">ProcessInterface</a></code></span></div>
 <div class="block">Whether a read operation can be completed successfully.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#isReadable()">isReadable</a></code>&nbsp;in interface&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html" title="interface in AtomicInterface.communication.groupConstitution">ProcessInterface</a></code></dd>
+<dd><code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#isReadable()">isReadable</a></code>&nbsp;in interface&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html" title="interface in Interface.communication.groupConstitution">ProcessInterface</a></code></dd>
 <dt>Returns:</dt>
 <dd>True is a read operation can be completed, false otherwise.</dd>
 </dl>
@@ -421,11 +421,11 @@ implements <a href="../../../AtomicInterface/communication/groupConstitution/Pro
 <section class="detail" id="isWriteable()">
 <h3>isWriteable</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isWriteable</span>()</div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#isWriteable()">ProcessInterface</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#isWriteable()">ProcessInterface</a></code></span></div>
 <div class="block">Whether a write operation can be completed successfully.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#isWriteable()">isWriteable</a></code>&nbsp;in interface&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html" title="interface in AtomicInterface.communication.groupConstitution">ProcessInterface</a></code></dd>
+<dd><code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#isWriteable()">isWriteable</a></code>&nbsp;in interface&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html" title="interface in Interface.communication.groupConstitution">ProcessInterface</a></code></dd>
 <dt>Returns:</dt>
 <dd>True is a write operation can be completed, false otherwise.</dd>
 </dl>
@@ -437,7 +437,7 @@ implements <a href="../../../AtomicInterface/communication/groupConstitution/Pro
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/net/InetSocketAddress.html" title="class or interface in java.net" class="external-link">InetSocketAddress</a></span>&nbsp;<span class="element-name">getRemoteAddress</span>()</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html#getRemoteAddress()">getRemoteAddress</a></code>&nbsp;in interface&nbsp;<code><a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html" title="interface in AtomicInterface.communication.groupConstitution">ProcessInterface</a></code></dd>
+<dd><code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html#getRemoteAddress()">getRemoteAddress</a></code>&nbsp;in interface&nbsp;<code><a href="../../../Interface/communication/groupConstitution/ProcessInterface.html" title="interface in Interface.communication.groupConstitution">ProcessInterface</a></code></dd>
 </dl>
 </section>
 </li>

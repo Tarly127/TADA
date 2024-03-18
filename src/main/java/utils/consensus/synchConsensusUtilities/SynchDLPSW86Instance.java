@@ -1,9 +1,9 @@
 package utils.consensus.synchConsensusUtilities;
 
-import AtomicInterface.communication.address.AddressInterface;
-import AtomicInterface.communication.communicationHandler.Broadcast;
-import AtomicInterface.communication.groupConstitution.ProcessInterface;
-import AtomicInterface.consensus.ConsensusInstance;
+import Interface.communication.address.AddressInterface;
+import Interface.communication.communicationHandler.Broadcast;
+import Interface.communication.groupConstitution.OtherNodeInterface;
+import Interface.consensus.utils.ConsensusInstance;
 import utils.communication.address.Address;
 import utils.communication.communicationHandler.Broadcast.AsynchBroadcast;
 import utils.communication.groupConstitution.GroupConstitution;
@@ -12,13 +12,13 @@ import utils.communication.message.ApproximationMessage;
 import utils.communication.message.MessageType;
 import utils.communication.serializer.MessageSerializer;
 import utils.consensus.ids.InstanceID;
-import utils.measurements.ConsensusMetrics;
+import utils.math.ApproximationFunctions;
+import utils.prof.ConsensusMetrics;
 import org.javatuples.Pair;
-import utils.math.Functions;
 import utils.consensus.snapshot.ConsensusState;
 import utils.consensus.ids.RequestID;
-import utils.measurements.MessageLogger;
-import utils.measurements.Stopwatch;
+import utils.prof.MessageLogger;
+import utils.prof.Stopwatch;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -39,12 +39,10 @@ public final class SynchDLPSW86Instance
     public final ReentrantLock multisetLock;
     public final Double startingV;
     public final RequestID reqID;
-    public final InstanceID instanceID;
     // metrics
     public final ConsensusMetrics metrics;
     public final MessageLogger    logger;
     // Instance variables
-    private final MessageSerializer<ApproximationMessage> serializer;
     private final long timeout;
     private final TimeUnit unit;
     private final double defaultValue;
@@ -57,18 +55,16 @@ public final class SynchDLPSW86Instance
 
     public SynchDLPSW86Instance()
     {
-        super(1, 0, 0.0, null, new AsynchBroadcast());
+        super(1, 0, 0.0, null, new AsynchBroadcast(),  new MessageSerializer<>(ApproximationMessage.class), null);
 
         this.multisetLock = new ReentrantLock(true);
         this.multisetPerRound = new HashMap<>();
         this.multisetFuturePerRound = new HashMap<>();
         this.startingV = 0.0;
         this.reqID = null;
-        this.instanceID = null;
         this.metrics = null;
         this.logger = null;
 
-        this.serializer   = new MessageSerializer<>(ApproximationMessage.class);
         this.timeout      = Long.MAX_VALUE;
         this.unit         = TimeUnit.DAYS;
         this.defaultValue = 0.0;
@@ -86,10 +82,9 @@ public final class SynchDLPSW86Instance
                                 TimeUnit unit,
                                 double defaultValue)
     {
-        super(n, t, epsilon, groupState, broadcast);
+        super(n, t, epsilon, groupState, broadcast,  new MessageSerializer<>(ApproximationMessage.class), instanceID);
 
         this.reqID      = reqID;
-        this.instanceID = instanceID;
         this.startingV  = startingV;
         this.endingV    = null;
         this.logger     = null;
@@ -99,7 +94,6 @@ public final class SynchDLPSW86Instance
         this.multisetPerRound       = new HashMap<>();
         this.multisetFuturePerRound = new HashMap<>();
 
-        this.serializer   = new MessageSerializer<>(ApproximationMessage.class);
         this.timeout      = timeout;
         this.unit         = unit;
         this.defaultValue = defaultValue;
@@ -107,7 +101,6 @@ public final class SynchDLPSW86Instance
 
     public  <T extends ConsensusState> SynchDLPSW86Instance(T snapshot,
                                                             RequestID reqID,
-                                                            InstanceID instanceID,
                                                             Double startingV,
                                                             long timeout,
                                                             TimeUnit unit,
@@ -117,7 +110,6 @@ public final class SynchDLPSW86Instance
         super(snapshot);
 
         this.reqID      = reqID;
-        this.instanceID = instanceID;
         this.startingV  = startingV;
         this.endingV    = null;
         this.logger     = logger;
@@ -127,7 +119,6 @@ public final class SynchDLPSW86Instance
         this.multisetPerRound       = new HashMap<>();
         this.multisetFuturePerRound = new HashMap<>();
 
-        this.serializer   = new MessageSerializer<>(ApproximationMessage.class);
         this.timeout      = timeout;
         this.unit         = unit;
         this.defaultValue = defaultValue;
@@ -201,13 +192,13 @@ public final class SynchDLPSW86Instance
                     // sort V
                     Arrays.sort(V);
                     // H = ceil(log_c(delta(V)/epsilon))
-                    this.H = Math.max(0, Functions.SynchH(V, this.epsilon, this.n, this.t));
+                    this.H = Math.max(0, ApproximationFunctions.SynchH(V, this.epsilon, this.n, this.t));
 
                     this.metrics.expectedH = this.H;
                     this.metrics.realH     = this.H;
 
                     // v <- f_t,t(V)
-                    return Functions.f(V, this.t, this.t);
+                    return ApproximationFunctions.f(V, this.t, this.t);
                 });
     }
 
@@ -253,7 +244,7 @@ public final class SynchDLPSW86Instance
                     // sort V
                     Arrays.sort(V);
                     // v <- f_2t,t(V)
-                    return Functions.f(V, this.t, this.t);
+                    return ApproximationFunctions.f(V, this.t, this.t);
                 })
                 .thenCompose(v ->
                 {
@@ -299,7 +290,7 @@ public final class SynchDLPSW86Instance
 
             printArray(V);
 
-            vNext = Functions.f(V, this.t, this.t);
+            vNext = ApproximationFunctions.f(V, this.t, this.t);
         }
 
         this.H             = round - 1;
@@ -574,11 +565,7 @@ public final class SynchDLPSW86Instance
         final long startTime           = Stopwatch.time();
         final LocalDateTime wallTime   = LocalDateTime.now();
 
-        return this.broadcast
-                .broadcast(this.serializer.encodeWithHeader(
-                                new ApproximationMessage(v, round, type, requestID), type, this.instanceID),
-                        this.groupState
-                )
+        return Broadcast(msg)
                 .thenApply(nothing ->
                 {
                     if(logger != null)
@@ -622,7 +609,7 @@ public final class SynchDLPSW86Instance
                 .count() <= t;
     }
 
-    public Map<? extends AddressInterface, ? extends ProcessInterface> getGroupState()
+    public Map<? extends AddressInterface, ? extends OtherNodeInterface> getGroupState()
     {
         return this.groupState;
     }

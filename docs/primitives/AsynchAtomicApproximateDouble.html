@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="dc.created" content="2023-04-14">
-<meta name="description" content="declaration: package: primitives, class: AsynchAtomicApproximateDouble">
+<meta name="description" content="declaration: package: core, class: AsynchAtomicApproximateDouble">
 <meta name="generator" content="javadoc/ClassWriterImpl">
 <link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
 <link rel="stylesheet" type="text/css" href="../script-dir/jquery-ui.min.css" title="Style">
@@ -83,23 +83,23 @@ loadScripts(document, 'script');</script>
 <main role="main">
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">primitives</a></div>
+<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">core</a></div>
 <h1 title="Class AsynchAtomicApproximateDouble" class="title">Class AsynchAtomicApproximateDouble</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance"><a href="AtomicApproximatePrimitiveCore.html" title="class in primitives">primitives.AtomicApproximatePrimitiveCore</a>
-<div class="inheritance">primitives.AsynchAtomicApproximateDouble</div>
+<div class="inheritance"><a href="AtomicApproximatePrimitiveCore.html" title="class in core">core.AtomicApproximatePrimitiveCore</a>
+<div class="inheritance">core.AsynchAtomicApproximateDouble</div>
 </div>
 </div>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="../AtomicInterface/consensus/ApproximatePrimitive.html" title="interface in AtomicInterface.consensus">ApproximatePrimitive</a></code>, <code><a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html" title="interface in AtomicInterface.consensus.async">AsyncAtomicApproximateValue</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code>, <code><a href="../AtomicInterface/consensus/async/AsynchronousPrimitive.html" title="interface in AtomicInterface.consensus.async">AsynchronousPrimitive</a></code></dd>
+<dd><code><a href="../Interface/consensus/ApproximatePrimitive.html" title="interface in Interface.consensus">ApproximatePrimitive</a></code>, <code><a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html" title="interface in Interface.consensus.async">AsyncAtomicApproximateValue</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code>, <code><a href="../Interface/consensus/async/AsynchronousPrimitive.html" title="interface in Interface.consensus.async">AsynchronousPrimitive</a></code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">AsynchAtomicApproximateDouble</span>
-<span class="extends-implements">extends <a href="AtomicApproximatePrimitiveCore.html" title="class in primitives">AtomicApproximatePrimitiveCore</a>
-implements <a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html" title="interface in AtomicInterface.consensus.async">AsyncAtomicApproximateValue</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;, <a href="../AtomicInterface/consensus/async/AsynchronousPrimitive.html" title="interface in AtomicInterface.consensus.async">AsynchronousPrimitive</a></span></div>
+<span class="extends-implements">extends <a href="AtomicApproximatePrimitiveCore.html" title="class in core">AtomicApproximatePrimitiveCore</a>
+implements <a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html" title="interface in Interface.consensus.async">AsyncAtomicApproximateValue</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;, <a href="../Interface/consensus/async/AsynchronousPrimitive.html" title="interface in Interface.consensus.async">AsynchronousPrimitive</a></span></div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -126,14 +126,14 @@ implements <a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateVal
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(AtomicInterface.communication.communicationHandler.CommunicationManager,java.lang.String,double)" class="member-name-link">AsynchAtomicApproximateDouble</a><wbr>(<a href="../AtomicInterface/communication/communicationHandler/CommunicationManager.html" title="interface in AtomicInterface.communication.communicationHandler">CommunicationManager</a>&nbsp;groupCon,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(Interface.communication.communicationHandler.CommunicationManager,java.lang.String,double)" class="member-name-link">AsynchAtomicApproximateDouble</a><wbr>(<a href="../Interface/communication/communicationHandler/CommunicationManager.html" title="interface in Interface.communication.communicationHandler">CommunicationManager</a>&nbsp;groupCon,
  <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
  double&nbsp;epsilon)</code></div>
 <div class="col-last even-row-color">
 <div class="block">Create a new, fully connected instance of an object containing a double updated atomically and with
  approximate consensus algorithms</div>
 </div>
-<div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(AtomicInterface.communication.communicationHandler.CommunicationManager,java.lang.String,double,double)" class="member-name-link">AsynchAtomicApproximateDouble</a><wbr>(<a href="../AtomicInterface/communication/communicationHandler/CommunicationManager.html" title="interface in AtomicInterface.communication.communicationHandler">CommunicationManager</a>&nbsp;groupCon,
+<div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(Interface.communication.communicationHandler.CommunicationManager,java.lang.String,double,double)" class="member-name-link">AsynchAtomicApproximateDouble</a><wbr>(<a href="../Interface/communication/communicationHandler/CommunicationManager.html" title="interface in Interface.communication.communicationHandler">CommunicationManager</a>&nbsp;groupCon,
  <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
  double&nbsp;epsilon,
  double&nbsp;initialVote)</code></div>
@@ -181,10 +181,10 @@ implements <a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateVal
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Get the maximum number of faulty processes in group, depending on algorithm implementation and group size</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../utils/measurements/MessageLogger.html" title="class in utils.measurements">MessageLogger</a></code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../utils/measurements/MessageLogger.html" title="class in utils.prof">MessageLogger</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getMessageLogger()" class="member-name-link">getMessageLogger</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../utils/measurements/ConsensusMetrics.html" title="class in utils.measurements">ConsensusMetrics</a>&gt;</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../utils/measurements/ConsensusMetrics.html" title="class in utils.prof">ConsensusMetrics</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getMetrics()" class="member-name-link">getMetrics</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
@@ -218,7 +218,7 @@ implements <a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateVal
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPrecision(double)" class="member-name-link">setPrecision</a><wbr>(double&nbsp;newEpsilon)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../AtomicInterface/consensus/synch/SynchronousPrimitive.html" title="interface in AtomicInterface.consensus.synch">SynchronousPrimitive</a></code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../Interface/consensus/synch/SynchronousPrimitive.html" title="interface in Interface.consensus.synch">SynchronousPrimitive</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#sync()" class="member-name-link">sync</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Return the equivalent synchronous primitive of the object</div>
@@ -248,7 +248,7 @@ implements <a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateVal
 <dt>See Also:</dt>
 <dd>
 <ul class="see-list">
-<li><a href="../constant-values.html#primitives.AsynchAtomicApproximateDouble.MINIMUM_PROCESSES">Constant Field Values</a></li>
+<li><a href="../constant-values.html#core.AsynchAtomicApproximateDouble.MINIMUM_PROCESSES">Constant Field Values</a></li>
 </ul>
 </dd>
 </dl>
@@ -263,9 +263,9 @@ implements <a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateVal
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(AtomicInterface.communication.communicationHandler.CommunicationManager,java.lang.String,double,double)">
+<section class="detail" id="&lt;init&gt;(Interface.communication.communicationHandler.CommunicationManager,java.lang.String,double,double)">
 <h3>AsynchAtomicApproximateDouble</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">AsynchAtomicApproximateDouble</span><wbr><span class="parameters">(<a href="../AtomicInterface/communication/communicationHandler/CommunicationManager.html" title="interface in AtomicInterface.communication.communicationHandler">CommunicationManager</a>&nbsp;groupCon,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">AsynchAtomicApproximateDouble</span><wbr><span class="parameters">(<a href="../Interface/communication/communicationHandler/CommunicationManager.html" title="interface in Interface.communication.communicationHandler">CommunicationManager</a>&nbsp;groupCon,
  <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
  double&nbsp;epsilon,
  double&nbsp;initialVote)</span></div>
@@ -281,9 +281,9 @@ implements <a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateVal
 </section>
 </li>
 <li>
-<section class="detail" id="&lt;init&gt;(AtomicInterface.communication.communicationHandler.CommunicationManager,java.lang.String,double)">
+<section class="detail" id="&lt;init&gt;(Interface.communication.communicationHandler.CommunicationManager,java.lang.String,double)">
 <h3>AsynchAtomicApproximateDouble</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">AsynchAtomicApproximateDouble</span><wbr><span class="parameters">(<a href="../AtomicInterface/communication/communicationHandler/CommunicationManager.html" title="interface in AtomicInterface.communication.communicationHandler">CommunicationManager</a>&nbsp;groupCon,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">AsynchAtomicApproximateDouble</span><wbr><span class="parameters">(<a href="../Interface/communication/communicationHandler/CommunicationManager.html" title="interface in Interface.communication.communicationHandler">CommunicationManager</a>&nbsp;groupCon,
  <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
  double&nbsp;epsilon)</span></div>
 <div class="block">Create a new, fully connected instance of an object containing a double updated atomically and with
@@ -308,11 +308,11 @@ implements <a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateVal
 <h3>get</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</span>&nbsp;<span class="element-name">get</span>()
                               throws <span class="exceptions"><a href="../utils/consensus/exception/MinimumProcessesNotReachedException.html" title="class in utils.consensus.exception">MinimumProcessesNotReachedException</a></span></div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html#get()">AsyncAtomicApproximateValue</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html#get()">AsyncAtomicApproximateValue</a></code></span></div>
 <div class="block">Get the stored value (eager)</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html#get()">get</a></code>&nbsp;in interface&nbsp;<code><a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html" title="interface in AtomicInterface.consensus.async">AsyncAtomicApproximateValue</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
+<dd><code><a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html#get()">get</a></code>&nbsp;in interface&nbsp;<code><a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html" title="interface in Interface.consensus.async">AsyncAtomicApproximateValue</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
 <dt>Returns:</dt>
 <dd>Stored value</dd>
 <dt>Throws:</dt>
@@ -325,11 +325,11 @@ implements <a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateVal
 <h3>set</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</span>&nbsp;<span class="element-name">set</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&nbsp;newV)</span>
                             throws <span class="exceptions"><a href="../utils/consensus/exception/MinimumProcessesNotReachedException.html" title="class in utils.consensus.exception">MinimumProcessesNotReachedException</a></span></div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html#set(V)">AsyncAtomicApproximateValue</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html#set(V)">AsyncAtomicApproximateValue</a></code></span></div>
 <div class="block">Set value to newValue (eager set)</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html#set(V)">set</a></code>&nbsp;in interface&nbsp;<code><a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html" title="interface in AtomicInterface.consensus.async">AsyncAtomicApproximateValue</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
+<dd><code><a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html#set(V)">set</a></code>&nbsp;in interface&nbsp;<code><a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html" title="interface in Interface.consensus.async">AsyncAtomicApproximateValue</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>newV</code> - New value it should be updated to</dd>
 <dt>Throws:</dt>
@@ -341,11 +341,11 @@ implements <a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateVal
 <section class="detail" id="lazySet(java.lang.Double)">
 <h3>lazySet</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;</span>&nbsp;<span class="element-name">lazySet</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&nbsp;newV)</span></div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html#lazySet(V)">AsyncAtomicApproximateValue</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html#lazySet(V)">AsyncAtomicApproximateValue</a></code></span></div>
 <div class="block">Eventually set value to newValue</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html#lazySet(V)">lazySet</a></code>&nbsp;in interface&nbsp;<code><a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html" title="interface in AtomicInterface.consensus.async">AsyncAtomicApproximateValue</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
+<dd><code><a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html#lazySet(V)">lazySet</a></code>&nbsp;in interface&nbsp;<code><a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html" title="interface in Interface.consensus.async">AsyncAtomicApproximateValue</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>newV</code> - New value it should be updated to</dd>
 </dl>
@@ -355,11 +355,11 @@ implements <a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateVal
 <section class="detail" id="lazyGet()">
 <h3>lazyGet</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</span>&nbsp;<span class="element-name">lazyGet</span>()</div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html#lazyGet()">AsyncAtomicApproximateValue</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html#lazyGet()">AsyncAtomicApproximateValue</a></code></span></div>
 <div class="block">Get the stored value (lazy)</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html#lazyGet()">lazyGet</a></code>&nbsp;in interface&nbsp;<code><a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html" title="interface in AtomicInterface.consensus.async">AsyncAtomicApproximateValue</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
+<dd><code><a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html#lazyGet()">lazyGet</a></code>&nbsp;in interface&nbsp;<code><a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html" title="interface in Interface.consensus.async">AsyncAtomicApproximateValue</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
 <dt>Returns:</dt>
 <dd>Stored value</dd>
 </dl>
@@ -371,11 +371,11 @@ implements <a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateVal
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Boolean.html" title="class or interface in java.lang" class="external-link">Boolean</a>&gt;</span>&nbsp;<span class="element-name">compareAndSet</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&nbsp;expectedValue,
  <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&nbsp;newValue)</span>
                                          throws <span class="exceptions"><a href="../utils/consensus/exception/MinimumProcessesNotReachedException.html" title="class in utils.consensus.exception">MinimumProcessesNotReachedException</a></span></div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html#compareAndSet(V,V)">AsyncAtomicApproximateValue</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html#compareAndSet(V,V)">AsyncAtomicApproximateValue</a></code></span></div>
 <div class="block">Set the stored value to newValue if it's equal to expectedValue (Strong)</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html#compareAndSet(V,V)">compareAndSet</a></code>&nbsp;in interface&nbsp;<code><a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html" title="interface in AtomicInterface.consensus.async">AsyncAtomicApproximateValue</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
+<dd><code><a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html#compareAndSet(V,V)">compareAndSet</a></code>&nbsp;in interface&nbsp;<code><a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html" title="interface in Interface.consensus.async">AsyncAtomicApproximateValue</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>expectedValue</code> - Expected value</dd>
 <dd><code>newValue</code> - New value</dd>
@@ -391,11 +391,11 @@ implements <a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateVal
 <h3>getAndSet</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</span>&nbsp;<span class="element-name">getAndSet</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&nbsp;newValue)</span>
                                     throws <span class="exceptions"><a href="../utils/consensus/exception/MinimumProcessesNotReachedException.html" title="class in utils.consensus.exception">MinimumProcessesNotReachedException</a></span></div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html#getAndSet(V)">AsyncAtomicApproximateValue</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html#getAndSet(V)">AsyncAtomicApproximateValue</a></code></span></div>
 <div class="block">Get value and set to newValue (eager)</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html#getAndSet(V)">getAndSet</a></code>&nbsp;in interface&nbsp;<code><a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html" title="interface in AtomicInterface.consensus.async">AsyncAtomicApproximateValue</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
+<dd><code><a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html#getAndSet(V)">getAndSet</a></code>&nbsp;in interface&nbsp;<code><a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html" title="interface in Interface.consensus.async">AsyncAtomicApproximateValue</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>newValue</code> - New value it should be updated to</dd>
 <dt>Returns:</dt>
@@ -409,11 +409,11 @@ implements <a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateVal
 <section class="detail" id="lazyGetAndSet(java.lang.Double)">
 <h3>lazyGetAndSet</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</span>&nbsp;<span class="element-name">lazyGetAndSet</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&nbsp;newValue)</span></div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html#lazyGetAndSet(V)">AsyncAtomicApproximateValue</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html#lazyGetAndSet(V)">AsyncAtomicApproximateValue</a></code></span></div>
 <div class="block">Get value and set to newValue (eager)</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html#lazyGetAndSet(V)">lazyGetAndSet</a></code>&nbsp;in interface&nbsp;<code><a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateValue.html" title="interface in AtomicInterface.consensus.async">AsyncAtomicApproximateValue</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
+<dd><code><a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html#lazyGetAndSet(V)">lazyGetAndSet</a></code>&nbsp;in interface&nbsp;<code><a href="../Interface/consensus/async/AsyncAtomicApproximateValue.html" title="interface in Interface.consensus.async">AsyncAtomicApproximateValue</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>newValue</code> - New value it should be updated to</dd>
 <dt>Returns:</dt>
@@ -425,11 +425,11 @@ implements <a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateVal
 <section class="detail" id="getPrecision()">
 <h3>getPrecision</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getPrecision</span>()</div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../AtomicInterface/consensus/ApproximatePrimitive.html#getPrecision()">ApproximatePrimitive</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../Interface/consensus/ApproximatePrimitive.html#getPrecision()">ApproximatePrimitive</a></code></span></div>
 <div class="block">Get the precision of the stored value (epsilon)</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../AtomicInterface/consensus/ApproximatePrimitive.html#getPrecision()">getPrecision</a></code>&nbsp;in interface&nbsp;<code><a href="../AtomicInterface/consensus/ApproximatePrimitive.html" title="interface in AtomicInterface.consensus">ApproximatePrimitive</a></code></dd>
+<dd><code><a href="../Interface/consensus/ApproximatePrimitive.html#getPrecision()">getPrecision</a></code>&nbsp;in interface&nbsp;<code><a href="../Interface/consensus/ApproximatePrimitive.html" title="interface in Interface.consensus">ApproximatePrimitive</a></code></dd>
 <dt>Returns:</dt>
 <dd>Epsilon</dd>
 </dl>
@@ -445,11 +445,11 @@ implements <a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateVal
 <section class="detail" id="getCommunicationGroupSize()">
 <h3>getCommunicationGroupSize</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getCommunicationGroupSize</span>()</div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../AtomicInterface/consensus/ApproximatePrimitive.html#getCommunicationGroupSize()">ApproximatePrimitive</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../Interface/consensus/ApproximatePrimitive.html#getCommunicationGroupSize()">ApproximatePrimitive</a></code></span></div>
 <div class="block">Get the number of processes in the communication group</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../AtomicInterface/consensus/ApproximatePrimitive.html#getCommunicationGroupSize()">getCommunicationGroupSize</a></code>&nbsp;in interface&nbsp;<code><a href="../AtomicInterface/consensus/ApproximatePrimitive.html" title="interface in AtomicInterface.consensus">ApproximatePrimitive</a></code></dd>
+<dd><code><a href="../Interface/consensus/ApproximatePrimitive.html#getCommunicationGroupSize()">getCommunicationGroupSize</a></code>&nbsp;in interface&nbsp;<code><a href="../Interface/consensus/ApproximatePrimitive.html" title="interface in Interface.consensus">ApproximatePrimitive</a></code></dd>
 <dt>Returns:</dt>
 <dd>Number of processes</dd>
 </dl>
@@ -459,13 +459,13 @@ implements <a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateVal
 <section class="detail" id="getMaxFaults()">
 <h3>getMaxFaults</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getMaxFaults</span>()</div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../AtomicInterface/consensus/ApproximatePrimitive.html#getMaxFaults()">ApproximatePrimitive</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../Interface/consensus/ApproximatePrimitive.html#getMaxFaults()">ApproximatePrimitive</a></code></span></div>
 <div class="block">Get the maximum number of faulty processes in group, depending on algorithm implementation and group size</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../AtomicInterface/consensus/ApproximatePrimitive.html#getMaxFaults()">getMaxFaults</a></code>&nbsp;in interface&nbsp;<code><a href="../AtomicInterface/consensus/ApproximatePrimitive.html" title="interface in AtomicInterface.consensus">ApproximatePrimitive</a></code></dd>
+<dd><code><a href="../Interface/consensus/ApproximatePrimitive.html#getMaxFaults()">getMaxFaults</a></code>&nbsp;in interface&nbsp;<code><a href="../Interface/consensus/ApproximatePrimitive.html" title="interface in Interface.consensus">ApproximatePrimitive</a></code></dd>
 <dt>Specified by:</dt>
-<dd><code><a href="AtomicApproximatePrimitiveCore.html#getMaxFaults()">getMaxFaults</a></code>&nbsp;in class&nbsp;<code><a href="AtomicApproximatePrimitiveCore.html" title="class in primitives">AtomicApproximatePrimitiveCore</a></code></dd>
+<dd><code><a href="AtomicApproximatePrimitiveCore.html#getMaxFaults()">getMaxFaults</a></code>&nbsp;in class&nbsp;<code><a href="AtomicApproximatePrimitiveCore.html" title="class in core">AtomicApproximatePrimitiveCore</a></code></dd>
 <dt>Returns:</dt>
 <dd>Maximum number of faulty processes in group</dd>
 </dl>
@@ -474,12 +474,12 @@ implements <a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateVal
 <li>
 <section class="detail" id="sync()">
 <h3>sync</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../AtomicInterface/consensus/synch/SynchronousPrimitive.html" title="interface in AtomicInterface.consensus.synch">SynchronousPrimitive</a></span>&nbsp;<span class="element-name">sync</span>()</div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../AtomicInterface/consensus/async/AsynchronousPrimitive.html#sync()">AsynchronousPrimitive</a></code></span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../Interface/consensus/synch/SynchronousPrimitive.html" title="interface in Interface.consensus.synch">SynchronousPrimitive</a></span>&nbsp;<span class="element-name">sync</span>()</div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../Interface/consensus/async/AsynchronousPrimitive.html#sync()">AsynchronousPrimitive</a></code></span></div>
 <div class="block">Return the equivalent synchronous primitive of the object</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../AtomicInterface/consensus/async/AsynchronousPrimitive.html#sync()">sync</a></code>&nbsp;in interface&nbsp;<code><a href="../AtomicInterface/consensus/async/AsynchronousPrimitive.html" title="interface in AtomicInterface.consensus.async">AsynchronousPrimitive</a></code></dd>
+<dd><code><a href="../Interface/consensus/async/AsynchronousPrimitive.html#sync()">sync</a></code>&nbsp;in interface&nbsp;<code><a href="../Interface/consensus/async/AsynchronousPrimitive.html" title="interface in Interface.consensus.async">AsynchronousPrimitive</a></code></dd>
 <dt>Returns:</dt>
 <dd>Equivalent synchronous primitive</dd>
 </dl>
@@ -488,13 +488,13 @@ implements <a href="../AtomicInterface/consensus/async/AsyncAtomicApproximateVal
 <li>
 <section class="detail" id="getMetrics()">
 <h3>getMetrics</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../utils/measurements/ConsensusMetrics.html" title="class in utils.measurements">ConsensusMetrics</a>&gt;</span>&nbsp;<span class="element-name">getMetrics</span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../utils/measurements/ConsensusMetrics.html" title="class in utils.prof">ConsensusMetrics</a>&gt;</span>&nbsp;<span class="element-name">getMetrics</span>()</div>
 </section>
 </li>
 <li>
 <section class="detail" id="getMessageLogger()">
 <h3>getMessageLogger</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../utils/measurements/MessageLogger.html" title="class in utils.measurements">MessageLogger</a></span>&nbsp;<span class="element-name">getMessageLogger</span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../utils/measurements/MessageLogger.html" title="class in utils.prof">MessageLogger</a></span>&nbsp;<span class="element-name">getMessageLogger</span>()</div>
 </section>
 </li>
 <li>

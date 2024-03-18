@@ -1,7 +1,7 @@
 package utils.communication.groupConstitution;
 
 
-import AtomicInterface.communication.groupConstitution.ProcessInterface;
+import Interface.communication.groupConstitution.OtherNodeInterface;
 import utils.communication.message.ExpectedMessageSize;
 
 import java.io.IOException;
@@ -15,7 +15,7 @@ import java.util.concurrent.*;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class Process implements ProcessInterface
+public class Process implements OtherNodeInterface
 {
     private static final int BYTE_BUFFER_SIZE =
             ExpectedMessageSize.KRYO_SMALL_MESSAGE_SIZE_WITH_HEADER;

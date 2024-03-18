@@ -94,12 +94,12 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="../../../AtomicInterface/consensus/ConsensusInstance.html" title="interface in AtomicInterface.consensus">ConsensusInstance</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
+<dd><code><a href="../../../Interface/consensus/ConsensusInstance.html" title="interface in Interface.consensus">ConsensusInstance</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">FCAInstance</span>
 <span class="extends-implements">extends <a href="../snapshot/ConsensusState.html" title="class in utils.consensus.snapshot">ConsensusState</a>
-implements <a href="../../../AtomicInterface/consensus/ConsensusInstance.html" title="interface in AtomicInterface.consensus">ConsensusInstance</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</span></div>
+implements <a href="../../../Interface/consensus/ConsensusInstance.html" title="interface in Interface.consensus">ConsensusInstance</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</span></div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -118,10 +118,10 @@ implements <a href="../../../AtomicInterface/consensus/ConsensusInstance.html" t
 <div class="col-first odd-row-color"><code>final <a href="../ids/InstanceID.html" title="class in utils.consensus.ids">InstanceID</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#instanceID" class="member-name-link">instanceID</a></code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
-<div class="col-first even-row-color"><code>final <a href="../../measurements/MessageLogger.html" title="class in utils.measurements">MessageLogger</a></code></div>
+<div class="col-first even-row-color"><code>final <a href="../../measurements/MessageLogger.html" title="class in utils.prof">MessageLogger</a></code></div>
 <div class="col-second even-row-color"><code><a href="#logger" class="member-name-link">logger</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
-<div class="col-first odd-row-color"><code>final <a href="../../measurements/ConsensusMetrics.html" title="class in utils.measurements">ConsensusMetrics</a></code></div>
+<div class="col-first odd-row-color"><code>final <a href="../../measurements/ConsensusMetrics.html" title="class in utils.prof">ConsensusMetrics</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#metrics" class="member-name-link">metrics</a></code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
 <div class="col-first even-row-color"><code>final <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;double[]&gt;&gt;</code></div>
@@ -162,7 +162,7 @@ implements <a href="../../../AtomicInterface/consensus/ConsensusInstance.html" t
  long&nbsp;timeout,
  <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/concurrent/TimeUnit.html" title="class or interface in java.util.concurrent" class="external-link">TimeUnit</a>&nbsp;unit)</code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(utils.consensus.ids.RequestID,utils.consensus.ids.InstanceID,int,int,double,double,utils.communication.groupConstitution.GroupConstitution,long,java.util.concurrent.TimeUnit,AtomicInterface.communication.communicationHandler.Broadcast)" class="member-name-link">FCAInstance</a><wbr>(<a href="../ids/RequestID.html" title="class in utils.consensus.ids">RequestID</a>&nbsp;reqID,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(utils.consensus.ids.RequestID,utils.consensus.ids.InstanceID,int,int,double,double,utils.communication.groupConstitution.GroupConstitution,long,java.util.concurrent.TimeUnit,Interface.communication.communicationHandler.Broadcast)" class="member-name-link">FCAInstance</a><wbr>(<a href="../ids/RequestID.html" title="class in utils.consensus.ids">RequestID</a>&nbsp;reqID,
  <a href="../ids/InstanceID.html" title="class in utils.consensus.ids">InstanceID</a>&nbsp;instanceID,
  int&nbsp;n,
  int&nbsp;t,
@@ -171,7 +171,7 @@ implements <a href="../../../AtomicInterface/consensus/ConsensusInstance.html" t
  <a href="../../communication/groupConstitution/GroupConstitution.html" title="class in utils.communication.groupConstitution">GroupConstitution</a>&nbsp;groupState,
  long&nbsp;timeout,
  <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/concurrent/TimeUnit.html" title="class or interface in java.util.concurrent" class="external-link">TimeUnit</a>&nbsp;unit,
- <a href="../../../AtomicInterface/communication/communicationHandler/Broadcast.html" title="interface in AtomicInterface.communication.communicationHandler">Broadcast</a>&nbsp;broadcast)</code></div>
+ <a href="../../../Interface/communication/communicationHandler/Broadcast.html" title="interface in Interface.communication.communicationHandler">Broadcast</a>&nbsp;broadcast)</code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 </div>
 </section>
@@ -203,18 +203,18 @@ implements <a href="../../../AtomicInterface/consensus/ConsensusInstance.html" t
 <div class="block">Check if necessary conditions to guarantee correctness in the execution of the algorithm are still met.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#exchange(java.lang.Byte,utils.communication.message.ApproximationMessage,AtomicInterface.communication.address.AddressInterface)" class="member-name-link">exchange</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Byte.html" title="class or interface in java.lang" class="external-link">Byte</a>&nbsp;msgType,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#exchange(java.lang.Byte,utils.communication.message.ApproximationMessage,Interface.communication.address.AddressInterface)" class="member-name-link">exchange</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Byte.html" title="class or interface in java.lang" class="external-link">Byte</a>&nbsp;msgType,
  <a href="../../communication/message/ApproximationMessage.html" title="class in utils.communication.message">ApproximationMessage</a>&nbsp;msg,
- <a href="../../../AtomicInterface/communication/address/AddressInterface.html" title="interface in AtomicInterface.communication.address">AddressInterface</a>&nbsp;q)</code></div>
+ <a href="../../../Interface/communication/address/AddressInterface.html" title="interface in Interface.communication.address">AddressInterface</a>&nbsp;q)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Method called as handler of an approximation message.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;? extends <a href="../../../AtomicInterface/communication/address/AddressInterface.html" title="interface in AtomicInterface.communication.address">AddressInterface</a>,<wbr>? extends <a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html" title="interface in AtomicInterface.communication.groupConstitution">ProcessInterface</a>&gt;</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;? extends <a href="../../../Interface/communication/address/AddressInterface.html" title="interface in Interface.communication.address">AddressInterface</a>,<wbr>? extends <a href="../../../Interface/communication/groupConstitution/ProcessInterface.html" title="interface in Interface.communication.groupConstitution">ProcessInterface</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getGroupState()" class="member-name-link">getGroupState</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Getter for the consensus instance's snapshot of the group's constitution</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../../measurements/ConsensusMetrics.html" title="class in utils.measurements">ConsensusMetrics</a></code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../../measurements/ConsensusMetrics.html" title="class in utils.prof">ConsensusMetrics</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getMetrics()" class="member-name-link">getMetrics</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Get the object containing several relevant metrics to profile the execution of this instance of consensus</div>
@@ -280,13 +280,13 @@ implements <a href="../../../AtomicInterface/consensus/ConsensusInstance.html" t
 <li>
 <section class="detail" id="metrics">
 <h3>metrics</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="../../measurements/ConsensusMetrics.html" title="class in utils.measurements">ConsensusMetrics</a></span>&nbsp;<span class="element-name">metrics</span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="../../measurements/ConsensusMetrics.html" title="class in utils.prof">ConsensusMetrics</a></span>&nbsp;<span class="element-name">metrics</span></div>
 </section>
 </li>
 <li>
 <section class="detail" id="logger">
 <h3>logger</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="../../measurements/MessageLogger.html" title="class in utils.measurements">MessageLogger</a></span>&nbsp;<span class="element-name">logger</span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="../../measurements/MessageLogger.html" title="class in utils.prof">MessageLogger</a></span>&nbsp;<span class="element-name">logger</span></div>
 </section>
 </li>
 <li>
@@ -310,7 +310,7 @@ implements <a href="../../../AtomicInterface/consensus/ConsensusInstance.html" t
 </section>
 </li>
 <li>
-<section class="detail" id="&lt;init&gt;(utils.consensus.ids.RequestID,utils.consensus.ids.InstanceID,int,int,double,double,utils.communication.groupConstitution.GroupConstitution,long,java.util.concurrent.TimeUnit,AtomicInterface.communication.communicationHandler.Broadcast)">
+<section class="detail" id="&lt;init&gt;(utils.consensus.ids.RequestID,utils.consensus.ids.InstanceID,int,int,double,double,utils.communication.groupConstitution.GroupConstitution,long,java.util.concurrent.TimeUnit,Interface.communication.communicationHandler.Broadcast)">
 <h3>FCAInstance</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">FCAInstance</span><wbr><span class="parameters">(<a href="../ids/RequestID.html" title="class in utils.consensus.ids">RequestID</a>&nbsp;reqID,
  <a href="../ids/InstanceID.html" title="class in utils.consensus.ids">InstanceID</a>&nbsp;instanceID,
@@ -321,7 +321,7 @@ implements <a href="../../../AtomicInterface/consensus/ConsensusInstance.html" t
  <a href="../../communication/groupConstitution/GroupConstitution.html" title="class in utils.communication.groupConstitution">GroupConstitution</a>&nbsp;groupState,
  long&nbsp;timeout,
  <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/concurrent/TimeUnit.html" title="class or interface in java.util.concurrent" class="external-link">TimeUnit</a>&nbsp;unit,
- <a href="../../../AtomicInterface/communication/communicationHandler/Broadcast.html" title="interface in AtomicInterface.communication.communicationHandler">Broadcast</a>&nbsp;broadcast)</span></div>
+ <a href="../../../Interface/communication/communicationHandler/Broadcast.html" title="interface in Interface.communication.communicationHandler">Broadcast</a>&nbsp;broadcast)</span></div>
 </section>
 </li>
 <li>
@@ -347,11 +347,11 @@ implements <a href="../../../AtomicInterface/consensus/ConsensusInstance.html" t
 <section class="detail" id="approximateConsensus_other(utils.communication.message.ApproximationMessage)">
 <h3>approximateConsensus_other</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</span>&nbsp;<span class="element-name">approximateConsensus_other</span><wbr><span class="parameters">(<a href="../../communication/message/ApproximationMessage.html" title="class in utils.communication.message">ApproximationMessage</a>&nbsp;msg)</span></div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../AtomicInterface/consensus/ConsensusInstance.html#approximateConsensus_other(utils.communication.message.ApproximationMessage)">ConsensusInstance</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../Interface/consensus/ConsensusInstance.html#approximateConsensus_other(utils.communication.message.ApproximationMessage)">ConsensusInstance</a></code></span></div>
 <div class="block">Method called when a new approximate consensus instance is started by another process.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../../AtomicInterface/consensus/ConsensusInstance.html#approximateConsensus_other(utils.communication.message.ApproximationMessage)">approximateConsensus_other</a></code>&nbsp;in interface&nbsp;<code><a href="../../../AtomicInterface/consensus/ConsensusInstance.html" title="interface in AtomicInterface.consensus">ConsensusInstance</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
+<dd><code><a href="../../../Interface/consensus/ConsensusInstance.html#approximateConsensus_other(utils.communication.message.ApproximationMessage)">approximateConsensus_other</a></code>&nbsp;in interface&nbsp;<code><a href="../../../Interface/consensus/ConsensusInstance.html" title="interface in Interface.consensus">ConsensusInstance</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>msg</code> - The first message to be processed.</dd>
 <dt>Returns:</dt>
@@ -363,28 +363,28 @@ implements <a href="../../../AtomicInterface/consensus/ConsensusInstance.html" t
 <section class="detail" id="approximateConsensus_self()">
 <h3>approximateConsensus_self</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/concurrent/CompletableFuture.html" title="class or interface in java.util.concurrent" class="external-link">CompletableFuture</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</span>&nbsp;<span class="element-name">approximateConsensus_self</span>()</div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../AtomicInterface/consensus/ConsensusInstance.html#approximateConsensus_self()">ConsensusInstance</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../Interface/consensus/ConsensusInstance.html#approximateConsensus_self()">ConsensusInstance</a></code></span></div>
 <div class="block">Method called when new approximate consensus instance is started by the calling process.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../../AtomicInterface/consensus/ConsensusInstance.html#approximateConsensus_self()">approximateConsensus_self</a></code>&nbsp;in interface&nbsp;<code><a href="../../../AtomicInterface/consensus/ConsensusInstance.html" title="interface in AtomicInterface.consensus">ConsensusInstance</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
+<dd><code><a href="../../../Interface/consensus/ConsensusInstance.html#approximateConsensus_self()">approximateConsensus_self</a></code>&nbsp;in interface&nbsp;<code><a href="../../../Interface/consensus/ConsensusInstance.html" title="interface in Interface.consensus">ConsensusInstance</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
 <dt>Returns:</dt>
 <dd>Completable Future containing the result of this instance of consensus</dd>
 </dl>
 </section>
 </li>
 <li>
-<section class="detail" id="exchange(java.lang.Byte,utils.communication.message.ApproximationMessage,AtomicInterface.communication.address.AddressInterface)">
+<section class="detail" id="exchange(java.lang.Byte,utils.communication.message.ApproximationMessage,Interface.communication.address.AddressInterface)">
 <h3>exchange</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">exchange</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Byte.html" title="class or interface in java.lang" class="external-link">Byte</a>&nbsp;msgType,
  <a href="../../communication/message/ApproximationMessage.html" title="class in utils.communication.message">ApproximationMessage</a>&nbsp;msg,
- <a href="../../../AtomicInterface/communication/address/AddressInterface.html" title="interface in AtomicInterface.communication.address">AddressInterface</a>&nbsp;q)</span></div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../AtomicInterface/consensus/ConsensusInstance.html#exchange(java.lang.Byte,utils.communication.message.ApproximationMessage,AtomicInterface.communication.address.AddressInterface)">ConsensusInstance</a></code></span></div>
+ <a href="../../../Interface/communication/address/AddressInterface.html" title="interface in Interface.communication.address">AddressInterface</a>&nbsp;q)</span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../Interface/consensus/ConsensusInstance.html#exchange(java.lang.Byte,utils.communication.message.ApproximationMessage,Interface.communication.address.AddressInterface)">ConsensusInstance</a></code></span></div>
 <div class="block">Method called as handler of an approximation message. Consumes the message, which may advance the state of the
  consensus instance.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../../AtomicInterface/consensus/ConsensusInstance.html#exchange(java.lang.Byte,utils.communication.message.ApproximationMessage,AtomicInterface.communication.address.AddressInterface)">exchange</a></code>&nbsp;in interface&nbsp;<code><a href="../../../AtomicInterface/consensus/ConsensusInstance.html" title="interface in AtomicInterface.consensus">ConsensusInstance</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
+<dd><code><a href="../../../Interface/consensus/ConsensusInstance.html#exchange(java.lang.Byte,utils.communication.message.ApproximationMessage,Interface.communication.address.AddressInterface)">exchange</a></code>&nbsp;in interface&nbsp;<code><a href="../../../Interface/consensus/ConsensusInstance.html" title="interface in Interface.consensus">ConsensusInstance</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>msgType</code> - Type of message (initialization, approximation, etc.)</dd>
 <dd><code>msg</code> - Object containing the payload of the message</dd>
@@ -396,11 +396,11 @@ implements <a href="../../../AtomicInterface/consensus/ConsensusInstance.html" t
 <section class="detail" id="consensusStillPossible()">
 <h3>consensusStillPossible</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">consensusStillPossible</span>()</div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../AtomicInterface/consensus/ConsensusInstance.html#consensusStillPossible()">ConsensusInstance</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../Interface/consensus/ConsensusInstance.html#consensusStillPossible()">ConsensusInstance</a></code></span></div>
 <div class="block">Check if necessary conditions to guarantee correctness in the execution of the algorithm are still met.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../../AtomicInterface/consensus/ConsensusInstance.html#consensusStillPossible()">consensusStillPossible</a></code>&nbsp;in interface&nbsp;<code><a href="../../../AtomicInterface/consensus/ConsensusInstance.html" title="interface in AtomicInterface.consensus">ConsensusInstance</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
+<dd><code><a href="../../../Interface/consensus/ConsensusInstance.html#consensusStillPossible()">consensusStillPossible</a></code>&nbsp;in interface&nbsp;<code><a href="../../../Interface/consensus/ConsensusInstance.html" title="interface in Interface.consensus">ConsensusInstance</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
 <dt>Returns:</dt>
 <dd>True if conditions are met, false, otherwise.</dd>
 </dl>
@@ -409,12 +409,12 @@ implements <a href="../../../AtomicInterface/consensus/ConsensusInstance.html" t
 <li>
 <section class="detail" id="getGroupState()">
 <h3>getGroupState</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;? extends <a href="../../../AtomicInterface/communication/address/AddressInterface.html" title="interface in AtomicInterface.communication.address">AddressInterface</a>,<wbr>? extends <a href="../../../AtomicInterface/communication/groupConstitution/ProcessInterface.html" title="interface in AtomicInterface.communication.groupConstitution">ProcessInterface</a>&gt;</span>&nbsp;<span class="element-name">getGroupState</span>()</div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../AtomicInterface/consensus/ConsensusInstance.html#getGroupState()">ConsensusInstance</a></code></span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;? extends <a href="../../../Interface/communication/address/AddressInterface.html" title="interface in Interface.communication.address">AddressInterface</a>,<wbr>? extends <a href="../../../Interface/communication/groupConstitution/ProcessInterface.html" title="interface in Interface.communication.groupConstitution">ProcessInterface</a>&gt;</span>&nbsp;<span class="element-name">getGroupState</span>()</div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../Interface/consensus/ConsensusInstance.html#getGroupState()">ConsensusInstance</a></code></span></div>
 <div class="block">Getter for the consensus instance's snapshot of the group's constitution</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../../AtomicInterface/consensus/ConsensusInstance.html#getGroupState()">getGroupState</a></code>&nbsp;in interface&nbsp;<code><a href="../../../AtomicInterface/consensus/ConsensusInstance.html" title="interface in AtomicInterface.consensus">ConsensusInstance</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
+<dd><code><a href="../../../Interface/consensus/ConsensusInstance.html#getGroupState()">getGroupState</a></code>&nbsp;in interface&nbsp;<code><a href="../../../Interface/consensus/ConsensusInstance.html" title="interface in Interface.consensus">ConsensusInstance</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
 <dt>Returns:</dt>
 <dd>Group Constitution as a mapping of group members to their respective address.</dd>
 </dl>
@@ -424,11 +424,11 @@ implements <a href="../../../AtomicInterface/consensus/ConsensusInstance.html" t
 <section class="detail" id="getReqID()">
 <h3>getReqID</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../ids/RequestID.html" title="class in utils.consensus.ids">RequestID</a></span>&nbsp;<span class="element-name">getReqID</span>()</div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../AtomicInterface/consensus/ConsensusInstance.html#getReqID()">ConsensusInstance</a></code></span></div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../Interface/consensus/ConsensusInstance.html#getReqID()">ConsensusInstance</a></code></span></div>
 <div class="block">Getter for the unique identifier of this consensus instance.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../../AtomicInterface/consensus/ConsensusInstance.html#getReqID()">getReqID</a></code>&nbsp;in interface&nbsp;<code><a href="../../../AtomicInterface/consensus/ConsensusInstance.html" title="interface in AtomicInterface.consensus">ConsensusInstance</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
+<dd><code><a href="../../../Interface/consensus/ConsensusInstance.html#getReqID()">getReqID</a></code>&nbsp;in interface&nbsp;<code><a href="../../../Interface/consensus/ConsensusInstance.html" title="interface in Interface.consensus">ConsensusInstance</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
 <dt>Returns:</dt>
 <dd>Unique identifier of the consensus instance.</dd>
 </dl>
@@ -437,12 +437,12 @@ implements <a href="../../../AtomicInterface/consensus/ConsensusInstance.html" t
 <li>
 <section class="detail" id="getMetrics()">
 <h3>getMetrics</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../../measurements/ConsensusMetrics.html" title="class in utils.measurements">ConsensusMetrics</a></span>&nbsp;<span class="element-name">getMetrics</span>()</div>
-<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../AtomicInterface/consensus/ConsensusInstance.html#getMetrics()">ConsensusInstance</a></code></span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../../measurements/ConsensusMetrics.html" title="class in utils.prof">ConsensusMetrics</a></span>&nbsp;<span class="element-name">getMetrics</span>()</div>
+<div class="block"><span class="description-from-type-label">Description copied from interface:&nbsp;<code><a href="../../../Interface/consensus/ConsensusInstance.html#getMetrics()">ConsensusInstance</a></code></span></div>
 <div class="block">Get the object containing several relevant metrics to profile the execution of this instance of consensus</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../../AtomicInterface/consensus/ConsensusInstance.html#getMetrics()">getMetrics</a></code>&nbsp;in interface&nbsp;<code><a href="../../../AtomicInterface/consensus/ConsensusInstance.html" title="interface in AtomicInterface.consensus">ConsensusInstance</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
+<dd><code><a href="../../../Interface/consensus/ConsensusInstance.html#getMetrics()">getMetrics</a></code>&nbsp;in interface&nbsp;<code><a href="../../../Interface/consensus/ConsensusInstance.html" title="interface in Interface.consensus">ConsensusInstance</a>&lt;<a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</code></dd>
 <dt>Returns:</dt>
 <dd>Object storing metrics relative to an execution of an approximate consensus algorithm.</dd>
 </dl>

@@ -1,8 +1,8 @@
 package utils.communication.communicationHandler.Broadcast.byzantineBroadcast;
 
-import AtomicInterface.communication.address.AddressInterface;
-import AtomicInterface.communication.communicationHandler.Broadcast;
-import AtomicInterface.communication.groupConstitution.ProcessInterface;
+import Interface.communication.address.AddressInterface;
+import Interface.communication.communicationHandler.Broadcast;
+import Interface.communication.groupConstitution.OtherNodeInterface;
 import utils.communication.message.ApproximationMessage;
 import utils.communication.message.ExpectedMessageSize;
 import utils.communication.serializer.MessageSerializer;
@@ -19,7 +19,7 @@ public class SemanticSymmetricBroadcast implements Broadcast
     private static final int BYTE_BUFFER_CAPACITY = ExpectedMessageSize.KRYO_SMALL_MESSAGE_SIZE_WITH_HEADER;
 
     public CompletableFuture<Void> broadcast(byte[] msgPayload,
-                                             Map<? extends AddressInterface, ? extends ProcessInterface> groupCon)
+                                             Map<? extends AddressInterface, ? extends OtherNodeInterface> groupCon)
     {
         try
         {

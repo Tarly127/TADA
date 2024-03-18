@@ -1,9 +1,9 @@
 package utils.consensus.synchConsensusUtilities;
 
-import AtomicInterface.communication.address.AddressInterface;
-import AtomicInterface.communication.communicationHandler.Broadcast;
-import AtomicInterface.communication.groupConstitution.ProcessInterface;
-import AtomicInterface.consensus.ConsensusInstance;
+import Interface.communication.address.AddressInterface;
+import Interface.communication.communicationHandler.Broadcast;
+import Interface.communication.groupConstitution.OtherNodeInterface;
+import Interface.consensus.utils.ConsensusInstance;
 import utils.communication.address.Address;
 import utils.communication.communicationHandler.Broadcast.AsynchBroadcast;
 import utils.communication.groupConstitution.GroupConstitution;
@@ -14,11 +14,11 @@ import utils.communication.serializer.MessageSerializer;
 import utils.consensus.ids.InstanceID;
 import utils.consensus.ids.RequestID;
 import utils.consensus.snapshot.ConsensusState;
-import utils.measurements.ConsensusMetrics;
+import utils.math.ApproximationFunctions;
+import utils.prof.ConsensusMetrics;
 import org.javatuples.Pair;
-import utils.math.Functions;
-import utils.measurements.MessageLogger;
-import utils.measurements.Stopwatch;
+import utils.prof.MessageLogger;
+import utils.prof.Stopwatch;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -36,12 +36,10 @@ public final class FCAInstance extends ConsensusState implements ConsensusInstan
     public final ReentrantLock multisetLock;
     public final Double startingV;
     public final RequestID reqID;
-    public final InstanceID instanceID;
     // metrics
     public final ConsensusMetrics metrics;
     public final MessageLogger    logger;
     // Instance variables
-    private final MessageSerializer<ApproximationMessage> serializer;
     private final long timeout;
     private final TimeUnit unit;
     public       Double endingV;
@@ -55,18 +53,16 @@ public final class FCAInstance extends ConsensusState implements ConsensusInstan
 
     public FCAInstance()
     {
-        super(1, 0, 0.0, null, new AsynchBroadcast());
+        super(1, 0, 0.0, null, new AsynchBroadcast(),  new MessageSerializer<>(ApproximationMessage.class), null);
 
         this.multisetLock = new ReentrantLock(true);
         this.multisetPerRound = new HashMap<>();
         this.multisetFuturePerRound = new HashMap<>();
         this.startingV = 0.0;
         this.reqID = null;
-        this.instanceID = null;
         this.metrics = null;
         this.logger = null;
 
-        this.serializer   = new MessageSerializer<>(ApproximationMessage.class);
         this.timeout      = Long.MAX_VALUE;
         this.unit         = TimeUnit.DAYS;
     }
@@ -82,10 +78,9 @@ public final class FCAInstance extends ConsensusState implements ConsensusInstan
                        TimeUnit unit,
                        Broadcast broadcast)
     {
-        super(n, t, epsilon, groupState, broadcast);
+        super(n, t, epsilon, groupState, broadcast,  new MessageSerializer<>(ApproximationMessage.class), instanceID);
 
         this.reqID      = reqID;
-        this.instanceID = instanceID;
         this.startingV  = startingV;
         this.endingV    = null;
         this.logger     = null;
@@ -95,14 +90,12 @@ public final class FCAInstance extends ConsensusState implements ConsensusInstan
         this.multisetPerRound       = new HashMap<>();
         this.multisetFuturePerRound = new HashMap<>();
 
-        this.serializer   = new MessageSerializer<>(ApproximationMessage.class);
         this.timeout      = timeout;
         this.unit         = unit;
     }
 
     public  <T extends ConsensusState> FCAInstance(T snapshot,
                                                             RequestID reqID,
-                                                            InstanceID instanceID,
                                                             Double startingV,
                                                             long timeout,
                                                             TimeUnit unit)
@@ -110,7 +103,6 @@ public final class FCAInstance extends ConsensusState implements ConsensusInstan
         super(snapshot);
 
         this.reqID      = reqID;
-        this.instanceID = instanceID;
         this.startingV  = startingV;
         this.endingV    = null;
         this.logger     = null;
@@ -120,7 +112,6 @@ public final class FCAInstance extends ConsensusState implements ConsensusInstan
         this.multisetPerRound       = new HashMap<>();
         this.multisetFuturePerRound = new HashMap<>();
 
-        this.serializer   = new MessageSerializer<>(ApproximationMessage.class);
         this.timeout      = timeout;
         this.unit         = unit;
     }
@@ -195,15 +186,15 @@ public final class FCAInstance extends ConsensusState implements ConsensusInstan
                     // add own vote at round h to V (if we didn't already, in the case of a timeout)
                     if(!timedOut) V[V.length - 1] = startingV;
                     // calculate starting delta (upper bound for "initial precision")
-                    this.initialDelta = Functions.InexactDelta(V);
+                    this.initialDelta = ApproximationFunctions.InexactDelta(V);
                     // calculate H
-                    this.H = Math.max(0, Functions.InexactH(this.initialDelta, this.epsilon));
+                    this.H = Math.max(0, ApproximationFunctions.InexactH(this.initialDelta, this.epsilon));
 
                     this.metrics.expectedH = this.H;
                     this.metrics.realH     = this.H;
 
                     // v <- f_t,t(V)
-                    return Functions.mean(V);
+                    return ApproximationFunctions.mean(V);
                 });
     }
 
@@ -256,9 +247,9 @@ public final class FCAInstance extends ConsensusState implements ConsensusInstan
                     {
                         V[V.length - 1] = vAtCurrentRound;
                         // A <- Acceptable(V)
-                        double[] A = Functions.Acceptable(V, this.initialDelta, this.n, this.t);
+                        double[] A = ApproximationFunctions.Acceptable(V, this.initialDelta, this.n, this.t);
                         // e_p <- e(a)
-                        double e = Functions.estimator(A);
+                        double e = ApproximationFunctions.estimator(A);
                         // swap unacceptable values for new estimate
                         if (A.length != V.length)
                         {
@@ -271,7 +262,7 @@ public final class FCAInstance extends ConsensusState implements ConsensusInstan
                         }
                     }
                     // v <- f_t,t(V)
-                    return Functions.mean(V);
+                    return ApproximationFunctions.mean(V);
                 })
                 .thenCompose(v -> {
                     if (round < this.H)
@@ -549,13 +540,13 @@ public final class FCAInstance extends ConsensusState implements ConsensusInstan
 
             if(round != 0)
                 // calculate the set of acceptable values
-                acceptable = Functions.Acceptable(multiset, this.initialDelta, this.n, this.t);
+                acceptable = ApproximationFunctions.Acceptable(multiset, this.initialDelta, this.n, this.t);
             else
                 // if it's the first round then every value received will be in the acceptable set!
                 acceptable = new ArrayList<>(multiset);
 
             // generate the list consisting of n - acceptable instances of e(acceptable)
-            var eValuesSet = Collections.nCopies(this.n - acceptable.size(), Functions.estimator(acceptable));
+            var eValuesSet = Collections.nCopies(this.n - acceptable.size(), ApproximationFunctions.estimator(acceptable));
             // set the round multiset to the union of acceptable and eValuesSet
             multiset.clear();
             multiset.addAll(acceptable);
@@ -577,8 +568,7 @@ public final class FCAInstance extends ConsensusState implements ConsensusInstan
         final long startTime           = Stopwatch.time();
         final LocalDateTime wallTime   = LocalDateTime.now();
 
-        return this.broadcast
-                .broadcast(this.serializer.encodeWithHeader(msg,type,this.instanceID), this.groupState)
+        return Broadcast(msg)
                 .thenApply(nothing -> {
                     if(logger != null)
                         logger.registerMetric(msg, wallTime, Stopwatch.time() - startTime,
@@ -599,9 +589,9 @@ public final class FCAInstance extends ConsensusState implements ConsensusInstan
             // add own vote at round h to V
             V[V.length - 1] = vNext;
             // A <- Acceptable(V)
-            double[] A = Functions.Acceptable(V, this.initialDelta, this.n, this.t);
+            double[] A = ApproximationFunctions.Acceptable(V, this.initialDelta, this.n, this.t);
             // e_p <- e(a)
-            double e = Functions.estimator(A);
+            double e = ApproximationFunctions.estimator(A);
             // swap unacceptable values for new estimate
             if (A.length != V.length)
             {
@@ -613,7 +603,7 @@ public final class FCAInstance extends ConsensusState implements ConsensusInstan
                 V = tmp;
             }
             // v <- mean(V)
-            vNext = Functions.mean(V);
+            vNext = ApproximationFunctions.mean(V);
         }
 
         this.H = round - 1;
@@ -656,7 +646,7 @@ public final class FCAInstance extends ConsensusState implements ConsensusInstan
                 .count() <= t;
     }
 
-    public Map<? extends AddressInterface, ? extends ProcessInterface> getGroupState()
+    public Map<? extends AddressInterface, ? extends OtherNodeInterface> getGroupState()
     {
         return this.groupState;
     }

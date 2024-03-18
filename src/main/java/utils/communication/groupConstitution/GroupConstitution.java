@@ -1,14 +1,14 @@
 package utils.communication.groupConstitution;
 
-import AtomicInterface.communication.address.AddressInterface;
-import AtomicInterface.communication.groupConstitution.ProcessInterface;
+import Interface.communication.address.AddressInterface;
+import Interface.communication.groupConstitution.OtherNodeInterface;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.BiConsumer;
 
-public class GroupConstitution extends HashMap<AddressInterface, ProcessInterface>
+public class GroupConstitution extends HashMap<AddressInterface, OtherNodeInterface>
 {
     private final ReentrantLock groupLock;
 
@@ -30,14 +30,14 @@ public class GroupConstitution extends HashMap<AddressInterface, ProcessInterfac
         this.groupLock = new ReentrantLock(true);
     }
 
-    public GroupConstitution(Map<AddressInterface, ProcessInterface> m)
+    public GroupConstitution(Map<AddressInterface, OtherNodeInterface> m)
     {
         super(m);
         this.groupLock = new ReentrantLock(true);
     }
 
     @Override
-    public ProcessInterface put(AddressInterface key, ProcessInterface value)
+    public OtherNodeInterface put(AddressInterface key, OtherNodeInterface value)
     {
         this.groupLock.lock();
         var p = super.put(key, value);
@@ -46,7 +46,7 @@ public class GroupConstitution extends HashMap<AddressInterface, ProcessInterfac
     }
 
     @Override
-    public ProcessInterface get(Object key)
+    public OtherNodeInterface get(Object key)
     {
         this.groupLock.lock();
         var p = super.get(key);
@@ -65,7 +65,7 @@ public class GroupConstitution extends HashMap<AddressInterface, ProcessInterfac
     }
 
     @Override
-    public void forEach(BiConsumer<? super AddressInterface, ? super ProcessInterface> action)
+    public void forEach(BiConsumer<? super AddressInterface, ? super OtherNodeInterface> action)
     {
         this.groupLock.lock();
         super.forEach(action);

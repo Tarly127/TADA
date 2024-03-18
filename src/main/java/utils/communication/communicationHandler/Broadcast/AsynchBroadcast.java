@@ -1,8 +1,8 @@
 package utils.communication.communicationHandler.Broadcast;
 
-import AtomicInterface.communication.address.AddressInterface;
-import AtomicInterface.communication.communicationHandler.Broadcast;
-import AtomicInterface.communication.groupConstitution.ProcessInterface;
+import Interface.communication.address.AddressInterface;
+import Interface.communication.communicationHandler.Broadcast;
+import Interface.communication.groupConstitution.OtherNodeInterface;
 import utils.communication.message.ExpectedMessageSize;
 
 import java.nio.ByteBuffer;
@@ -23,7 +23,7 @@ public class AsynchBroadcast implements Broadcast
      * been sent to every process
      */
     public CompletableFuture<Void> broadcast(byte[] msgPayload,
-                                             Map<? extends AddressInterface, ? extends ProcessInterface> groupCon)
+                                             Map<? extends AddressInterface, ? extends OtherNodeInterface> groupCon)
     {
         try
         {

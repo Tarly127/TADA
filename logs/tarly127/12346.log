@@ -2,12 +2,14 @@
 [INFO] 
 [INFO] ------------< org.example:ApproximateConsensusToolkitMaven >------------
 [INFO] Building ApproximateConsensusToolkitMaven 1.0-SNAPSHOT
+[INFO]   from pom.xml
 [INFO] --------------------------------[ jar ]---------------------------------
 [INFO] 
-[INFO] --- exec-maven-plugin:1.4.0:java (default-cli) @ ApproximateConsensusToolkitMaven ---
-FCA clock synch
-Time at start: 3285.019458791s
+[INFO] --- exec:1.4.0:java (default-cli) @ ApproximateConsensusToolkitMaven ---
+SynchDLPSW86 24205
 Server listening at /127.0.0.1:12346
 2/4
 3/4
 4/4
+- (Non Leader) Finished Tests (34.050307334s).
+- (Non Leader) Finished logging.

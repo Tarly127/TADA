@@ -1,15 +1,15 @@
 package test.consensus;
 
-import AtomicInterface.consensus.ApproximateConsensusHandler;
-import primitives.AtomicApproximateDoubleTemplate;
-import primitives.Processor;
+import Interface.consensus.utils.ApproximateConsensusHandler;
+import core.AtomicApproximateDoubleTemplate;
+import core.Processor;
 import test.other.TestAux;
 import test.other.TestConsts;
 import utils.communication.message.ApproximationMessage;
 import utils.consensus.exception.MinimumProcessesNotReachedException;
 import utils.consensus.snapshot.ConsensusState;
-import utils.math.Functions;
-import utils.measurements.Stopwatch;
+import utils.math.ApproximationFunctions;
+import utils.prof.Stopwatch;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -56,7 +56,7 @@ class ClockSynchFCA implements ApproximateConsensusHandler<FCAClockSynchAttachme
     @Override
     public int rounds(ConsensusState cs, double[] V0, FCAClockSynchAttachment ca)
     {
-        return Math.max(0, Functions.InexactH(Functions.InexactDelta(V0), cs.epsilon));
+        return Math.max(0, ApproximationFunctions.InexactH(ApproximationFunctions.InexactDelta(V0), cs.epsilon));
         //return 0; // only needs the init round, but can be changed to achieve target precision
     }
 
@@ -71,7 +71,7 @@ class ClockSynchFCA implements ApproximateConsensusHandler<FCAClockSynchAttachme
     public double approximationRound(ConsensusState cs, double[] V, double v, int round, FCAClockSynchAttachment ca)
     {
         // basically the FCA approximation round
-        if(round == 0) this.delta = Functions.sortedDelta(V);
+        if(round == 0) this.delta = ApproximationFunctions.sortedDelta(V);
 
         // our vote could be very outdated, replace with more current one
         for(int i = 0; i < V.length; i++)
@@ -87,9 +87,9 @@ class ClockSynchFCA implements ApproximateConsensusHandler<FCAClockSynchAttachme
             V = tmp;
         }
 
-        double[] Acceptable = Functions.Acceptable(V, delta, cs.n, cs.t);
+        double[] Acceptable = ApproximationFunctions.Acceptable(V, delta, cs.n, cs.t);
 
-        double est = Functions.estimator(Acceptable);
+        double est = ApproximationFunctions.estimator(Acceptable);
 
         if(Acceptable.length != cs.n)
         {
@@ -101,7 +101,7 @@ class ClockSynchFCA implements ApproximateConsensusHandler<FCAClockSynchAttachme
             V = tmp;
         }
 
-        var v_h = Functions.mean(V);
+        var v_h = ApproximationFunctions.mean(V);
 
         //System.out.println(round + " : " + v_h);
 
@@ -134,7 +134,7 @@ class FaultyClockSynchFCA implements ApproximateConsensusHandler<FCAClockSynchAt
     @Override
     public int rounds(ConsensusState cs, double[] V0, FCAClockSynchAttachment ca)
     {
-        return Math.max(0, Functions.InexactH(Functions.InexactDelta(V0), cs.epsilon));
+        return Math.max(0, ApproximationFunctions.InexactH(ApproximationFunctions.InexactDelta(V0), cs.epsilon));
         //return 0; // only needs the init round, but can be changed to achieve target precision
     }
 
@@ -149,7 +149,7 @@ class FaultyClockSynchFCA implements ApproximateConsensusHandler<FCAClockSynchAt
     public double approximationRound(ConsensusState cs, double[] V, double v, int round, FCAClockSynchAttachment ca)
     {
         // basically the FCA approximation round
-        if(round == 0) {this.delta = Functions.sortedDelta(V);}
+        if(round == 0) {this.delta = ApproximationFunctions.sortedDelta(V);}
 
         // our vote could be very outdated, replace with more current one
         for(int i = 0; i < V.length; i++)
@@ -173,9 +173,9 @@ class FaultyClockSynchFCA implements ApproximateConsensusHandler<FCAClockSynchAt
             V = tmp;
         }
 
-        double[] Acceptable = Functions.Acceptable(V, delta, cs.n, cs.t);
+        double[] Acceptable = ApproximationFunctions.Acceptable(V, delta, cs.n, cs.t);
 
-        double est = Functions.estimator(Acceptable);
+        double est = ApproximationFunctions.estimator(Acceptable);
 
         if(Acceptable.length != cs.n)
         {
@@ -187,7 +187,7 @@ class FaultyClockSynchFCA implements ApproximateConsensusHandler<FCAClockSynchAt
             V = tmp;
         }
 
-        var v_next =  Functions.mean(V);
+        var v_next =  ApproximationFunctions.mean(V);
 
         //System.out.println("v = " + (v_next/1e9) + "s");
 

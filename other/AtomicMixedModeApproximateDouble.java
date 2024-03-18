@@ -1,10 +1,10 @@
-package primitives;
+package core;
 
-import AtomicInterface.communication.communicationHandler.CommunicationManager;
-import AtomicInterface.communication.groupConstitution.Subscription;
-import AtomicInterface.consensus.async.AsynchronousPrimitive;
-import AtomicInterface.consensus.synch.AtomicApproximateValue;
-import AtomicInterface.consensus.synch.SynchronousPrimitive;
+import Interface.communication.communicationHandler.CommunicationManager;
+import Interface.communication.groupConstitution.Subscription;
+import Interface.consensus.async.AsynchronousPrimitive;
+import Interface.consensus.synch.AtomicApproximateValue;
+import Interface.consensus.synch.SynchronousPrimitive;
 import utils.communication.address.Address;
 import utils.communication.groupConstitution.GroupConstitution;
 import utils.communication.groupConstitution.Process;
@@ -13,7 +13,7 @@ import utils.communication.message.MessageType;
 import utils.communication.serializer.MessageSerializer;
 import utils.consensus.ids.InstanceID;
 import utils.consensus.synchConsensusUtilities.BSOInstance;
-import utils.measurements.ConsensusMetrics;
+import utils.prof.ConsensusMetrics;
 import org.javatuples.Pair;
 import org.javatuples.Triplet;
 import utils.math.atomicExtensions.AtomicDouble;
