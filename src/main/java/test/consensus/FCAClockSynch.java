@@ -1,6 +1,9 @@
 package test.consensus;
 
+<<<<<<< HEAD
 import Interface.communication.address.AddressInterface;
+=======
+>>>>>>> FixingFinalDissertationVersion
 import Interface.consensus.utils.ApproximateConsensusHandler;
 import core.AtomicApproximateDoubleTemplate;
 import core.Processor;
@@ -58,6 +61,10 @@ class ClockSynchFCA implements ApproximateConsensusHandler<FCAClockSynchAttachme
     public int rounds(ConsensusState cs, double[] V0, FCAClockSynchAttachment ca)
     {
         return Math.max(0, ApproximationFunctions.InexactH(ApproximationFunctions.InexactDelta(V0), cs.epsilon));
+<<<<<<< HEAD
+=======
+        //return 0; // only needs the init round, but can be changed to achieve target precision
+>>>>>>> FixingFinalDissertationVersion
     }
 
     @Override
@@ -101,7 +108,15 @@ class ClockSynchFCA implements ApproximateConsensusHandler<FCAClockSynchAttachme
             V = tmp;
         }
 
+<<<<<<< HEAD
         return ApproximationFunctions.mean(V);
+=======
+        var v_h = ApproximationFunctions.mean(V);
+
+        //System.out.println(round + " : " + v_h);
+
+        return v_h;
+>>>>>>> FixingFinalDissertationVersion
     }
 
 }

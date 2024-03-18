@@ -15,7 +15,11 @@ import java.util.concurrent.*;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
+<<<<<<< HEAD:src/main/java/utils/communication/groupConstitution/OtherNode.java
 public class OtherNode implements OtherNodeInterface
+=======
+public class Process implements OtherNodeInterface
+>>>>>>> FixingFinalDissertationVersion:src/main/java/utils/communication/groupConstitution/Process.java
 {
     private static final int BYTE_BUFFER_SIZE =
             ExpectedMessageSize.KRYO_SMALL_MESSAGE_SIZE_WITH_HEADER;

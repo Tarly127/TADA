@@ -2,6 +2,7 @@ package Interface.communication;
 
 import Interface.communication.address.AddressInterface;
 
+<<<<<<< HEAD
 /**
  * Basic message interface.
  */
@@ -17,5 +18,10 @@ public interface Message
      * Get the Byte representing the type of the message
      * @return message type
      */
+=======
+public interface Message
+{
+    AddressInterface getSender();
+>>>>>>> FixingFinalDissertationVersion
     Byte getType();
 }

@@ -1,12 +1,24 @@
 package core;
 
+<<<<<<< HEAD
 import Interface.communication.communicationHandler.CommunicationManager;
+=======
+import Interface.communication.address.AddressInterface;
+import Interface.communication.communicationHandler.CommunicationManager;
+import Interface.communication.groupConstitution.OtherNodeInterface;
+import Interface.consensus.synch.SynchronousPrimitive;
+>>>>>>> FixingFinalDissertationVersion
 import Interface.consensus.utils.ConsensusInstance;
 import Interface.consensus.async.AsynchronousPrimitive;
 import Interface.consensus.synch.AtomicApproximateValue;
 import Interface.consensus.synch.SynchronousAlgorithm;
+<<<<<<< HEAD
 import Interface.consensus.synch.SynchronousPrimitive;
 import utils.consensus.types.faultDescriptors.FaultClass;
+=======
+import utils.consensus.types.faultDescriptors.FaultClass;
+import utils.prof.ConsensusMetrics;
+>>>>>>> FixingFinalDissertationVersion
 import org.javatuples.Pair;
 import org.javatuples.Triplet;
 import utils.consensus.synchConsensusUtils.FCAInstance;
@@ -16,13 +28,23 @@ import utils.consensus.ids.RequestID;
 import utils.communication.message.ApproximationMessage;
 import utils.consensus.exception.MinimumProcessesNotReachedException;
 import utils.communication.message.MessageType;
+<<<<<<< HEAD
 
+=======
+import utils.prof.MessageLogger;
+import utils.prof.Stopwatch;
+>>>>>>> FixingFinalDissertationVersion
 import java.util.*;
 import java.util.concurrent.*;
 
 public final class AtomicInexactDouble
+<<<<<<< HEAD
         extends AtomicApproximateVariableCore
         implements AtomicApproximateValue<Double>, SynchronousPrimitive, SynchronousAlgorithm<Double>
+=======
+        extends AtomicApproximatePrimitiveCore
+        implements AtomicApproximateValue<Double>, SynchronousAlgorithm<Double>, SynchronousPrimitive
+>>>>>>> FixingFinalDissertationVersion
 {
     // Class constants
     public  static final int MINIMUM_PROCESSES          = 4;
@@ -362,10 +384,17 @@ public final class AtomicInexactDouble
         var timeoutAndDefault = getTimeoutAndDefaultValues();
         // Generate new consensus instance
         ConsensusInstance<Double> consensus = new FCAInstance(snapshot,
+<<<<<<< HEAD
                 myReqId,
                 this.myV.getDouble(),
                 timeoutAndDefault.getValue0(),
                 timeoutAndDefault.getValue1());
+=======
+                                                                    myReqId,
+                                                                    this.myV.getDouble(),
+                                                                    timeoutAndDefault.getValue0(),
+                                                                    timeoutAndDefault.getValue1());
+>>>>>>> FixingFinalDissertationVersion
         // Store new snapshot
         this.requestsLock.lock();
         this.activeRequests  .put(myReqId, consensus);
@@ -452,4 +481,33 @@ public final class AtomicInexactDouble
 
 
 
+<<<<<<< HEAD
+=======
+        this.requestsLock.unlock();
+    }
+
+    private boolean faultyProcessesExceedT()
+    {
+        return this.groupCon.values().stream().filter(OtherNodeInterface::isFaulty).count() > this.t;
+    }
+
+    // For testing purposes only
+    public List<ConsensusMetrics> getMetrics()
+    {
+        Comparator<Map.Entry<RequestID, ConsensusMetrics>> comparator =
+                Comparator.comparingInt(entry -> entry.getKey().internalID);
+
+        return this.metrics.entrySet().stream().sorted(comparator).map(Map.Entry::getValue).collect(Collectors.toList());
+    }
+
+    public MessageLogger getMessageLogger()
+    {
+        return this.messageLogger;
+    }
+
+    public int getNumFinishedRequests()
+    {
+        return this.finishedRequestsCount.get();
+    }
+>>>>>>> FixingFinalDissertationVersion
 }

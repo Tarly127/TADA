@@ -2,10 +2,17 @@ package utils.consensus.snapshot;
 
 import Interface.communication.address.AddressInterface;
 import Interface.communication.communicationHandler.Broadcast;
+<<<<<<< HEAD
 import utils.communication.communicationHandler.Broadcast.AsyncBroadcast;
 import utils.communication.groupConstitution.GroupConstitution;
 import utils.communication.groupConstitution.OtherNode;
 import utils.communication.groupConstitution.OtherNodeStatus;
+=======
+import utils.communication.communicationHandler.Broadcast.AsynchBroadcast;
+import utils.communication.groupConstitution.GroupConstitution;
+import utils.communication.groupConstitution.Process;
+import utils.communication.groupConstitution.ProcessStatus;
+>>>>>>> FixingFinalDissertationVersion
 import utils.communication.message.ApproximationMessage;
 import utils.communication.serializer.MessageSerializer;
 import utils.consensus.ids.InstanceID;
@@ -27,6 +34,10 @@ public class ConsensusState
     private final InstanceID instanceID;
 
 
+    private final MessageSerializer<ApproximationMessage> serializer;
+    private final InstanceID instanceID;
+
+
     public ConsensusState(int n,
                           int t,
                           double epsilon,
@@ -39,9 +50,16 @@ public class ConsensusState
         this.t          = t;
         this.epsilon    = epsilon;
         this.groupState = new HashMap<>();
+<<<<<<< HEAD
         this.broadcast  = new AsyncBroadcast();
         this.serializer = serializer;
         this.instanceID = instanceID;
+=======
+        this.broadcast = new AsynchBroadcast();
+        this.serializer = serializer;
+        this.instanceID = instanceID;
+
+>>>>>>> FixingFinalDissertationVersion
 
         if(groupConstitution != null)
             groupConstitution.forEach((address, process)->
@@ -61,9 +79,15 @@ public class ConsensusState
         this.t          = t;
         this.epsilon    = epsilon;
         this.groupState = new HashMap<>();
+<<<<<<< HEAD
         this.broadcast  = broadcast;
         this.serializer = serializer;
         this.instanceID = instanceID;
+=======
+        this.broadcast = broadcast;
+        this.instanceID = instanceID;
+        this.serializer = serializer;
+>>>>>>> FixingFinalDissertationVersion
 
 
         if(groupConstitution != null)
@@ -83,7 +107,10 @@ public class ConsensusState
             this.broadcast  = other.broadcast;
             this.serializer = other.getSerializer();
             this.instanceID = other.getInstanceID();
+<<<<<<< HEAD
 
+=======
+>>>>>>> FixingFinalDissertationVersion
 
             other.groupState.forEach((address, process) ->
                     this.groupState.put(address, new OtherNodeStatus((OtherNode) process)));
@@ -118,4 +145,18 @@ public class ConsensusState
                 this.groupState);
     }
 
+    public MessageSerializer<ApproximationMessage> getSerializer() {
+        return serializer;
+    }
+
+    public InstanceID getInstanceID() {
+        return instanceID;
+    }
+
+    public final CompletableFuture<Void> Broadcast(ApproximationMessage msg)
+    {
+        return this.broadcast.broadcast(
+                this.serializer.encodeWithHeader(msg, msg.getType(), this.instanceID),
+                this.groupState);
+    }
 }

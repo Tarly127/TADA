@@ -5,7 +5,11 @@ import Interface.communication.communicationHandler.Broadcast;
 import Interface.communication.groupConstitution.OtherNodeInterface;
 import Interface.consensus.utils.ApproximateConsensusHandler;
 import Interface.consensus.utils.ConsensusInstance;
+<<<<<<< HEAD:src/main/java/utils/consensus/synchConsensusUtils/ConsensusInstanceSkeleton.java
 import utils.communication.communicationHandler.Broadcast.AsyncBroadcast;
+=======
+import utils.communication.communicationHandler.Broadcast.AsynchBroadcast;
+>>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/synchConsensusUtilities/ConsensusInstanceSkeleton.java
 import utils.communication.groupConstitution.GroupConstitution;
 import utils.communication.groupConstitution.OtherNodeStatus;
 import utils.communication.message.ApproximationMessage;
@@ -38,7 +42,10 @@ public final class ConsensusInstanceSkeleton<ConsensusAttachment>
     public      Double startingV;
     public      Double endingV;
     public final RequestID reqID;
+<<<<<<< HEAD:src/main/java/utils/consensus/synchConsensusUtils/ConsensusInstanceSkeleton.java
 
+=======
+>>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/synchConsensusUtilities/ConsensusInstanceSkeleton.java
     // metrics
     public final ConsensusMetrics metrics;
     public final MessageLogger    logger;
@@ -58,7 +65,11 @@ public final class ConsensusInstanceSkeleton<ConsensusAttachment>
 
     public ConsensusInstanceSkeleton()
     {
+<<<<<<< HEAD:src/main/java/utils/consensus/synchConsensusUtils/ConsensusInstanceSkeleton.java
         super(1, 0, 0.0, null, new AsyncBroadcast(), null, null);
+=======
+        super(1, 0, 0.0, null, new AsynchBroadcast(),  new MessageSerializer<>(ApproximationMessage.class), null);
+>>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/synchConsensusUtilities/ConsensusInstanceSkeleton.java
 
         this.multisetLock = new ReentrantLock(true);
         this.multisetPerRound = new HashMap<>();
@@ -90,7 +101,11 @@ public final class ConsensusInstanceSkeleton<ConsensusAttachment>
                                      ApproximateConsensusHandler<ConsensusAttachment> handler,
                                      final ConsensusAttachment attachment)
     {
+<<<<<<< HEAD:src/main/java/utils/consensus/synchConsensusUtils/ConsensusInstanceSkeleton.java
         super(n, t, epsilon, groupState, broadcast, new MessageSerializer<>(ApproximationMessage.class), instanceID);
+=======
+        super(n, t, epsilon, groupState, broadcast,  new MessageSerializer<>(ApproximationMessage.class), instanceID);
+>>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/synchConsensusUtilities/ConsensusInstanceSkeleton.java
 
         this.reqID      = reqID;
         this.startingV  = startingV;
@@ -570,7 +585,11 @@ public final class ConsensusInstanceSkeleton<ConsensusAttachment>
         final long startTime           = Stopwatch.time();
         final LocalDateTime wallTime   = LocalDateTime.now();
 
+<<<<<<< HEAD:src/main/java/utils/consensus/synchConsensusUtils/ConsensusInstanceSkeleton.java
         return this.Broadcast(msg)
+=======
+        return Broadcast(new ApproximationMessage(v, round, type, requestID))
+>>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/synchConsensusUtilities/ConsensusInstanceSkeleton.java
                 .thenApply(nothing ->
                 {
                     if(logger != null)

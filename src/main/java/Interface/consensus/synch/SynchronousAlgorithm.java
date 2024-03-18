@@ -30,4 +30,8 @@ public interface SynchronousAlgorithm<V extends Number & Comparable<V>>
      * @param defaultValue New default value
      */
     void setDefaultValue(V defaultValue);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> FixingFinalDissertationVersion

@@ -1,7 +1,10 @@
 package core;
 
 import Interface.communication.address.AddressInterface;
+<<<<<<< HEAD
 import Interface.communication.communicationHandler.Broadcast;
+=======
+>>>>>>> FixingFinalDissertationVersion
 import Interface.communication.communicationHandler.CommunicationManager;
 import Interface.communication.groupConstitution.OtherNodeInterface;
 import Interface.communication.communicationHandler.Subscription;

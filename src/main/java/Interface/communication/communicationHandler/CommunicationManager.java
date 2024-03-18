@@ -36,7 +36,11 @@ public abstract class CommunicationManager
      * @param address Address of the process
      * @param process Actual process
      */
+<<<<<<< HEAD
     public abstract void addToGroup(AddressInterface address, OtherNodeInterface process);
+=======
+    void addToGroup(AddressInterface address, OtherNodeInterface process);
+>>>>>>> FixingFinalDissertationVersion
 
     /**
      * Register a new group of types of messages that this manager should keep track of. If any of the types are

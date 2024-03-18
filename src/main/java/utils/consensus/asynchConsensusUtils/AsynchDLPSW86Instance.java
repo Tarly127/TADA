@@ -39,7 +39,10 @@ public final class AsynchDLPSW86Instance
     // metrics
     public final ConsensusMetrics metrics;
     public final MessageLogger    logger;
+<<<<<<< HEAD:src/main/java/utils/consensus/asynchConsensusUtils/AsynchDLPSW86Instance.java
 
+=======
+>>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/asynchConsensusUtilities/AsynchDLPSW86Instance.java
 
     /* ************ */
     /* Constructors */
@@ -47,7 +50,11 @@ public final class AsynchDLPSW86Instance
 
     public AsynchDLPSW86Instance()
     {
+<<<<<<< HEAD:src/main/java/utils/consensus/asynchConsensusUtils/AsynchDLPSW86Instance.java
         super(1, 0, 0.0, null, new AsyncBroadcast(), null, null);
+=======
+        super(1, 0, 0.0, null, new AsynchBroadcast(), null, null);
+>>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/asynchConsensusUtilities/AsynchDLPSW86Instance.java
 
         this.multisetLock = new ReentrantLock(true);
         this.multisetPerRound = new HashMap<>();
@@ -67,7 +74,11 @@ public final class AsynchDLPSW86Instance
                                  GroupConstitution groupState,
                                  Broadcast broadcast)
     {
+<<<<<<< HEAD:src/main/java/utils/consensus/asynchConsensusUtils/AsynchDLPSW86Instance.java
         super(n, t, epsilon, groupState, broadcast, new MessageSerializer<>(ApproximationMessage.class), instanceID);
+=======
+        super(n, t, epsilon, groupState, broadcast,  new MessageSerializer<>(ApproximationMessage.class), instanceID);
+>>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/asynchConsensusUtilities/AsynchDLPSW86Instance.java
 
         this.reqID      = reqID;
         this.startingV  = startingV;
@@ -160,7 +171,11 @@ public final class AsynchDLPSW86Instance
                         // Sort V
                         Arrays.sort(V);
                         // asyncH <- ceil(log_c(delta(V)/epsilon))
+<<<<<<< HEAD:src/main/java/utils/consensus/asynchConsensusUtils/AsynchDLPSW86Instance.java
                         this.H = Math.max(this.t + 1, ApproximationFunctions.AsyncH(V, epsilon, n, t));
+=======
+                        this.H = Math.max(0, ApproximationFunctions.AsyncH(V, epsilon, n, t));
+>>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/asynchConsensusUtilities/AsynchDLPSW86Instance.java
 
                         this.metrics.realH     = this.H;
                         this.metrics.expectedH = this.H;
@@ -487,7 +502,11 @@ public final class AsynchDLPSW86Instance
         final long startTime           = Stopwatch.time();
         final LocalDateTime wallTime   = LocalDateTime.now();
 
+<<<<<<< HEAD:src/main/java/utils/consensus/asynchConsensusUtils/AsynchDLPSW86Instance.java
         return this.Broadcast(msg)
+=======
+        return Broadcast(msg)
+>>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/asynchConsensusUtilities/AsynchDLPSW86Instance.java
                 .thenApply(nothing ->
                 {
                     if(logger != null)
