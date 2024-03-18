@@ -1,6 +1,5 @@
 package test.consensus;
 
-import Interface.communication.address.AddressInterface;
 import Interface.consensus.utils.ApproximateConsensusHandler;
 import core.AtomicApproximateDoubleTemplate;
 import core.Processor;
@@ -16,11 +15,11 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
+import static utils.io.ObjectPrinter.printArray;
 
 class FCAClockSynchAttachment
 {
@@ -33,7 +32,7 @@ class FCAClockSynchAttachment
                                                 // mensagens ( delay in [lambda, lambda + epsilon] )
     public static final double rho      = 0.0;   // temporarily
     public static final double L        = 1.0;   // temporarily
-    public static final double R        = 1e9;   // meaning every 1s we re-synchronize clocks
+    public static final double R        = 1e9;   // meaning every 3s we re-synchronize clocks
     public static final double E        = epsilon + ( (2.0 * L * rho) / (2.0 - rho) );
     public static final long   timeout  = (long)(2.0 * (lambda + epsilon) + gamma);
 
@@ -58,13 +57,14 @@ class ClockSynchFCA implements ApproximateConsensusHandler<FCAClockSynchAttachme
     public int rounds(ConsensusState cs, double[] V0, FCAClockSynchAttachment ca)
     {
         return Math.max(0, ApproximationFunctions.InexactH(ApproximationFunctions.InexactDelta(V0), cs.epsilon));
+        //return 0; // only needs the init round, but can be changed to achieve target precision
     }
 
     @Override
-    public Optional<Double> onReceive(ConsensusState cs, ApproximationMessage msg, AddressInterface sender, FCAClockSynchAttachment ca)
+    public Double onReceive(ConsensusState cs, ApproximationMessage msg, FCAClockSynchAttachment ca)
     {
         // delta_qp = c_p(now) - lambda - c_qp
-        return Optional.of(clock() - FCAClockSynchAttachment.lambda - msg.v);
+        return clock() - FCAClockSynchAttachment.lambda - msg.v;
     }
 
     @Override
@@ -101,9 +101,18 @@ class ClockSynchFCA implements ApproximateConsensusHandler<FCAClockSynchAttachme
             V = tmp;
         }
 
-        return ApproximationFunctions.mean(V);
+        var v_h = ApproximationFunctions.mean(V);
+
+        //System.out.println(round + " : " + v_h);
+
+        return v_h;
     }
 
+    @Override
+    public boolean endExchangeCondition(ConsensusState cs, double[] multiset, int round, FCAClockSynchAttachment ca)
+    {
+        return multiset.length >= cs.n - 1;
+    }
 }
 
 class FaultyClockSynchFCA implements ApproximateConsensusHandler<FCAClockSynchAttachment>
@@ -130,10 +139,10 @@ class FaultyClockSynchFCA implements ApproximateConsensusHandler<FCAClockSynchAt
     }
 
     @Override
-    public Optional<Double> onReceive(ConsensusState cs, ApproximationMessage msg, AddressInterface sender, FCAClockSynchAttachment ca)
+    public Double onReceive(ConsensusState cs, ApproximationMessage msg, FCAClockSynchAttachment ca)
     {
         // delta_qp = c_p(now) - lambda - c_qp
-        return Optional.of(clock() - FCAClockSynchAttachment.lambda - msg.v);
+        return clock() - FCAClockSynchAttachment.lambda - msg.v;
     }
 
     @Override
@@ -189,6 +198,11 @@ class FaultyClockSynchFCA implements ApproximateConsensusHandler<FCAClockSynchAt
         return round == cs.H ? v_next : v_next + 10e9 * (this.minus ? -1 : 1);
     }
 
+    @Override
+    public boolean endExchangeCondition(ConsensusState cs, double[] multiset, int round, FCAClockSynchAttachment ca)
+    {
+        return multiset.length >= cs.n - 1;
+    }
 }
 
 class ApproximateClock

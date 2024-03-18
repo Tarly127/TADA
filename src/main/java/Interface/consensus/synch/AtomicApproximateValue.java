@@ -6,11 +6,8 @@ import utils.consensus.exception.MinimumProcessesNotReachedException;
 import java.util.concurrent.ExecutionException;
 
 /**
- * Interface for numerical value atomically updated through approximate consensus algorithms. Contained value must be
- * an extension of Number and implement Comparable. Extends ApproximatePrimitive. Every method that queries the
- * internal value of the variable throws a MinimumProcessesNotReachedException if is called when the associated
- * communication group hasn't reached the necessary number of participants. Each method blocks until completed.
- * @param <V> Type of the encapsulated value.
+ * An object encapsulating a value of type V whose reads and writes are atomic, using Approximate Consensus
+ * @param <V> Type of object being kept. Should always be a number.
  */
 public interface AtomicApproximateValue<V extends Number & Comparable<V>> extends ApproximatePrimitive
 {
@@ -61,4 +58,10 @@ public interface AtomicApproximateValue<V extends Number & Comparable<V>> extend
      */
     boolean compareAndSet(V expectedValue, V newValue)
             throws MinimumProcessesNotReachedException, InterruptedException, ExecutionException;
+
+    /**
+     * Set default value to count as vote for processes that may be faulty
+     * @param defaultValue New default value
+     */
+    void setDefaultValue(V defaultValue);
 }

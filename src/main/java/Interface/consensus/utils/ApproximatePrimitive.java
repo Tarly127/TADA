@@ -4,8 +4,8 @@ package Interface.consensus.utils;
  * Interface defining some properties of an approximate variable, namely the precision of the value stored therein,
  * the size of the group it exists in, etc.
  */
-public interface ApproximatePrimitive
-{
+public interface ApproximatePrimitive {
+
     /**
      * Get the precision of the stored value (epsilon)
      * @return Epsilon

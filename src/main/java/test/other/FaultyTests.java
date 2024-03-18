@@ -1,6 +1,6 @@
 package test.other;
 
-import core.AsyncAtomicApproximateDouble;
+import core.AsynchAtomicApproximateDouble;
 import core.AtomicApproximateDouble;
 import core.AtomicInexactDouble;
 import core.Processor;
@@ -141,13 +141,13 @@ public class FaultyTests
 
         int maxFaultyProcs = args.length >= 3 ? (Integer.parseInt(args[2]) - 1) / 5 : 0;
 
-        AsyncAtomicApproximateDouble temperature = byzantine(args[0], args[1], args[2], maxFaultyProcs) ?
-                                                   processor.newAsynchAtomicApproximateDouble(
+        AsynchAtomicApproximateDouble temperature = byzantine(args[0], args[1], args[2], maxFaultyProcs) ?
+                                                    processor.newAsynchAtomicApproximateDouble(
                                                       "Temperature",
                                                       TestConsts.EPSILON,
                                                       r.nextDouble(),
                                                       faultClass) :
-                                                   processor.newAsynchAtomicApproximateDouble(
+                                                    processor.newAsynchAtomicApproximateDouble(
                                                       "Temperature",
                                                       TestConsts.EPSILON,
                                                       r.nextDouble());

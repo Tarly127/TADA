@@ -21,13 +21,13 @@ public interface ConsensusInstance<T extends Number & Comparable<T>>
      * @param msg The first message to be processed.
      * @return Completable Future containing the result of this instance of consensus
      */
-    CompletableFuture<T> start(ApproximationMessage msg);
+    CompletableFuture<T> approximateConsensus_other(ApproximationMessage msg);
 
     /**
      * Method called when new approximate consensus instance is started by the calling process.
      * @return Completable Future containing the result of this instance of consensus
      */
-    CompletableFuture<T> start();
+    CompletableFuture<T> approximateConsensus_self();
 
     /**
      * Check if necessary conditions to guarantee correctness in the execution of the algorithm are still met.

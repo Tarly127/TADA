@@ -23,7 +23,7 @@ public interface MessageQueue
      * @param regID Integer defining a unique key for the new subscription.
      * @return New subscription, provided no repeated message types are present. If they are, then NULL is returned.
      */
-    Subscription getSubscription(final Collection<Byte> acceptableTypes, final int regID);
+    Subscription getRegistration(final Collection<Byte> acceptableTypes, final int regID);
 
     /**
      * Create a new registration, demonstrating interest in incoming messages that contain one of the types
@@ -36,15 +36,7 @@ public interface MessageQueue
      * @return New subscription, provided this consumer hasn't made a subscription before. If they have, then NULL is
      * returned.
      */
-    Subscription getSubscription(final Collection<Byte> acceptableTypes, final InstanceID instanceID, final int regID);
-
-    /**
-     * Add further types to an existing subscription
-     * @param newTypes types to add to subscription
-     * @param subscription Existing subscription
-     * @return True if at least one type was added, false otherwise
-     */
-    boolean addTypesToRegistration(Collection<Byte> newTypes, Subscription subscription);
+    Subscription getRegistration(final Collection<Byte> acceptableTypes, final InstanceID instanceID, final int regID);
 
     /**
      * Add a message, separated into sender address, payload and type, as a triplet, to the queue of messages.

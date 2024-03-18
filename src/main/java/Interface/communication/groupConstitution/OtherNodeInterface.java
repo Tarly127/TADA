@@ -83,9 +83,5 @@ public interface OtherNodeInterface extends AsynchronousChannel
      */
     boolean isWriteable();
 
-    /**
-     * Get the Address associated with the "other end" of a connection
-     * @return InetAddress of other end of client socket
-     */
     InetSocketAddress getRemoteAddress();
 }

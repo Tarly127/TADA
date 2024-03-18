@@ -1,0 +1,39 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------< org.example:ApproximateConsensusToolkitMaven >------------
+[INFO] Building ApproximateConsensusToolkitMaven 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- exec:1.4.0:java (default-cli) @ ApproximateConsensusToolkitMaven ---
+FCA 4554
+Server listening at /127.0.0.1:12349
+5/6
+6/6
+154823333
+42959334
+134363208
+108645584
+73770334
+101242375
+43783000
+125373292
+50829708
+93865542
+44415042
+92792625
+63449625
+54219667
+66485458
+59657500
+74132916
+111185833
+44658625
+70950334
+47146167
+31336750
+44906083
+70132792
+54746209
+78344083
+67460791

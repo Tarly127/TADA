@@ -45,8 +45,6 @@ public class AsyncDLPSW86
         if (processor.isLeader()) System.out.println("- Starting tests...");
 
 
-
-
         var uptimeAtStart = TestAux.getUptime();
         var start_timer   = Stopwatch.time();
 

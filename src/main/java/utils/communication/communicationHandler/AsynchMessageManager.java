@@ -5,23 +5,23 @@ import Interface.communication.communicationHandler.CommunicationManager;
 import Interface.communication.groupConstitution.OtherNodeInterface;
 import Interface.communication.communicationHandler.MessageQueue;
 import Interface.communication.communicationHandler.Subscription;
-import utils.communication.communicationHandler.MessageQueue.IncomingMessageQueue;
+import utils.communication.communicationHandler.MessageQueue.SimpleMessageQueue;
 import utils.consensus.ids.InstanceID;
 import org.javatuples.Triplet;
 import utils.communication.groupConstitution.GroupConstitution;
 import utils.communication.message.ExpectedMessageSize;
 
-import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.CompletionHandler;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 // Assumes that received processes are already connected
-public class AsynchMessageManager extends CommunicationManager
+public class AsynchMessageManager implements CommunicationManager
 {
     private static final int BUFFER_CAPACITY = ExpectedMessageSize.KRYO_SMALL_MESSAGE_SIZE_WITH_HEADER;
 
+    private final GroupConstitution                     groupConstitution;
     private final MessageQueue                          msgQueue;
     private final AtomicInteger                         regID;
 
@@ -47,9 +47,9 @@ public class AsynchMessageManager extends CommunicationManager
         @Override
         public void completed(Integer result, ProcessAttachment attachment)
         {
-            try
+            if (result != null && result > 0)
             {
-                if (result != null && result > 0)
+                try
                 {
                     // always flip the buffer!
                     attachment.buffer.flip();
@@ -66,19 +66,25 @@ public class AsynchMessageManager extends CommunicationManager
                     attachment.buffer.clear();
 
                     // continue read loop, if the connection still supports reading
-                    if (attachment.otherProcess.isReadable())
+                    if(attachment.otherProcess.isReadable())
                         attachment.otherProcess.safeRead(attachment.buffer, attachment, this);
                 }
-                else
-                    remove(attachment);
+                catch (Throwable e)
+                {
+                    e.printStackTrace();
+                }
             }
-            catch (Throwable ignored) {}
+            else
+                if(attachment.otherProcess.isReadable())
+                    attachment.otherProcess.safeRead(attachment.buffer, attachment, this);
         }
 
         @Override
         public void failed(Throwable exc, ProcessAttachment attachment)
         {
             // we will eventually wind up here if a connection is reset! handle accordingly
+
+
             if(attachment.otherProcess.isReadable())
                 // Continue the read loop for this connection, if it remained open
                 attachment.otherProcess.safeRead(attachment.buffer, attachment, this);
@@ -92,10 +98,10 @@ public class AsynchMessageManager extends CommunicationManager
 
     public AsynchMessageManager(GroupConstitution groupCon)
     {
-        super(groupCon);
-        this.msgQueue                  = new IncomingMessageQueue();
+        this.groupConstitution         = groupCon;
+        this.msgQueue                  = new SimpleMessageQueue();
         this.regID                     = new AtomicInteger(0);
-        AtomicInteger ignoreTimeout    = new AtomicInteger(0);
+        AtomicInteger ignoreTimeout = new AtomicInteger(0);
     }
 
     private void setUpListener(AddressInterface addr, OtherNodeInterface process)
@@ -111,12 +117,12 @@ public class AsynchMessageManager extends CommunicationManager
     // get a new registration, if none of the given types have already been registered
     public Subscription getRegistration(Collection<Byte> acceptableTypes)
     {
-        return msgQueue.getSubscription(acceptableTypes, regID.getAndIncrement());
+        return msgQueue.getRegistration(acceptableTypes, regID.getAndIncrement());
     }
 
     public Subscription getRegistration(Collection<Byte> acceptableTypes, InstanceID instanceID)
     {
-        return msgQueue.getSubscription(acceptableTypes, instanceID, regID.getAndIncrement());
+        return msgQueue.getRegistration(acceptableTypes, instanceID, regID.getAndIncrement());
     }
 
     // starts listening for messages in the communication group
@@ -127,7 +133,7 @@ public class AsynchMessageManager extends CommunicationManager
 
     // returns the oldest message in queue with any of the given types
     // waits if there are no messages in queue
-    public Triplet<AddressInterface, byte[], Byte> getNextMessage(Subscription acceptableTypesSubscription)
+    public Triplet<AddressInterface, byte[], Byte> dequeue(Subscription acceptableTypesSubscription)
     {
         return this.msgQueue.dequeue(acceptableTypesSubscription);
     }
@@ -161,21 +167,5 @@ public class AsynchMessageManager extends CommunicationManager
     public GroupConstitution getGroupConstitution()
     {
         return this.groupConstitution;
-    }
-
-    // add more types to the subscription
-    public boolean addTypesToRegistration(Collection<Byte> newTypes, Subscription subscription)
-    {
-        return this.msgQueue.addTypesToRegistration(newTypes, subscription);
-    }
-
-    // remove process from group
-    private void remove(ProcessAttachment attachment) throws IOException
-    {
-        if(this.groupConstitution.containsKey(attachment.otherProcessAddress))
-        {
-            attachment.otherProcess.close();
-            this.groupConstitution.remove(attachment.otherProcessAddress);
-        }
     }
 }

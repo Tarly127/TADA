@@ -1,11 +1,8 @@
 package Interface.consensus.utils;
 
-import Interface.communication.address.AddressInterface;
 import utils.communication.message.ApproximationMessage;
 import utils.consensus.snapshot.ConsensusState;
 import utils.math.ApproximationFunctions;
-
-import java.util.Optional;
 
 // All methods receive a ConsensusState so that they may handle consensus as they see fit
 // The default implementation builds SynchDLPSW86.
@@ -21,14 +18,6 @@ import java.util.Optional;
  */
 public interface ApproximateConsensusHandler<ConsensusAttachment>
 {
-
-    /**
-     * Initialize state of handler, if needed.
-     */
-    @Deprecated
-    default void init()
-    {}
-
     /**
      * Handler to perform a transformation on the previously cast vote when new consensus is called by another process.
      * @param cs Object containing the state of the consensus algorithm's execution.
@@ -52,21 +41,19 @@ public interface ApproximateConsensusHandler<ConsensusAttachment>
     default int rounds(final ConsensusState cs, double[] V0, final ConsensusAttachment ca)
     {
         // H = ceil(log_c(delta(V)/epsilon))
-        return Math.max(cs.t + 1, ApproximationFunctions.SynchH(V0, cs.epsilon, cs.n, cs.t));
+        return Math.max(0, ApproximationFunctions.SynchH(V0, cs.epsilon, cs.n, cs.t));
     }
 
     /**
      * Handler to perform a transformation on a vote received from another process.
-     *
-     * @param cs     Object containing the state of the consensus algorithm's execution.
-     * @param msg    The message received from another process, containing their vote.
-     * @param sender The sender of the approximation message
-     * @param ca     The object attached to the instance of consensus when it was initiated.
+     * @param cs Object containing the state of the consensus algorithm's execution.
+     * @param msg The message received from another process, containing their vote.
+     * @param ca The object attached to the instance of consensus when it was initiated.
      * @return The process's vote, transformed.
      */
-    default Optional<Double> onReceive(final ConsensusState cs, ApproximationMessage msg, AddressInterface sender, final ConsensusAttachment ca)
+    default Double onReceive(final ConsensusState cs, ApproximationMessage msg, final ConsensusAttachment ca)
     {
-        return Optional.ofNullable(msg.v);
+        return msg.v;
     }
 
     /**

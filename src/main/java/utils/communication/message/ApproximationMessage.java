@@ -86,12 +86,21 @@ public class ApproximationMessage implements Serializable, Message
 
     public String toString()
     {
+        StringBuilder sb = new StringBuilder();
 
-        String sb = "Value: " + v + ";\n" +
-                "Round: " + round + ";\n" +
-                "Type: " +
-                MessageType.typeString(this.type) + ";\n";
-        return sb;
+        sb.append("Value: ").append(v).append(";\n");
+        sb.append("Round: ").append(round).append(";\n");
+        sb.append("Type: ");
+        switch (type)
+        {
+            case MessageType.SYNCH_APPROXIMATION, MessageType.ASYNCH_APPROXIMATION -> sb.append("Approximation;\n");
+            case MessageType.SYNCH_INITIALIZATION, MessageType.ASYNCH_INITIALIZATION -> sb.append("Initialization;\n");
+            case MessageType.SYNCH_HALTED, MessageType.ASYNCH_HALTED -> sb.append("Halted;\n");
+            case MessageType.ASYNCH_NEW -> sb.append("New;\n");
+            case MessageType.UNDEFINED -> sb.append("Undefined;\n");
+            default -> sb.append("Unknown;\n");
+        }
+        return sb.toString();
     }
 
 

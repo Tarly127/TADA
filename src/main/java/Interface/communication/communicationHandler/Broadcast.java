@@ -8,12 +8,8 @@ import java.util.concurrent.CompletableFuture;
 
 
 /**
- * Object that should encapsulate the business logic underlying a broadcast algorithm.
- * NOTE: The "broadcast" method should be treated as static, and require no parameters on instantiation. Only a
- * single instance of the Broadcast interface is passed to an atomic variable, and any instance methods are reused
- * between algorithm executions.
+ * Object that should encapsulate the business logic underlying a broadcast algorithm
  */
-@FunctionalInterface
 public interface Broadcast
 {
     /**
