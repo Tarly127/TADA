@@ -4,11 +4,8 @@ import Interface.communication.address.AddressInterface;
 import utils.communication.message.ApproximationMessage;
 import utils.consensus.snapshot.ConsensusState;
 import utils.math.ApproximationFunctions;
-<<<<<<< HEAD
 
 import java.util.Optional;
-=======
->>>>>>> FixingFinalDissertationVersion
 
 // All methods receive a ConsensusState so that they may handle consensus as they see fit
 // The default implementation builds SynchDLPSW86.
@@ -55,11 +52,7 @@ public interface ApproximateConsensusHandler<ConsensusAttachment>
     default int rounds(final ConsensusState cs, double[] V0, final ConsensusAttachment ca)
     {
         // H = ceil(log_c(delta(V)/epsilon))
-<<<<<<< HEAD
         return Math.max(cs.t + 1, ApproximationFunctions.SynchH(V0, cs.epsilon, cs.n, cs.t));
-=======
-        return Math.max(0, ApproximationFunctions.SynchH(V0, cs.epsilon, cs.n, cs.t));
->>>>>>> FixingFinalDissertationVersion
     }
 
     /**

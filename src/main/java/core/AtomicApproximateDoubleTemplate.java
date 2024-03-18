@@ -1,7 +1,6 @@
 package core;
 
 import Interface.communication.address.AddressInterface;
-<<<<<<< HEAD
 import Interface.communication.communicationHandler.Broadcast;
 import Interface.communication.communicationHandler.CommunicationManager;
 import Interface.consensus.utils.ApproximateConsensusHandler;
@@ -9,16 +8,6 @@ import Interface.consensus.utils.ConsensusInstance;
 import Interface.consensus.synch.AtomicApproximateValue;
 import Interface.consensus.synch.SynchronousAlgorithm;
 import Interface.consensus.synch.SynchronousPrimitive;
-=======
-import Interface.communication.communicationHandler.CommunicationManager;
-import Interface.communication.groupConstitution.OtherNodeInterface;
-import Interface.consensus.synch.SynchronousPrimitive;
-import Interface.consensus.utils.ApproximateConsensusHandler;
-import Interface.consensus.utils.ConsensusInstance;
-import Interface.consensus.async.AsynchronousPrimitive;
-import Interface.consensus.synch.AtomicApproximateValue;
-import Interface.consensus.synch.SynchronousAlgorithm;
->>>>>>> FixingFinalDissertationVersion
 import utils.communication.message.ApproximationMessage;
 import utils.communication.message.MessageType;
 import utils.consensus.ids.RequestID;
@@ -27,16 +16,8 @@ import utils.consensus.synchConsensusUtils.ConsensusInstanceSkeleton;
 import utils.consensus.exception.MinimumProcessesNotReachedException;
 import utils.consensus.types.faultDescriptors.FaultClass;
 import utils.math.atomicExtensions.AtomicDouble;
-<<<<<<< HEAD
 import org.javatuples.Pair;
 import org.javatuples.Triplet;
-=======
-import utils.prof.ConsensusMetrics;
-import org.javatuples.Pair;
-import org.javatuples.Triplet;
-import utils.prof.MessageLogger;
-import utils.prof.Stopwatch;
->>>>>>> FixingFinalDissertationVersion
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
@@ -44,13 +25,8 @@ import java.util.concurrent.*;
 import java.util.concurrent.locks.ReentrantLock;
 
 public final class AtomicApproximateDoubleTemplate<ConsensusAttachment>
-<<<<<<< HEAD
         extends AtomicApproximateVariableCore
         implements AtomicApproximateValue<Double>, SynchronousPrimitive, SynchronousAlgorithm<Double>
-=======
-        extends AtomicApproximatePrimitiveCore
-        implements AtomicApproximateValue<Double>, SynchronousAlgorithm<Double>, SynchronousPrimitive
->>>>>>> FixingFinalDissertationVersion
 {
     // Class constants
     public  static final int MINIMUM_PROCESSES          = 4;
@@ -660,105 +636,7 @@ public final class AtomicApproximateDoubleTemplate<ConsensusAttachment>
 
     // Implementations that differ from super methods because of some function's signatures
 
-<<<<<<< HEAD
     protected void supplyNextMessage()
-=======
-                    metrics.texecNanos = Stopwatch.time() - start;
-                    metrics.reqID      = reqID;
-
-                    this.metrics.put(reqID, metrics);
-
-                    this.finishedRequestsCount.incrementAndGet();
-
-                    cleanUp(reqID);
-                    return v;
-                })
-                .thenApply(consensusV::setDouble);
-    }
-
-    /**
-     * Deal with approximate consensus transaction started by this process
-     * @param reqID ID of the consensus transaction
-     * @return Future containing v at completion
-     */
-    private CompletableFuture<Double> approximateConsensusS(RequestID reqID)
-    {
-        var start = Stopwatch.time();
-
-        return Objects
-                .requireNonNull(this.activeRequests.get(reqID))
-                .approximateConsensus_self()
-                .thenApply(v->{
-
-                    var metrics = this.activeRequests.get(reqID).getMetrics();
-
-                    metrics.texecNanos = Stopwatch.time() - start;
-                    metrics.reqID      = reqID;
-
-                    this.metrics.put(reqID, metrics);
-                    this.finishedRequestsCount.incrementAndGet();
-                    cleanUp(reqID);
-                    return v;
-                })
-                .thenApply(consensusV::setDouble);
-    }
-
-    private Triplet<Long, TimeUnit, Double> getTimeoutAndDefaultValues()
-    {
-        this.globalLock.lock();
-        var triplet = new Triplet<>(this.timeout, this.unit, this.defaultValue);
-        this.globalLock.unlock();
-
-        return triplet;
-    }
-
-    /**
-     * Starts new consensus request
-     * @return Future containing RequestID for new consensus
-     */
-    private RequestID startNewConsensus    (ConsensusAttachment ca)
-    {
-        // Generate requestID
-        RequestID myReqId = generateRequestID();
-        // Snapshot global state
-        // lock global state so we can have a consistent snapshot
-        this.globalLock.lock();
-        // generate new ConsensusParameters snapshot with current global state
-        ConsensusState snapshot = new ConsensusState(
-                this.n,
-                this.t,
-                this.epsilon,
-                this.groupCon,
-                this.consensusBroadcast,
-                this.approximationMessageSerializer,
-                this.instanceID);
-        // unlock global state
-        this.globalLock.unlock();
-        // Get timeout and default values
-        var timeoutAndDefault = getTimeoutAndDefaultValues();
-        // Generate new consensus instance
-        ConsensusInstance<Double> consensus = new ConsensusInstanceSkeleton<>(snapshot,
-                                                                    myReqId,
-                                                                    this.myV.getDouble(),
-                                                                    timeoutAndDefault.getValue0(),
-                                                                    timeoutAndDefault.getValue1(),
-                                                                    timeoutAndDefault.getValue2(),
-                                                                    getHandlerInstance(),
-                                                                    ca,
-                                                                    this.messageLogger);
-        // Store new snapshot
-        this.requestsLock.lock();
-        this.activeRequests  .put(myReqId, consensus);
-        this.requestsLock.unlock();
-        // Broadcast request intent
-        return myReqId;
-    }
-
-
-    // Message handlers
-
-    private void supplyNextMessage()
->>>>>>> FixingFinalDissertationVersion
     {
         // Get next packet that interests us
         Triplet<AddressInterface, byte[], Byte> nextPacket = this.msgManager.getNextMessage(this.wantedTypesSubscription);
@@ -982,103 +860,4 @@ public final class AtomicApproximateDoubleTemplate<ConsensusAttachment>
     // AUXILIARY FUNCTIONS
 
 
-<<<<<<< HEAD
-=======
-    private Action  nextAction(ApproximationMessage msg)
-    {
-        Action actionToTake;
-
-        if (msg.type == MessageType.GCS_INITIALIZATION)
-            if(this.outdatedRequests.contains(msg.reqID))
-                actionToTake = Action.IGNORE;
-            else
-                actionToTake = Action.HANDLE_NOW;
-        else
-            if (this.activeRequests.containsKey(msg.reqID))
-                actionToTake = Action.HANDLE_NOW;
-            else
-                if(this.outdatedRequests.contains(msg.reqID))
-                    actionToTake = Action.IGNORE;
-                else
-                    actionToTake = Action.HANDLE_LATER;
-
-        return actionToTake;
-    }
-
-    private void storeMessage(ApproximationMessage msg, ProcessAttachment attachment)
-    {
-        this.unhandledMessages.add(new Pair<>(attachment, msg));
-    }
-
-    private void handleStoredMessages(ConsensusInstance<Double> consensusInstance)
-    {
-        if(consensusInstance != null)
-        {
-            // handle each unhandled message  with requestID
-            this.unhandledMessages
-                    .stream()
-                    .filter(p -> p.getValue1().reqID.equals(consensusInstance.getReqID()))
-                    .forEach(m -> consensusInstance.exchange(m.getValue1().getType(),
-                                                                   m.getValue1(),
-                                                                   m.getValue0().procAddress));
-            // Remove after handling
-            this.unhandledMessages.removeAll(this.unhandledMessages
-                    .stream()
-                    .filter(p -> p.getValue1().reqID.equals(consensusInstance.getReqID()))
-                    .collect(Collectors.toSet()));
-        }
-    }
-
-    private void cleanUp(RequestID id)
-    {
-        this.requestsLock.lock();
-        // remove request from active requests
-        var request = this.activeRequests.remove(id);
-
-        if(request != null)
-        {
-            // add it to last active requests
-            this.outdatedRequests.add(id);
-            // update each process's status, based on the latest execution of the algorithm
-            this.groupCon.forEach((address, process) ->
-            {
-                if (request.getGroupState().containsKey(address))
-                    process.markAsFaulty(process.isFaulty());
-            });
-            // check that we can continue with consensus in the future
-            if (this.faultyProcessesExceedT())
-                this.consensusPossible.set(false);
-        }
-
-        this.requestsLock.unlock();
-    }
-
-    private boolean faultyProcessesExceedT()
-    {
-        return this.groupCon.values().stream().filter(OtherNodeInterface::isFaulty).count() > this.t;
-    }
-
-    // FOR TESTING PURPOSES ONLY
-    // *************************************************************************************
-    public List<ConsensusMetrics> getMetrics()
-    {
-        return this.metrics
-                .entrySet()
-                .stream()
-                .sorted(Comparator.comparingInt(entry -> entry.getKey().internalID))
-                .map(Map.Entry::getValue)
-                .collect(Collectors.toList());
-    }
-
-    public MessageLogger getMessageLogger()
-    {
-        return this.messageLogger;
-    }
-
-    public int getNumFinishedRequests()
-    {
-        return this.finishedRequestsCount.get();
-    }
-    // *************************************************************************************
->>>>>>> FixingFinalDissertationVersion
 }

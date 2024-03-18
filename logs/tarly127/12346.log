@@ -6,10 +6,7 @@
 [INFO] --------------------------------[ jar ]---------------------------------
 [INFO] 
 [INFO] --- exec:1.4.0:java (default-cli) @ ApproximateConsensusToolkitMaven ---
-SynchDLPSW86 24205
+SynchDLPSW86 4249
 Server listening at /127.0.0.1:12346
-2/4
-3/4
-4/4
-- (Non Leader) Finished Tests (34.050307334s).
-- (Non Leader) Finished logging.
+2/3
+3/3

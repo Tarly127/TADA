@@ -55,11 +55,7 @@ public final class FCAInstance extends ConsensusState implements ConsensusInstan
 
     public FCAInstance()
     {
-<<<<<<< HEAD:src/main/java/utils/consensus/synchConsensusUtils/FCAInstance.java
         super(1, 0, 0.0, null, new AsyncBroadcast(), null, null);
-=======
-        super(1, 0, 0.0, null, new AsynchBroadcast(),  new MessageSerializer<>(ApproximationMessage.class), null);
->>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/synchConsensusUtilities/FCAInstance.java
 
         this.multisetLock = new ReentrantLock(true);
         this.multisetPerRound = new HashMap<>();
@@ -68,10 +64,6 @@ public final class FCAInstance extends ConsensusState implements ConsensusInstan
         this.reqID = null;
         this.metrics = null;
         this.logger = null;
-<<<<<<< HEAD:src/main/java/utils/consensus/synchConsensusUtils/FCAInstance.java
-=======
-
->>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/synchConsensusUtilities/FCAInstance.java
         this.timeout      = Long.MAX_VALUE;
         this.unit         = TimeUnit.DAYS;
         this.consensusPossible = new AtomicBoolean(true);
@@ -88,11 +80,7 @@ public final class FCAInstance extends ConsensusState implements ConsensusInstan
                        TimeUnit unit,
                        Broadcast broadcast)
     {
-<<<<<<< HEAD:src/main/java/utils/consensus/synchConsensusUtils/FCAInstance.java
         super(n, t, epsilon, groupState, broadcast, new MessageSerializer<>(ApproximationMessage.class), instanceID);
-=======
-        super(n, t, epsilon, groupState, broadcast,  new MessageSerializer<>(ApproximationMessage.class), instanceID);
->>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/synchConsensusUtilities/FCAInstance.java
 
         this.reqID      = reqID;
         this.startingV  = startingV;
@@ -111,17 +99,10 @@ public final class FCAInstance extends ConsensusState implements ConsensusInstan
     }
 
     public  <T extends ConsensusState> FCAInstance(T snapshot,
-<<<<<<< HEAD:src/main/java/utils/consensus/synchConsensusUtils/FCAInstance.java
                                                    RequestID reqID,
                                                    Double startingV,
                                                    long timeout,
                                                    TimeUnit unit)
-=======
-                                                            RequestID reqID,
-                                                            Double startingV,
-                                                            long timeout,
-                                                            TimeUnit unit)
->>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/synchConsensusUtilities/FCAInstance.java
     {
         super(snapshot);
 
@@ -213,11 +194,7 @@ public final class FCAInstance extends ConsensusState implements ConsensusInstan
                     // calculate starting delta (upper bound for "initial precision")
                     this.initialDelta = ApproximationFunctions.InexactDelta(V);
                     // calculate H
-<<<<<<< HEAD:src/main/java/utils/consensus/synchConsensusUtils/FCAInstance.java
                     this.H = Math.max(this.t + 1, ApproximationFunctions.InexactH(this.initialDelta, this.epsilon));
-=======
-                    this.H = Math.max(0, ApproximationFunctions.InexactH(this.initialDelta, this.epsilon));
->>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/synchConsensusUtilities/FCAInstance.java
 
                     this.metrics.expectedH = this.H;
                     this.metrics.realH     = this.H;
@@ -603,11 +580,7 @@ public final class FCAInstance extends ConsensusState implements ConsensusInstan
         final long startTime           = Stopwatch.time();
         final LocalDateTime wallTime   = LocalDateTime.now();
 
-<<<<<<< HEAD:src/main/java/utils/consensus/synchConsensusUtils/FCAInstance.java
         return this.Broadcast(msg)
-=======
-        return Broadcast(msg)
->>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/synchConsensusUtilities/FCAInstance.java
                 .thenApply(nothing -> {
                     if(logger != null)
                         logger.registerMetric(msg, wallTime, Stopwatch.time() - startTime,

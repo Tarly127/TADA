@@ -13,15 +13,9 @@ import utils.communication.message.ApproximationMessage;
 import utils.communication.message.MessageType;
 import utils.communication.serializer.MessageSerializer;
 import utils.consensus.ids.InstanceID;
-<<<<<<< HEAD:src/main/java/utils/consensus/asynchConsensusUtils/AsynchConsensusInstanceSkeleton.java
 import utils.math.ApproximationFunctions;
 import utils.prof.ConsensusMetrics;
 import org.javatuples.Pair;
-=======
-import utils.prof.ConsensusMetrics;
-import org.javatuples.Pair;
-import utils.math.ApproximationFunctions;
->>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/asynchConsensusUtilities/AsynchConsensusInstanceSkeleton.java
 import utils.consensus.snapshot.ConsensusState;
 import utils.consensus.ids.RequestID;
 import utils.prof.MessageLogger;
@@ -48,11 +42,8 @@ public final class AsynchConsensusInstanceSkeleton<ConsensusAttachment>
     public final ConsensusMetrics metrics;
     public final MessageLogger    logger;
     // Instance variables
-<<<<<<< HEAD:src/main/java/utils/consensus/asynchConsensusUtils/AsynchConsensusInstanceSkeleton.java
     //private final MessageSerializer<ApproximationMessage> serializer;
 
-=======
->>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/asynchConsensusUtilities/AsynchConsensusInstanceSkeleton.java
     public final ApproximateConsensusHandler<ConsensusAttachment> handler;
     public final ConsensusAttachment                              attachment;
 
@@ -61,17 +52,7 @@ public final class AsynchConsensusInstanceSkeleton<ConsensusAttachment>
         @Override
         public int rounds(ConsensusState cs, double[] V0, ConsensusAttachment ca)
         {
-<<<<<<< HEAD:src/main/java/utils/consensus/asynchConsensusUtils/AsynchConsensusInstanceSkeleton.java
             return Math.max(cs.t + 1, ApproximationFunctions.AsyncH(V0, cs.epsilon, cs.n, cs.t));
-=======
-            return Math.max(0, ApproximationFunctions.AsyncH(V0, cs.epsilon, cs.n, cs.t));
-        }
-
-        @Override
-        public Double onReceive(ConsensusState cs, ApproximationMessage msg, ConsensusAttachment ca)
-        {
-            return msg.v;
->>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/asynchConsensusUtilities/AsynchConsensusInstanceSkeleton.java
         }
 
         @Override
@@ -97,11 +78,7 @@ public final class AsynchConsensusInstanceSkeleton<ConsensusAttachment>
 
     public AsynchConsensusInstanceSkeleton()
     {
-<<<<<<< HEAD:src/main/java/utils/consensus/asynchConsensusUtils/AsynchConsensusInstanceSkeleton.java
         super(1, 0, 0.0, null, new AsyncBroadcast(), null, null);
-=======
-        super(1, 0, 0.0, null, new AsynchBroadcast(), new MessageSerializer<>(ApproximationMessage.class), null);
->>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/asynchConsensusUtilities/AsynchConsensusInstanceSkeleton.java
 
         this.multisetLock = new ReentrantLock(true);
         this.multisetPerRound = new HashMap<>();
@@ -578,11 +555,7 @@ public final class AsynchConsensusInstanceSkeleton<ConsensusAttachment>
         final long startTime           = Stopwatch.time();
         final LocalDateTime wallTime   = LocalDateTime.now();
 
-<<<<<<< HEAD:src/main/java/utils/consensus/asynchConsensusUtils/AsynchConsensusInstanceSkeleton.java
         return this.Broadcast(msg)
-=======
-        return super.Broadcast(msg)
->>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/asynchConsensusUtilities/AsynchConsensusInstanceSkeleton.java
                 .thenApply(nothing ->
                 {
                     if(logger != null)

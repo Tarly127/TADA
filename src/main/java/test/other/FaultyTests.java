@@ -1,10 +1,6 @@
 package test.other;
 
-<<<<<<< HEAD
 import core.AsyncAtomicApproximateDouble;
-=======
-import core.AsynchAtomicApproximateDouble;
->>>>>>> FixingFinalDissertationVersion
 import core.AtomicApproximateDouble;
 import core.AtomicInexactDouble;
 import core.Processor;

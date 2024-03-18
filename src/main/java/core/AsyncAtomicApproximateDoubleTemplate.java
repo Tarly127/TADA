@@ -1,13 +1,8 @@
 package core;
 
 import Interface.communication.address.AddressInterface;
-<<<<<<<< HEAD:src/main/java/core/AsyncAtomicApproximateDoubleTemplate.java
 import Interface.communication.communicationHandler.Broadcast;
 import Interface.communication.communicationHandler.CommunicationManager;
-========
-import Interface.communication.communicationHandler.CommunicationManager;
-import Interface.communication.groupConstitution.OtherNodeInterface;
->>>>>>>> FixingFinalDissertationVersion:src/main/java/core/AsynchAtomicApproximateDoubleTemplate.java
 import Interface.consensus.utils.ApproximateConsensusHandler;
 import Interface.consensus.utils.ConsensusInstance;
 import Interface.consensus.async.AsyncAtomicApproximateValue;
@@ -20,15 +15,7 @@ import utils.consensus.snapshot.ConsensusState;
 import utils.consensus.exception.MinimumProcessesNotReachedException;
 import utils.consensus.types.faultDescriptors.FaultClass;
 import utils.math.atomicExtensions.AtomicDouble;
-<<<<<<<< HEAD:src/main/java/core/AsyncAtomicApproximateDoubleTemplate.java
 import org.javatuples.Triplet;
-========
-import utils.prof.ConsensusMetrics;
-import org.javatuples.Pair;
-import org.javatuples.Triplet;
-import utils.prof.MessageLogger;
-import utils.prof.Stopwatch;
->>>>>>>> FixingFinalDissertationVersion:src/main/java/core/AsynchAtomicApproximateDoubleTemplate.java
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
@@ -543,90 +530,7 @@ public final class AsyncAtomicApproximateDoubleTemplate<ConsensusAttachment>
      */
     public boolean setAdditionalMessageTypes(Collection<Byte> additionalTypes)
     {
-<<<<<<<< HEAD:src/main/java/core/AsyncAtomicApproximateDoubleTemplate.java
         return this.msgManager.addTypesToRegistration(additionalTypes, wantedTypesSubscription);
-========
-        return approximateConsensusS(startNewConsensus(attachment));
-    }
-
-    /**
-     * Deal with approximate consensus transaction NOT started by this process
-     * @param reqID ID of the consensus transaction
-     * @return Future containing v at completion
-     */
-    private CompletableFuture<Double> approximateConsensusO(ApproximationMessage msg, RequestID reqID, Long start)
-    {
-        return Objects
-                .requireNonNull(this.activeRequests.get(reqID))
-                .approximateConsensus_other(msg)
-                .thenApply(v->{
-
-                    var metrics = this.activeRequests.get(reqID).getMetrics();
-
-                    metrics.reqID = reqID;
-                    metrics.texecNanos = Stopwatch.time() - start;
-
-                    this.metrics.put(reqID, metrics);
-
-                    finishedRequestsCount.incrementAndGet();
-
-                    cleanUp(reqID); return v;
-                })
-                .thenApply(consensusV::setDouble);
-    }
-
-    /**
-     * Deal with approximate consensus transaction started by this process
-     * @param reqID ID of the consensus transaction
-     * @return Future containing v at completion
-     */
-    private CompletableFuture<Double> approximateConsensusS(RequestID reqID)
-    {
-        return Objects
-                .requireNonNull(this.activeRequests.get(reqID))
-                .approximateConsensus_self()
-                .thenApply(v->{
-                    this.metrics.put(reqID, this.activeRequests.get(reqID).getMetrics());
-                    finishedRequestsCount.incrementAndGet();
-                    cleanUp(reqID);
-                    return v;
-                })
-                .thenApply(consensusV::setDouble);
-    }
-
-    /**
-     * Starts new consensus request
-     * @return Future containing RequestID for new consensus
-     */
-    private RequestID startNewConsensus    (ConsensusAttachment attachment)
-    {
-        // Generate requestID
-        RequestID myReqId = generateRequestID();
-        // Snapshot global state
-        // lock global state so we can have a consistent snapshot
-        this.globalLock.lock();
-        // generate new ConsensusParameters snapshot with current global state
-        ConsensusState snapshot = new ConsensusState(
-                this.n,
-                this.t,
-                this.epsilon,
-                this.groupCon,
-                this.consensusBroadcast,
-                this.approximationMessageSerializer,
-                this.instanceID);
-        // unlock global state
-        this.globalLock.unlock();
-        // Generate new consensus instance
-        ConsensusInstance<Double> consensus
-                = new AsynchConsensusInstanceSkeleton<>(snapshot, myReqId, this.myV.getDouble(),
-                this.messageLogger, getHandlerInstance(), attachment);
-        // Store new snapshot
-        this.requestsLock.lock();
-        this.activeRequests  .put(myReqId, consensus);
-        this.requestsLock.unlock();
-        // Broadcast request intent
-        return myReqId;
->>>>>>>> FixingFinalDissertationVersion:src/main/java/core/AsynchAtomicApproximateDoubleTemplate.java
     }
 
 
@@ -834,115 +738,6 @@ public final class AsyncAtomicApproximateDoubleTemplate<ConsensusAttachment>
         }
     }
 
-<<<<<<<< HEAD:src/main/java/core/AsyncAtomicApproximateDoubleTemplate.java
-========
-
-    // AUXILIARY FUNCTIONS
-
-    private RequestID generateRequestID()
-    {
-        return new RequestID(this.myAddress, this.internalRequestID.getAndIncrement());
-    }
-
-    private Action  nextAction(ApproximationMessage msg)
-    {
-        Action actionToTake;
-
-        if (msg.type == MessageType.GCS_INITIALIZATION)
-            if(this.outdatedRequests.contains(msg.reqID))
-                actionToTake = Action.IGNORE;
-            else
-                actionToTake = Action.HANDLE_NOW;
-        else
-            if (this.activeRequests.containsKey(msg.reqID))
-                actionToTake = Action.HANDLE_NOW;
-            else
-                if(this.outdatedRequests.contains(msg.reqID))
-                    actionToTake = Action.IGNORE;
-                else
-                    actionToTake = Action.HANDLE_LATER;
-
-        return actionToTake;
-    }
-
-    private void storeMessage(ApproximationMessage msg, ProcessAttachment attachment)
-    {
-        this.unhandledMessages.add(new Pair<>(attachment, msg));
-    }
-
-    private void handleStoredMessages(ConsensusInstance<Double> consensusInstance)
-    {
-        if(consensusInstance != null)
-        {
-            // handle each unhandled message  with requestID
-            this.unhandledMessages
-                    .stream()
-                    .filter(p -> p.getValue1().reqID.equals(consensusInstance.getReqID()))
-                    .forEach(m ->
-                        consensusInstance.exchange(m.getValue1().getType(),
-                                m.getValue1(),
-                                m.getValue0().procAddress)
-                    );
-            // Remove after handling
-            this.unhandledMessages.removeAll(this.unhandledMessages
-                    .stream()
-                    .filter(p -> p.getValue1().reqID.equals(consensusInstance.getReqID()))
-                    .collect(Collectors.toSet()));
-        }
-    }
-
-    private void cleanUp(RequestID id)
-    {
-        this.requestsLock.lock();
-        // remove request from active requests
-        var request = this.activeRequests.remove(id);
-
-        if(request != null)
-        {
-            // add it to last active requests
-            this.outdatedRequests.add(id);
-            // update each process's status, based on the latest execution of the algorithm
-            this.groupCon.forEach(((address, process) ->
-            {
-                if (request.getGroupState().containsKey(address))
-                    process.markAsFaulty(process.isFaulty());
-            }));
-            // check that we can continue with consensus in the future
-            if (this.faultyProcessesExceedT())
-            {
-                System.out.println("Too many faulty processes");
-
-                // TODO: actually do something about this!!!
-            }
-        }
-
-        this.requestsLock.unlock();
-    }
-
-    private boolean faultyProcessesExceedT()
-    {
-        return this.groupCon.values().stream().filter(OtherNodeInterface::isFaulty).count() > this.t;
-    }
-
-    public List<ConsensusMetrics> getMetrics()
-    {
-        Comparator<Map.Entry<RequestID, ConsensusMetrics>> comparator
-                = Comparator.comparingInt(entry -> entry.getKey().internalID);
-
-        return this.metrics.entrySet().stream().sorted(comparator).map(Map.Entry::getValue).collect(Collectors.toList());
-    }
-
-    public MessageLogger getMessageLogger()
-    {
-        return this.messageLogger;
-    }
-
-    public int getNumFinishedRequests()
-    {
-        return this.finishedRequestsCount.get();
-    }
-
->>>>>>>> FixingFinalDissertationVersion:src/main/java/core/AsynchAtomicApproximateDoubleTemplate.java
     private ConsensusAttachment getDefaultAttachment()
     {
         this.consensusAttachmentLock.lock();

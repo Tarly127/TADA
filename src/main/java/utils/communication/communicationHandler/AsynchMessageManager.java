@@ -5,11 +5,7 @@ import Interface.communication.communicationHandler.CommunicationManager;
 import Interface.communication.groupConstitution.OtherNodeInterface;
 import Interface.communication.communicationHandler.MessageQueue;
 import Interface.communication.communicationHandler.Subscription;
-<<<<<<< HEAD
 import utils.communication.communicationHandler.MessageQueue.IncomingMessageQueue;
-=======
-import utils.communication.communicationHandler.MessageQueue.SimpleMessageQueue;
->>>>>>> FixingFinalDissertationVersion
 import utils.consensus.ids.InstanceID;
 import org.javatuples.Triplet;
 import utils.communication.groupConstitution.GroupConstitution;

@@ -55,11 +55,7 @@ public final class SynchDLPSW86Instance
 
     public SynchDLPSW86Instance()
     {
-<<<<<<< HEAD:src/main/java/utils/consensus/synchConsensusUtils/SynchDLPSW86Instance.java
         super(1, 0, 0.0, null, new AsyncBroadcast(), null, null);
-=======
-        super(1, 0, 0.0, null, new AsynchBroadcast(),  new MessageSerializer<>(ApproximationMessage.class), null);
->>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/synchConsensusUtilities/SynchDLPSW86Instance.java
 
         this.multisetLock = new ReentrantLock(true);
         this.multisetPerRound = new HashMap<>();
@@ -68,10 +64,6 @@ public final class SynchDLPSW86Instance
         this.reqID = null;
         this.metrics = null;
         this.logger = null;
-<<<<<<< HEAD:src/main/java/utils/consensus/synchConsensusUtils/SynchDLPSW86Instance.java
-=======
-
->>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/synchConsensusUtilities/SynchDLPSW86Instance.java
         this.timeout      = Long.MAX_VALUE;
         this.unit         = TimeUnit.DAYS;
         this.defaultValue = 0.0;
@@ -89,11 +81,7 @@ public final class SynchDLPSW86Instance
                                 TimeUnit unit,
                                 double defaultValue)
     {
-<<<<<<< HEAD:src/main/java/utils/consensus/synchConsensusUtils/SynchDLPSW86Instance.java
         super(n, t, epsilon, groupState, broadcast, new MessageSerializer<>(ApproximationMessage.class), instanceID);
-=======
-        super(n, t, epsilon, groupState, broadcast,  new MessageSerializer<>(ApproximationMessage.class), instanceID);
->>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/synchConsensusUtilities/SynchDLPSW86Instance.java
 
         this.reqID      = reqID;
         this.startingV  = startingV;
@@ -104,10 +92,6 @@ public final class SynchDLPSW86Instance
         this.multisetLock           = new ReentrantLock(true);
         this.multisetPerRound       = new HashMap<>();
         this.multisetFuturePerRound = new HashMap<>();
-<<<<<<< HEAD:src/main/java/utils/consensus/synchConsensusUtils/SynchDLPSW86Instance.java
-=======
-
->>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/synchConsensusUtilities/SynchDLPSW86Instance.java
         this.timeout      = timeout;
         this.unit         = unit;
         this.defaultValue = defaultValue;
@@ -206,11 +190,7 @@ public final class SynchDLPSW86Instance
                     // sort V
                     Arrays.sort(V);
                     // H = ceil(log_c(delta(V)/epsilon))
-<<<<<<< HEAD:src/main/java/utils/consensus/synchConsensusUtils/SynchDLPSW86Instance.java
                     this.H = Math.max(this.t + 1, ApproximationFunctions.SynchH(V, this.epsilon, this.n, this.t));
-=======
-                    this.H = Math.max(0, ApproximationFunctions.SynchH(V, this.epsilon, this.n, this.t));
->>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/synchConsensusUtilities/SynchDLPSW86Instance.java
 
                     this.metrics.expectedH = this.H;
                     this.metrics.realH     = this.H;
@@ -583,11 +563,7 @@ public final class SynchDLPSW86Instance
         final long startTime           = Stopwatch.time();
         final LocalDateTime wallTime   = LocalDateTime.now();
 
-<<<<<<< HEAD:src/main/java/utils/consensus/synchConsensusUtils/SynchDLPSW86Instance.java
         return this.Broadcast(msg)
-=======
-        return Broadcast(msg)
->>>>>>> FixingFinalDissertationVersion:src/main/java/utils/consensus/synchConsensusUtilities/SynchDLPSW86Instance.java
                 .thenApply(nothing ->
                 {
                     if(logger != null)
