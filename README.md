@@ -10,7 +10,9 @@ This work is financed by the ERDF - European Regional Development Fund, through 
 
 ## How To Use
 
-This toolkit's functionalities are detailed further in [TADA - A Toolkit for Approximate Distributed Agreement](https://link.springer.com/chapter/10.1007/978-3-031-35260-7_1). Results of the toolkit's performance and correctness are explored in said research paper. These results include:
+A simple example of the usage of the toolkit can be found in `src.main.java.test.BasicTest`, detailing in simple instructions how one can instantiate a `Processor` and Atomic Variables, as well as how to write and read their values.
+
+This toolkit's functionalities are further explored in [TADA - A Toolkit for Approximate Distributed Agreement](https://link.springer.com/chapter/10.1007/978-3-031-35260-7_1). Results of the toolkit's performance and correctness are explored in said research paper. These results include:
 
 1. Verifying the performance of the algorithms FCA, SynchDLPSW86 and AsyncDLPSW86 in a scenario with only correct processes;
 2. Assessing the performance of the algorithms FCA, SynchDLPSW86 and AsyncDLPSW86 in the presence of faults;
@@ -29,6 +31,10 @@ The main test cases of the toolkit come packaged in `src.main.java.test`. To run
 `$ ./scripts/make_dirs.sh`
 
 ### Execution
+
+The basic functionalities can be tested using the script in the `scripts` folder. This test will create `N` processes running the test (`N` being the parameter passed to the script), and all these processes will create Atomic Variables and participate in consensus. 
+
+`$ ./scripts/run_basictest.sh [N]`
 
 Each of the functionality outcomes can be tested with scripts found in the respective directory within the `scripts` folder (e.g. 1. can be tested using the scripts found in `scripts/F1/`. Three scripts have been provided for outcomes 1 and 2, and one for 3. Each script creates a number of processes equal to the argument passed to it, and tests the corresponding algorithm. For example, if you want to test *SynchDLPSW86* under byzantine conditions (outcome 2) with 8 processes, you execute the following command:
 
